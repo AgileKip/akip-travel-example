@@ -1,0 +1,28 @@
+{
+  "travelTutorialApp": {
+    "taskRentACar": {
+      "home": {
+        "title": "Task Rent A Cars",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Task Rent A Car",
+        "createOrEditLabel": "Criar ou editar Task Rent A Car",
+        "notFound": "Nenhum Task Rent A Car encontrado"
+      },
+      "created": "Um novo Task Rent A Car foi criado com o identificador {{ param }}",
+      "updated": "Um Task Rent A Car foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Task Rent A Car foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Task Rent A Car {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Rent A Car"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "carCompanyName": "Car Company Name",
+      "carBookingNumber": "Car Booking Number"
+    }
+  }
+}

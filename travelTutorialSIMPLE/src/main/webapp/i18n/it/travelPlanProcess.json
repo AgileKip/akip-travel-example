@@ -1,0 +1,32 @@
+{
+  "travelTutorialApp": {
+    "travelPlanProcess": {
+      "home": {
+        "title": "TravelPlanProcesses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Travel Plan Process",
+        "createOrEditLabel": "Genera o modifica un Travel Plan Process",
+        "notFound": "No Travel Plan Processes found"
+      },
+      "created": "&Egrave; stato generato un nuovo Travel Plan Process con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Travel Plan Process identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Travel Plan Process con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Travel Plan Process {{ id }}?"
+      },
+      "detail": {
+        "title": "Travel Plan Process"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hotelName": "Hotel Name",
+      "hotelBookingNumber": "Hotel Booking Number",
+      "airlineCompanyName": "Airline Company Name",
+      "airlineTicketNumber": "Airline Ticket Number",
+      "carCompanyName": "Car Company Name",
+      "carBookingNumber": "Car Booking Number"
+    }
+  }
+}

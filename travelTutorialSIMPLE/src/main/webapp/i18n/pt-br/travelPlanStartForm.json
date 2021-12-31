@@ -1,0 +1,26 @@
+{
+  "travelTutorialApp": {
+    "travelPlanStartForm": {
+      "home": {
+        "title": "Travel Plan Start Forms",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Travel Plan Start Form",
+        "createOrEditLabel": "Criar ou editar Travel Plan Start Form",
+        "notFound": "Nenhum Travel Plan Start Form encontrado"
+      },
+      "created": "Um novo Travel Plan Start Form foi criado com o identificador {{ param }}",
+      "updated": "Um Travel Plan Start Form foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Travel Plan Start Form foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Travel Plan Start Form {{ id }}?"
+      },
+      "detail": {
+        "title": "Travel Plan Start Form"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date"
+    }
+  }
+}

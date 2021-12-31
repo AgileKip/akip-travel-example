@@ -1,0 +1,28 @@
+{
+  "travelTutorialApp": {
+    "taskBuyFlightTickets": {
+      "home": {
+        "title": "TaskBuyFlightTickets",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Task Buy Flight Tickets",
+        "createOrEditLabel": "Genera o modifica un Task Buy Flight Tickets",
+        "notFound": "No Task Buy Flight Tickets found"
+      },
+      "created": "&Egrave; stato generato un nuovo Task Buy Flight Tickets con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Task Buy Flight Tickets identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Task Buy Flight Tickets con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Task Buy Flight Tickets {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Buy Flight Tickets"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "airlineCompanyName": "Airline Company Name",
+      "airlineTicketNumber": "Airline Ticket Number"
+    }
+  }
+}

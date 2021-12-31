@@ -1,0 +1,28 @@
+{
+  "travelTutorialApp": {
+    "taskBookAHotel": {
+      "home": {
+        "title": "Task Book A Hotels",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Task Book A Hotel",
+        "createOrEditLabel": "Criar ou editar Task Book A Hotel",
+        "notFound": "Nenhum Task Book A Hotel encontrado"
+      },
+      "created": "Um novo Task Book A Hotel foi criado com o identificador {{ param }}",
+      "updated": "Um Task Book A Hotel foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Task Book A Hotel foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Task Book A Hotel {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Book A Hotel"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hotelName": "Hotel Name",
+      "hotelBookingNumber": "Hotel Booking Number"
+    }
+  }
+}
