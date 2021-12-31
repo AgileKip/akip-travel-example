@@ -1,0 +1,33 @@
+{
+  "travelTutorialEntities3App": {
+    "travelPlanProcess": {
+      "home": {
+        "title": "Travel Plan Processes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Travel Plan Process",
+        "createOrEditLabel": "Create or edit a Travel Plan Process",
+        "notFound": "No Travel Plan Processes found"
+      },
+      "created": "A new Travel Plan Process is created with identifier {{ param }}",
+      "updated": "A Travel Plan Process is updated with identifier {{ param }}",
+      "deleted": "A Travel Plan Process is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Travel Plan Process {{ id }}?"
+      },
+      "detail": {
+        "title": "Travel Plan Process"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hotelBookingNumber": "Hotel Booking Number",
+      "airlineTicketNumber": "Airline Ticket Number",
+      "carBookingNumber": "Car Booking Number",
+      "finalRemarks": "Final Remarks",
+      "airlineCompany": "Airline Company",
+      "hotelCompany": "Hotel Company",
+      "carRentalCompany": "Car Rental Company"
+    }
+  }
+}

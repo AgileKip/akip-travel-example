@@ -1,0 +1,16 @@
+{
+  "travelTutorialCallApp": {
+    "handleCancel": {
+      "home": {
+        "title": "Handle Cancels",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Handle Cancels found"
+      },
+      "detail": {
+        "title": "Handle Cancel"
+      },
+      "id": "ID",
+      "reason": "Reason"
+    }
+  }
+}

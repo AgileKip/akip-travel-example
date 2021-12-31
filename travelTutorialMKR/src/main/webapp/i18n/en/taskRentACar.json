@@ -1,0 +1,28 @@
+{
+  "travelTutorialMkrApp": {
+    "taskRentACar": {
+      "home": {
+        "title": "Task Rent A Cars",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Rent A Car",
+        "createOrEditLabel": "Create or edit a Task Rent A Car",
+        "notFound": "No Task Rent A Cars found"
+      },
+      "created": "A new Task Rent A Car is created with identifier {{ param }}",
+      "updated": "A Task Rent A Car is updated with identifier {{ param }}",
+      "deleted": "A Task Rent A Car is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Rent A Car {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Rent A Car"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "carCompanyName": "Car Company Name",
+      "carBookingNumber": "Car Booking Number"
+    }
+  }
+}

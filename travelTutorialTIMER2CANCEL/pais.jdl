@@ -1,0 +1,93 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType jwt
+    baseName travelTutorialTIMER2
+    blueprints [generator-jhipster-agilekip]
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework vue
+    clientPackageManager npm
+    clientTheme none
+    creationTimestamp 1640278940369
+    databaseType sql
+    devDatabaseType h2Disk
+    dtoSuffix DTO
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation true
+    jhiPrefix jhi
+    jhipsterVersion "7.0.1"
+    jwtSecretKey "Yjg2YTVmNzZmNWYzYzcyMzYxZWI1YTQ2M2Q3NmJkYzY2MTViMGQ4YzNjMGJkOGE1YmNhMDliZWYyZGVhZmQzYWFiMmNjMWVmMjViODMwNGY2MWViY2IwMzY4ZGYxNjBiYWI0NTg5ZDNkZTY1NmQzZTVlZTNjMDc0MWI5M2JlNjE="
+    languages [en]
+    messageBroker false
+    nativeLanguage en
+    otherModules [generator-jhipster-agilekip]
+    packageName org.agilekip.tutorials.traveltimer2
+    prodDatabaseType postgresql
+    reactive false
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    skipClient false
+    skipServer false
+    skipUserManagement false
+    testFrameworks []
+    websocket false
+    withAdminUi true
+  }
+
+  entities TaskBookAHotel, TaskBuyFlightTickets, TaskRentACar, TravelPlan, TravelPlanProcess, TravelPlanStartForm
+}
+
+entity TaskBookAHotel {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  hotelName String
+  hotelBookingNumber String
+}
+entity TaskBuyFlightTickets {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  airlineCompanyName String
+  airlineTicketNumber String
+}
+entity TaskRentACar {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  carCompanyName String
+  carBookingNumber String
+}
+entity TravelPlan {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  hotelName String
+  hotelBookingNumber String
+  airlineCompanyName String
+  airlineTicketNumber String
+  carCompanyName String
+  carBookingNumber String
+}
+entity TravelPlanProcess {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  hotelName String
+  hotelBookingNumber String
+  airlineCompanyName String
+  airlineTicketNumber String
+  carCompanyName String
+  carBookingNumber String
+}
+entity TravelPlanStartForm {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+}
+dto TaskBookAHotel, TaskBuyFlightTickets, TaskRentACar, TravelPlan, TravelPlanProcess, TravelPlanStartForm with mapstruct
+service TaskBookAHotel, TaskBuyFlightTickets, TaskRentACar, TravelPlan, TravelPlanProcess, TravelPlanStartForm with serviceClass
+readOnly TravelPlan

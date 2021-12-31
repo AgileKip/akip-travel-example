@@ -1,0 +1,24 @@
+{
+  "travelTutorialEntitiesApp": {
+    "travelPlan": {
+      "home": {
+        "title": "Travel Plans",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Travel Plans found"
+      },
+      "detail": {
+        "title": "Travel Plan"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hotelBookingNumber": "Hotel Booking Number",
+      "airlineTicketNumber": "Airline Ticket Number",
+      "carBookingNumber": "Car Booking Number",
+      "airlineCompany": "Airline Company",
+      "hotelCompany": "Hotel Company",
+      "carRentalCompany": "Car Rental Company"
+    }
+  }
+}

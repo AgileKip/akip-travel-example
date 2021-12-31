@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity TravelPlan.
+    -->
+    <changeSet id="20210401000001-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="airline_company_id"
+                                 baseTableName="travel_plan"
+                                 constraintName="fk_travel_plan__airline_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="airline_company"/>
+
+        <addForeignKeyConstraint baseColumnNames="hotel_company_id"
+                                 baseTableName="travel_plan"
+                                 constraintName="fk_travel_plan__hotel_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hotel_company"/>
+
+        <addForeignKeyConstraint baseColumnNames="car_rental_company_id"
+                                 baseTableName="travel_plan"
+                                 constraintName="fk_travel_plan__car_rental_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="car_rental_company"/>
+    </changeSet>
+</databaseChangeLog>

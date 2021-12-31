@@ -1,0 +1,24 @@
+{
+  "travelTutorialCallApp": {
+    "handleCancelTask": {
+      "home": {
+        "title": "Handle Cancel Tasks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Handle Cancel Task",
+        "createOrEditLabel": "Create or edit a Handle Cancel Task",
+        "notFound": "No Handle Cancel Tasks found"
+      },
+      "created": "A new Handle Cancel Task is created with identifier {{ param }}",
+      "updated": "A Handle Cancel Task is updated with identifier {{ param }}",
+      "deleted": "A Handle Cancel Task is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Handle Cancel Task {{ id }}?"
+      },
+      "detail": {
+        "title": "Handle Cancel Task"
+      },
+      "id": "ID",
+      "reason": "Reason"
+    }
+  }
+}

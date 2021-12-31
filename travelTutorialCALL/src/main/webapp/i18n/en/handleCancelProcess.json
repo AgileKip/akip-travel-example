@@ -1,0 +1,24 @@
+{
+  "travelTutorialCallApp": {
+    "handleCancelProcess": {
+      "home": {
+        "title": "Handle Cancel Processes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Handle Cancel Process",
+        "createOrEditLabel": "Create or edit a Handle Cancel Process",
+        "notFound": "No Handle Cancel Processes found"
+      },
+      "created": "A new Handle Cancel Process is created with identifier {{ param }}",
+      "updated": "A Handle Cancel Process is updated with identifier {{ param }}",
+      "deleted": "A Handle Cancel Process is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Handle Cancel Process {{ id }}?"
+      },
+      "detail": {
+        "title": "Handle Cancel Process"
+      },
+      "id": "ID",
+      "reason": "Reason"
+    }
+  }
+}
