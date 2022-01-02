@@ -57,6 +57,7 @@ public class CacheConfiguration {
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.CarRentalCompany.class.getName());
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.AirlineCompany.class.getName());
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.HotelCompany.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.TravelPlanProcess.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

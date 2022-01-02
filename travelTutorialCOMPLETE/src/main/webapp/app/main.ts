@@ -40,6 +40,7 @@ import TravelerService from '@/entities/traveler/traveler.service';
 import CarRentalCompanyService from '@/entities/car-rental-company/car-rental-company.service';
 import AirlineCompanyService from '@/entities/airline-company/airline-company.service';
 import HotelCompanyService from '@/entities/hotel-company/hotel-company.service';
+import TravelPlanProcessService from '@/entities/travel-plan-process/travel-plan-process.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -112,6 +113,7 @@ new Vue({
     carRentalCompanyService: () => new CarRentalCompanyService(),
     airlineCompanyService: () => new AirlineCompanyService(),
     hotelCompanyService: () => new HotelCompanyService(),
+    travelPlanProcessService: () => new TravelPlanProcessService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

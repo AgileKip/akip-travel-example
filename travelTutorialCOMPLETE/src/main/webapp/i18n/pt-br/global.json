@@ -16,6 +16,8 @@
         "carRentalCompany": "Car Rental Company",
         "airlineCompany": "Airline Company",
         "hotelCompany": "Hotel Company",
+        "travelPlanStartForm": "Travel Plan Start Form",
+        "travelPlanProcess": "Travel Plan Process",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
