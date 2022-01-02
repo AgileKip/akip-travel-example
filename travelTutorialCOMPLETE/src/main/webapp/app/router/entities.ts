@@ -60,6 +60,10 @@ const TravelPlanStartFormInit = () => import('@/entities/travel-plan-process/tra
 const TravelPlanProcessDetails = () => import('@/entities/travel-plan-process/travel-plan-process-details.vue');
 // prettier-ignore
 const TravelPlanProcessList = () => import('@/entities/travel-plan-process/travel-plan-process-list.vue');
+// prettier-ignore
+const TravelPlanProcess_TaskChooseFlightDetails = () => import('@/entities/travel-plan-process/task-choose-flight/task-choose-flight-details.vue');
+// prettier-ignore
+const TravelPlanProcess_TaskChooseFlightExecute = () => import('@/entities/travel-plan-process/task-choose-flight/task-choose-flight-execute.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -283,6 +287,18 @@ export default [
     path: '/process-definition/TravelPlanProcessCOMPLETE/instances',
     name: 'TravelPlanProcessList',
     component: TravelPlanProcessList,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskChooseFlight/:taskInstanceId/view',
+    name: 'TravelPlanProcess_TaskChooseFlightDetails',
+    component: TravelPlanProcess_TaskChooseFlightDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskChooseFlight/:taskInstanceId/execute',
+    name: 'TravelPlanProcess_TaskChooseFlightExecute',
+    component: TravelPlanProcess_TaskChooseFlightExecute,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

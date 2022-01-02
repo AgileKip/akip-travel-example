@@ -18,6 +18,7 @@
         "hotelCompany": "Hotel Company",
         "travelPlanStartForm": "Travel Plan Start Form",
         "travelPlanProcess": "Travel Plan Process",
+        "taskChooseFlight": "Task Choose Flight",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,27 @@
+{
+  "travelTutorialCompleteApp": {
+    "taskChooseFlight": {
+      "home": {
+        "title": "Task Choose Flights",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Task Choose Flight",
+        "createOrEditLabel": "Criar ou editar Task Choose Flight",
+        "notFound": "Nenhum Task Choose Flight encontrado"
+      },
+      "created": "Um novo Task Choose Flight foi criado com o identificador {{ param }}",
+      "updated": "Um Task Choose Flight foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Task Choose Flight foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Task Choose Flight {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Choose Flight"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "flight": "Flight"
+    }
+  }
+}
