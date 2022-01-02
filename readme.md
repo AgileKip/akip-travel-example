@@ -25,7 +25,7 @@ There are examples on how to use the AgileKip Platform to generate and handle di
 | Canceling Processes Nicely                                     | --          |
 | Sending messages programmatically (WIP)                        | --          |
 | Making Decisions with DMN (WIP)                                | --          |
-| Putting it all together (OS Flagship PAIS) (WIP)               | --          |
+| Putting it all together (A complete PAIS) (WIP)                | --          |
 
 <p>
 

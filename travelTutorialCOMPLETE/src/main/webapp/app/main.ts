@@ -31,6 +31,15 @@ import TranslationService from '@/locale/translation.service';
 import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 /* tslint:disable */
 
+import TravelPlanService from '@/entities/travel-plan/travel-plan.service';
+import AirportService from '@/entities/airport/airport.service';
+import FlightService from '@/entities/flight/flight.service';
+import HotelRoomService from '@/entities/hotel-room/hotel-room.service';
+import CarService from '@/entities/car/car.service';
+import TravelerService from '@/entities/traveler/traveler.service';
+import CarRentalCompanyService from '@/entities/car-rental-company/car-rental-company.service';
+import AirlineCompanyService from '@/entities/airline-company/airline-company.service';
+import HotelCompanyService from '@/entities/hotel-company/hotel-company.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -94,6 +103,15 @@ new Vue({
 
     userOAuth2Service: () => new UserOAuth2Service(),
     translationService: () => translationService,
+    travelPlanService: () => new TravelPlanService(),
+    airportService: () => new AirportService(),
+    flightService: () => new FlightService(),
+    hotelRoomService: () => new HotelRoomService(),
+    carService: () => new CarService(),
+    travelerService: () => new TravelerService(),
+    carRentalCompanyService: () => new CarRentalCompanyService(),
+    airlineCompanyService: () => new AirlineCompanyService(),
+    hotelCompanyService: () => new HotelCompanyService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

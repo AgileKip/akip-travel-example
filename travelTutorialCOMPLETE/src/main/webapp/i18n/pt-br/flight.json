@@ -1,0 +1,31 @@
+{
+  "travelTutorialCompleteApp": {
+    "flight": {
+      "home": {
+        "title": "Flights",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Flight",
+        "createOrEditLabel": "Criar ou editar Flight",
+        "notFound": "Nenhum Flight encontrado"
+      },
+      "created": "Um novo Flight foi criado com o identificador {{ param }}",
+      "updated": "Um Flight foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Flight foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Flight {{ id }}?"
+      },
+      "detail": {
+        "title": "Flight"
+      },
+      "id": "ID",
+      "code": "Code",
+      "departure": "Departure",
+      "duration": "Duration",
+      "emptySeats": "Empty Seats",
+      "price": "Price",
+      "from": "From",
+      "to": "To",
+      "airline": "Airline"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "travelTutorialCompleteApp": {
+    "hotelCompany": {
+      "home": {
+        "title": "Hotel Companies",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Hotel Company",
+        "createOrEditLabel": "Criar ou editar Hotel Company",
+        "notFound": "Nenhum Hotel Company encontrado"
+      },
+      "created": "Um novo Hotel Company foi criado com o identificador {{ param }}",
+      "updated": "Um Hotel Company foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Hotel Company foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Hotel Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Hotel Company"
+      },
+      "id": "ID",
+      "name": "Name",
+      "place": "Place"
+    }
+  }
+}

@@ -33,6 +33,42 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
           </span>
+          <b-dropdown-item to="/travel-plan">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.travelPlan')">Travel Plan</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/airport">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.airport')">Airport</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/flight">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.flight')">Flight</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/hotel-room">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.hotelRoom')">Hotel Room</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/car">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.car')">Car</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/traveler">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.traveler')">Traveler</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/car-rental-company">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.carRentalCompany')">Car Rental Company</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/airline-company">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.airlineCompany')">Airline Company</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/hotel-company">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.hotelCompany')">Hotel Company</span>
+          </b-dropdown-item>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown

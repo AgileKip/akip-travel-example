@@ -1,0 +1,25 @@
+{
+  "travelTutorialCompleteApp": {
+    "traveler": {
+      "home": {
+        "title": "Travelers",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Traveler",
+        "createOrEditLabel": "Criar ou editar Traveler",
+        "notFound": "Nenhum Traveler encontrado"
+      },
+      "created": "Um novo Traveler foi criado com o identificador {{ param }}",
+      "updated": "Um Traveler foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Traveler foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Traveler {{ id }}?"
+      },
+      "detail": {
+        "title": "Traveler"
+      },
+      "id": "ID",
+      "name": "Name",
+      "age": "Age"
+    }
+  }
+}

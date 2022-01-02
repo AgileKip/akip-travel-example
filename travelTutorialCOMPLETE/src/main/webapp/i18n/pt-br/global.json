@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
+        "travelPlan": "Travel Plan",
+        "airport": "Airport",
+        "flight": "Flight",
+        "hotelRoom": "Hotel Room",
+        "car": "Car",
+        "traveler": "Traveler",
+        "carRentalCompany": "Car Rental Company",
+        "airlineCompany": "Airline Company",
+        "hotelCompany": "Hotel Company",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

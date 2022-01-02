@@ -1,0 +1,11 @@
+{
+  "travelTutorialCompleteApp": {
+    "PlanStatus": {
+      "null": "",
+      "UNKNOWN": "UNKNOWN",
+      "CANCELED": "CANCELED",
+      "TIMEDOUT": "TIMEDOUT",
+      "PAID": "PAID"
+    }
+  }
+}

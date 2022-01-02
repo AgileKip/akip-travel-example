@@ -1,0 +1,25 @@
+{
+  "travelTutorialCompleteApp": {
+    "carRentalCompany": {
+      "home": {
+        "title": "Car Rental Companies",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Car Rental Company",
+        "createOrEditLabel": "Criar ou editar Car Rental Company",
+        "notFound": "Nenhum Car Rental Company encontrado"
+      },
+      "created": "Um novo Car Rental Company foi criado com o identificador {{ param }}",
+      "updated": "Um Car Rental Company foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Car Rental Company foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Car Rental Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Car Rental Company"
+      },
+      "id": "ID",
+      "name": "Name",
+      "place": "Place"
+    }
+  }
+}

@@ -52,6 +52,7 @@
     "jwtSecretKey": "MzcyNDBjOTMyNzViNjExMGRlMWQ4ZTZmMGMzMGM1MzNmZWNhNWIxYTQwYWM3NDAxOTI1NDdiNTFiYTkzZGE3YTc2ODA5NGIyZDk4ZGJjMWQ3NGVhOGRjMTViYjRiZTQ1ODlhYzQ5ZmE3MTgyNDVmYTFkNjNkZDA4ODdkYjk4ZWU=",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["en", "pt-br"]
+    "languages": ["en", "pt-br"],
+    "entities": ["TravelPlan", "Airport", "Flight", "HotelRoom", "Car", "Traveler", "CarRentalCompany", "AirlineCompany", "HotelCompany"]
   }
 }

@@ -1,0 +1,27 @@
+{
+  "travelTutorialCompleteApp": {
+    "travelPlan": {
+      "home": {
+        "title": "Travel Plans",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Travel Plans found"
+      },
+      "detail": {
+        "title": "Travel Plan"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "numPax": "Num Pax",
+      "price": "Price",
+      "payment": "Payment",
+      "hotelDuration": "Hotel Duration",
+      "carDuration": "Car Duration",
+      "status": "Status",
+      "car": "Car",
+      "flight": "Flight",
+      "hotelRoom": "Hotel Room"
+    }
+  }
+}

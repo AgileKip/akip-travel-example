@@ -1,0 +1,29 @@
+{
+  "travelTutorialCompleteApp": {
+    "hotelRoom": {
+      "home": {
+        "title": "Hotel Rooms",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Hotel Room",
+        "createOrEditLabel": "Criar ou editar Hotel Room",
+        "notFound": "Nenhum Hotel Room encontrado"
+      },
+      "created": "Um novo Hotel Room foi criado com o identificador {{ param }}",
+      "updated": "Um Hotel Room foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Hotel Room foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Hotel Room {{ id }}?"
+      },
+      "detail": {
+        "title": "Hotel Room"
+      },
+      "id": "ID",
+      "code": "Code",
+      "sleeps": "Sleeps",
+      "boodked": "Boodked",
+      "duration": "Duration",
+      "price": "Price",
+      "hotelCo": "Hotel Co"
+    }
+  }
+}

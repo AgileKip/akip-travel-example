@@ -48,6 +48,15 @@ public class CacheConfiguration {
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.User.class.getName());
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.Authority.class.getName());
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.User.class.getName() + ".authorities");
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.TravelPlan.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.Airport.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.Flight.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.HotelRoom.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.Car.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.Traveler.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.CarRentalCompany.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.AirlineCompany.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.HotelCompany.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,26 @@
+{
+  "travelTutorialCompleteApp": {
+    "airport": {
+      "home": {
+        "title": "Airports",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Airport",
+        "createOrEditLabel": "Criar ou editar Airport",
+        "notFound": "Nenhum Airport encontrado"
+      },
+      "created": "Um novo Airport foi criado com o identificador {{ param }}",
+      "updated": "Um Airport foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Airport foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Airport {{ id }}?"
+      },
+      "detail": {
+        "title": "Airport"
+      },
+      "id": "ID",
+      "name": "Name",
+      "city": "City",
+      "code": "Code"
+    }
+  }
+}

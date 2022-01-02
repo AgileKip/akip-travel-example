@@ -1,0 +1,25 @@
+{
+  "travelTutorialCompleteApp": {
+    "airlineCompany": {
+      "home": {
+        "title": "Airline Companies",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Airline Company",
+        "createOrEditLabel": "Criar ou editar Airline Company",
+        "notFound": "Nenhum Airline Company encontrado"
+      },
+      "created": "Um novo Airline Company foi criado com o identificador {{ param }}",
+      "updated": "Um Airline Company foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Airline Company foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Airline Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Airline Company"
+      },
+      "id": "ID",
+      "name": "Name",
+      "code": "Code"
+    }
+  }
+}
