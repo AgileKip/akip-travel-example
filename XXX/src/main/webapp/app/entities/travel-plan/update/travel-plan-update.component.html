@@ -1,0 +1,180 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-travel-plan-heading"
+        data-cy="TravelPlanCreateUpdateHeading"
+        jhiTranslate="travelTutorialCompleteApp.travelPlan.home.createOrEditLabel"
+      >
+        Create or edit a Travel Plan
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.startDate" for="field_startDate"
+            >Start Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.endDate" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.numPax" for="field_numPax">Num Pax</label>
+          <input type="number" class="form-control" name="numPax" id="field_numPax" data-cy="numPax" formControlName="numPax" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.payment" for="field_payment">Payment</label>
+          <input type="text" class="form-control" name="payment" id="field_payment" data-cy="payment" formControlName="payment" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.hotelDuration" for="field_hotelDuration"
+            >Hotel Duration</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="hotelDuration"
+            id="field_hotelDuration"
+            data-cy="hotelDuration"
+            formControlName="hotelDuration"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.carDuration" for="field_carDuration"
+            >Car Duration</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="carDuration"
+            id="field_carDuration"
+            data-cy="carDuration"
+            formControlName="carDuration"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'travelTutorialCompleteApp.PlanStatus.null' | translate }}</option>
+            <option value="UNKNOWN">{{ 'travelTutorialCompleteApp.PlanStatus.UNKNOWN' | translate }}</option>
+            <option value="CANCELED">{{ 'travelTutorialCompleteApp.PlanStatus.CANCELED' | translate }}</option>
+            <option value="TIMEDOUT">{{ 'travelTutorialCompleteApp.PlanStatus.TIMEDOUT' | translate }}</option>
+            <option value="PAID">{{ 'travelTutorialCompleteApp.PlanStatus.PAID' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.car" for="field_car">Car</label>
+          <select class="form-control" id="field_car" data-cy="car" name="car" formControlName="car">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="carOption.id === editForm.get('car')!.value?.id ? editForm.get('car')!.value : carOption"
+              *ngFor="let carOption of carsSharedCollection; trackBy: trackCarById"
+            >
+              {{ carOption.code }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.flight" for="field_flight">Flight</label>
+          <select class="form-control" id="field_flight" data-cy="flight" name="flight" formControlName="flight">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="flightOption.id === editForm.get('flight')!.value?.id ? editForm.get('flight')!.value : flightOption"
+              *ngFor="let flightOption of flightsSharedCollection; trackBy: trackFlightById"
+            >
+              {{ flightOption.code }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.travelPlan.hotelRoom" for="field_hotelRoom"
+            >Hotel Room</label
+          >
+          <select class="form-control" id="field_hotelRoom" data-cy="hotelRoom" name="hotelRoom" formControlName="hotelRoom">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="hotelRoomOption.id === editForm.get('hotelRoom')!.value?.id ? editForm.get('hotelRoom')!.value : hotelRoomOption"
+              *ngFor="let hotelRoomOption of hotelRoomsSharedCollection; trackBy: trackHotelRoomById"
+            >
+              {{ hotelRoomOption.code }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

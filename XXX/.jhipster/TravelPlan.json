@@ -1,0 +1,76 @@
+{
+  "name": "TravelPlan",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "numPax",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "payment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hotelDuration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "carDuration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "PlanStatus",
+      "fieldValues": "UNKNOWN,CANCELED,TIMEDOUT,PAID"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "car",
+      "otherEntityRelationshipName": "travelPlan",
+      "relationshipName": "car",
+      "otherEntityField": "code"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "flight",
+      "otherEntityRelationshipName": "travelPlan",
+      "relationshipName": "flight",
+      "otherEntityField": "code"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hotelRoom",
+      "otherEntityRelationshipName": "travelPlan",
+      "relationshipName": "hotelRoom",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "travel_plan",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102160906"
+}

@@ -1,0 +1,41 @@
+{
+  "name": "TaskSelectCar",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "carBookingNumber",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "car",
+      "otherEntityRelationshipName": "taskSelectCar",
+      "relationshipName": "car",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "task_select_car",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102161206"
+}

@@ -1,0 +1,72 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "serverPort": "8080",
+    "serviceDiscoveryType": false,
+    "skipUserManagement": false,
+    "withAdminUi": true,
+    "baseName": "TravelTutorialCOMPLETE",
+    "buildTool": "maven",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": ["en"],
+    "messageBroker": false,
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "skipClient": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "packageName": "org.agilekip.tutorials.travelcomplete",
+    "packageFolder": "org/agilekip/tutorials/travelcomplete",
+    "jhipsterVersion": "7.0.1",
+    "skipServer": false,
+    "clientPackageManager": "npm",
+    "dtoSuffix": "DTO",
+    "entitySuffix": "",
+    "reactive": false,
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "applicationType": "monolith",
+    "entities": [
+      "Airport",
+      "AirlineCompany",
+      "Flight",
+      "HotelCompany",
+      "HotelRoom",
+      "CarRentalCompany",
+      "Car",
+      "Traveler",
+      "TravelPlan",
+      "TaskSelectHotel",
+      "TaskSelectFlight",
+      "TaskSelectCar",
+      "TravelPlanStartForm"
+    ],
+    "skipJhipsterDependencies": true,
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "blueprints": [
+      {
+        "name": "generator-jhipster-agilekip",
+        "version": "0.0.12"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-agilekip",
+        "version": "0.0.12"
+      }
+    ],
+    "pages": [],
+    "nativeLanguage": "en",
+    "creationTimestamp": 1641139206971,
+    "jwtSecretKey": "ZjE2NTIwMDQ4M2ZiZTE1MDUwMjFiZjE2MjRkZmIzZTY0MGU5NjVkZmQzYWUwYWZkOWJiMmMyOGUyZjBlM2FiMGM0ZGNlMTFhYTUyN2U1NWI3OWRjODQxNTNjNjM4ZTAwOTAwZTQ2YTU3MTczZmEwMzMwMGQ4MTQzOGMxOWU3YTk=",
+    "lastLiquibaseTimestamp": 1641139986000
+  }
+}

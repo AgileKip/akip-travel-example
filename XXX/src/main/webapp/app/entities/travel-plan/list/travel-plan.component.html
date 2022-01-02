@@ -1,0 +1,112 @@
+<div>
+  <h2 id="page-heading" data-cy="TravelPlanHeading">
+    <span jhiTranslate="travelTutorialCompleteApp.travelPlan.home.title">Travel Plans</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.travelPlan.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-travel-plan"
+        [routerLink]="['/travel-plan/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.travelPlan.home.createLabel"> Create a new Travel Plan </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="travelPlans?.length === 0">
+    <span jhiTranslate="travelTutorialCompleteApp.travelPlan.home.notFound">No travelPlans found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="travelPlans && travelPlans.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.startDate">Start Date</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.endDate">End Date</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.numPax">Num Pax</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.price">Price</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.payment">Payment</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.hotelDuration">Hotel Duration</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.carDuration">Car Duration</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.car">Car</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.flight">Flight</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.hotelRoom">Hotel Room</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let travelPlan of travelPlans; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/travel-plan', travelPlan.id, 'view']">{{ travelPlan.id }}</a>
+          </td>
+          <td>{{ travelPlan.name }}</td>
+          <td>{{ travelPlan.startDate | formatMediumDate }}</td>
+          <td>{{ travelPlan.endDate | formatMediumDate }}</td>
+          <td>{{ travelPlan.numPax }}</td>
+          <td>{{ travelPlan.price }}</td>
+          <td>{{ travelPlan.payment }}</td>
+          <td>{{ travelPlan.hotelDuration }}</td>
+          <td>{{ travelPlan.carDuration }}</td>
+          <td jhiTranslate="{{ 'travelTutorialCompleteApp.PlanStatus.' + travelPlan.status }}">{{ travelPlan.status }}</td>
+          <td>
+            <div *ngIf="travelPlan.car">
+              <a [routerLink]="['/car', travelPlan.car?.id, 'view']">{{ travelPlan.car?.code }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="travelPlan.flight">
+              <a [routerLink]="['/flight', travelPlan.flight?.id, 'view']">{{ travelPlan.flight?.code }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="travelPlan.hotelRoom">
+              <a [routerLink]="['/hotel-room', travelPlan.hotelRoom?.id, 'view']">{{ travelPlan.hotelRoom?.code }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/travel-plan', travelPlan.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/travel-plan', travelPlan.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(travelPlan)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

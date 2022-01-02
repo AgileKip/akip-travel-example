@@ -1,0 +1,45 @@
+{
+  "name": "TaskSelectFlight",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "airlineCompanyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "airlineTicketNumber",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "flight",
+      "otherEntityRelationshipName": "taskSelectFlight",
+      "relationshipName": "flight",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "task_select_flight",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102161106"
+}

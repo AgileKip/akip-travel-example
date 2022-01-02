@@ -1,0 +1,25 @@
+{
+  "name": "HotelCompany",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "place",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "hotel_company",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102160406"
+}

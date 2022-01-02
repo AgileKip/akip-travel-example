@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="FlightHeading">
+    <span jhiTranslate="travelTutorialCompleteApp.flight.home.title">Flights</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.flight.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-flight"
+        [routerLink]="['/flight/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.flight.home.createLabel"> Create a new Flight </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="flights?.length === 0">
+    <span jhiTranslate="travelTutorialCompleteApp.flight.home.notFound">No flights found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="flights && flights.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.code">Code</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.departure">Departure</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.duration">Duration</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.emptySeats">Empty Seats</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.price">Price</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.from">From</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.to">To</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.flight.airline">Airline</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of flights; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/flight', flight.id, 'view']">{{ flight.id }}</a>
+          </td>
+          <td>{{ flight.code }}</td>
+          <td>{{ flight.departure | formatMediumDatetime }}</td>
+          <td>{{ flight.duration }}</td>
+          <td>{{ flight.emptySeats }}</td>
+          <td>{{ flight.price }}</td>
+          <td>
+            <div *ngIf="flight.from">
+              <a [routerLink]="['/airport', flight.from?.id, 'view']">{{ flight.from?.code }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="flight.to">
+              <a [routerLink]="['/airport', flight.to?.id, 'view']">{{ flight.to?.code }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="flight.airline">
+              <a [routerLink]="['/airline-company', flight.airline?.id, 'view']">{{ flight.airline?.code }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/flight', flight.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/flight', flight.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(flight)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

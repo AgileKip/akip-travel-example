@@ -1,0 +1,45 @@
+{
+  "name": "Car",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "passangers",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "boodked",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "carRentalCompany",
+      "otherEntityRelationshipName": "car",
+      "relationshipName": "carCo",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "car",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102160706"
+}

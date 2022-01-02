@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="taskSelectFlight">
+      <h2 data-cy="taskSelectFlightDetailsHeading">
+        <span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.detail.title">Task Select Flight</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ taskSelectFlight.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.name">Name</span></dt>
+        <dd>
+          <span>{{ taskSelectFlight.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ taskSelectFlight.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ taskSelectFlight.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.airlineCompanyName">Airline Company Name</span></dt>
+        <dd>
+          <span>{{ taskSelectFlight.airlineCompanyName }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.airlineTicketNumber">Airline Ticket Number</span></dt>
+        <dd>
+          <span>{{ taskSelectFlight.airlineTicketNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectFlight.flight">Flight</span></dt>
+        <dd>
+          <div *ngIf="taskSelectFlight.flight">
+            <a [routerLink]="['/flight', taskSelectFlight.flight?.id, 'view']">{{ taskSelectFlight.flight?.code }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/task-select-flight', taskSelectFlight.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="TaskSelectCarHeading">
+    <span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.home.title">Task Select Cars</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-task-select-car"
+        [routerLink]="['/task-select-car/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.home.createLabel"> Create a new Task Select Car </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="taskSelectCars?.length === 0">
+    <span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.home.notFound">No taskSelectCars found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="taskSelectCars && taskSelectCars.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.startDate">Start Date</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.endDate">End Date</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.carBookingNumber">Car Booking Number</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.taskSelectCar.car">Car</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let taskSelectCar of taskSelectCars; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/task-select-car', taskSelectCar.id, 'view']">{{ taskSelectCar.id }}</a>
+          </td>
+          <td>{{ taskSelectCar.name }}</td>
+          <td>{{ taskSelectCar.startDate | formatMediumDate }}</td>
+          <td>{{ taskSelectCar.endDate | formatMediumDate }}</td>
+          <td>{{ taskSelectCar.carBookingNumber }}</td>
+          <td>
+            <div *ngIf="taskSelectCar.car">
+              <a [routerLink]="['/car', taskSelectCar.car?.id, 'view']">{{ taskSelectCar.car?.code }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/task-select-car', taskSelectCar.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/task-select-car', taskSelectCar.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(taskSelectCar)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

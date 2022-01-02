@@ -1,0 +1,194 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-flight-heading"
+        data-cy="FlightCreateUpdateHeading"
+        jhiTranslate="travelTutorialCompleteApp.flight.home.createOrEditLabel"
+      >
+        Create or edit a Flight
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('code')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('code')?.errors?.minlength"
+              jhiTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 3 }"
+            >
+              This field is required to be at least 3 characters.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('code')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 3 }"
+            >
+              This field cannot be longer than 3 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.departure" for="field_departure"
+            >Departure</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_departure"
+              data-cy="departure"
+              type="datetime-local"
+              class="form-control"
+              name="departure"
+              formControlName="departure"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('departure')!.invalid && (editForm.get('departure')!.dirty || editForm.get('departure')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('departure')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('departure')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.duration" for="field_duration">Duration</label>
+          <input type="number" class="form-control" name="duration" id="field_duration" data-cy="duration" formControlName="duration" />
+          <div *ngIf="editForm.get('duration')!.invalid && (editForm.get('duration')!.dirty || editForm.get('duration')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('duration')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('duration')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.emptySeats" for="field_emptySeats"
+            >Empty Seats</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="emptySeats"
+            id="field_emptySeats"
+            data-cy="emptySeats"
+            formControlName="emptySeats"
+          />
+          <div *ngIf="editForm.get('emptySeats')!.invalid && (editForm.get('emptySeats')!.dirty || editForm.get('emptySeats')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('emptySeats')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('emptySeats')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.from" for="field_from">From</label>
+          <select class="form-control" id="field_from" data-cy="from" name="from" formControlName="from">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="airportOption.id === editForm.get('from')!.value?.id ? editForm.get('from')!.value : airportOption"
+              *ngFor="let airportOption of airportsSharedCollection; trackBy: trackAirportById"
+            >
+              {{ airportOption.code }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.to" for="field_to">To</label>
+          <select class="form-control" id="field_to" data-cy="to" name="to" formControlName="to">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="airportOption.id === editForm.get('to')!.value?.id ? editForm.get('to')!.value : airportOption"
+              *ngFor="let airportOption of airportsSharedCollection; trackBy: trackAirportById"
+            >
+              {{ airportOption.code }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.flight.airline" for="field_airline">Airline</label>
+          <select class="form-control" id="field_airline" data-cy="airline" name="airline" formControlName="airline">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                airlineCompanyOption.id === editForm.get('airline')!.value?.id ? editForm.get('airline')!.value : airlineCompanyOption
+              "
+              *ngFor="let airlineCompanyOption of airlineCompaniesSharedCollection; trackBy: trackAirlineCompanyById"
+            >
+              {{ airlineCompanyOption.code }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

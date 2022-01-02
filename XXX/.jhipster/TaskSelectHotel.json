@@ -1,0 +1,45 @@
+{
+  "name": "TaskSelectHotel",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "hotelName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hotelBookingNumber",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hotelRoom",
+      "otherEntityRelationshipName": "taskSelectHotel",
+      "relationshipName": "hotel",
+      "otherEntityField": "code"
+    }
+  ],
+  "entityTableName": "task_select_hotel",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102161006"
+}

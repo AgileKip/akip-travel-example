@@ -1,0 +1,45 @@
+{
+  "name": "HotelRoom",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sleeps",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "boodked",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hotelCompany",
+      "otherEntityRelationshipName": "hotelRoom",
+      "relationshipName": "hotelCo",
+      "otherEntityField": "name"
+    }
+  ],
+  "entityTableName": "hotel_room",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["TravelTutorialCOMPLETE"],
+  "skipFakeData": true,
+  "changelogDate": "20220102160506"
+}

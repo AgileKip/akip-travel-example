@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-car-heading" data-cy="CarCreateUpdateHeading" jhiTranslate="travelTutorialCompleteApp.car.home.createOrEditLabel">
+        Create or edit a Car
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.car.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.car.passangers" for="field_passangers"
+            >Passangers</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="passangers"
+            id="field_passangers"
+            data-cy="passangers"
+            formControlName="passangers"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.car.boodked" for="field_boodked">Boodked</label>
+          <div class="input-group">
+            <input
+              id="field_boodked"
+              data-cy="boodked"
+              type="text"
+              class="form-control"
+              name="boodked"
+              ngbDatepicker
+              #boodkedDp="ngbDatepicker"
+              formControlName="boodked"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="boodkedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.car.duration" for="field_duration">Duration</label>
+          <input type="number" class="form-control" name="duration" id="field_duration" data-cy="duration" formControlName="duration" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.car.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="travelTutorialCompleteApp.car.carCo" for="field_carCo">Car Co</label>
+          <select class="form-control" id="field_carCo" data-cy="carCo" name="carCo" formControlName="carCo">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                carRentalCompanyOption.id === editForm.get('carCo')!.value?.id ? editForm.get('carCo')!.value : carRentalCompanyOption
+              "
+              *ngFor="let carRentalCompanyOption of carRentalCompaniesSharedCollection; trackBy: trackCarRentalCompanyById"
+            >
+              {{ carRentalCompanyOption.code }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

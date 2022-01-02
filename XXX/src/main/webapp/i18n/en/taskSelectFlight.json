@@ -1,0 +1,29 @@
+{
+  "travelTutorialCompleteApp": {
+    "taskSelectFlight": {
+      "home": {
+        "title": "Task Select Flights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Select Flight",
+        "createOrEditLabel": "Create or edit a Task Select Flight",
+        "notFound": "No Task Select Flights found"
+      },
+      "created": "A new Task Select Flight is created with identifier {{ param }}",
+      "updated": "A Task Select Flight is updated with identifier {{ param }}",
+      "deleted": "A Task Select Flight is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Select Flight {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Select Flight"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "airlineCompanyName": "Airline Company Name",
+      "airlineTicketNumber": "Airline Ticket Number",
+      "flight": "Flight"
+    }
+  }
+}

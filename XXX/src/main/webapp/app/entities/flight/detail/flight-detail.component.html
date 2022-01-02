@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="flight">
+      <h2 data-cy="flightDetailsHeading"><span jhiTranslate="travelTutorialCompleteApp.flight.detail.title">Flight</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ flight.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.code">Code</span></dt>
+        <dd>
+          <span>{{ flight.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.departure">Departure</span></dt>
+        <dd>
+          <span>{{ flight.departure | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.duration">Duration</span></dt>
+        <dd>
+          <span>{{ flight.duration }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.emptySeats">Empty Seats</span></dt>
+        <dd>
+          <span>{{ flight.emptySeats }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.price">Price</span></dt>
+        <dd>
+          <span>{{ flight.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.from">From</span></dt>
+        <dd>
+          <div *ngIf="flight.from">
+            <a [routerLink]="['/airport', flight.from?.id, 'view']">{{ flight.from?.code }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.to">To</span></dt>
+        <dd>
+          <div *ngIf="flight.to">
+            <a [routerLink]="['/airport', flight.to?.id, 'view']">{{ flight.to?.code }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.flight.airline">Airline</span></dt>
+        <dd>
+          <div *ngIf="flight.airline">
+            <a [routerLink]="['/airline-company', flight.airline?.id, 'view']">{{ flight.airline?.code }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/flight', flight.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sleeps",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "boodked",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hotelCompany",
+      "relationshipName": "hotelCo",
+      "otherEntityField": "name"
+    }
+  ],
+  "name": "HotelRoom",
+  "entityType": "domain",
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "changelogDate": "20210401000001",
+  "skipFakeData": true
+}

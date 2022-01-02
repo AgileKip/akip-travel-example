@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="HotelRoomHeading">
+    <span jhiTranslate="travelTutorialCompleteApp.hotelRoom.home.title">Hotel Rooms</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.hotelRoom.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-hotel-room"
+        [routerLink]="['/hotel-room/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="travelTutorialCompleteApp.hotelRoom.home.createLabel"> Create a new Hotel Room </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="hotelRooms?.length === 0">
+    <span jhiTranslate="travelTutorialCompleteApp.hotelRoom.home.notFound">No hotelRooms found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="hotelRooms && hotelRooms.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.hotelRoom.code">Code</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.hotelRoom.sleeps">Sleeps</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.hotelRoom.boodked">Boodked</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.hotelRoom.duration">Duration</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.hotelRoom.price">Price</span></th>
+          <th scope="col"><span jhiTranslate="travelTutorialCompleteApp.hotelRoom.hotelCo">Hotel Co</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hotelRoom of hotelRooms; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/hotel-room', hotelRoom.id, 'view']">{{ hotelRoom.id }}</a>
+          </td>
+          <td>{{ hotelRoom.code }}</td>
+          <td>{{ hotelRoom.sleeps }}</td>
+          <td>{{ hotelRoom.boodked | formatMediumDate }}</td>
+          <td>{{ hotelRoom.duration }}</td>
+          <td>{{ hotelRoom.price }}</td>
+          <td>
+            <div *ngIf="hotelRoom.hotelCo">
+              <a [routerLink]="['/hotel-company', hotelRoom.hotelCo?.id, 'view']">{{ hotelRoom.hotelCo?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/hotel-room', hotelRoom.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/hotel-room', hotelRoom.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(hotelRoom)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

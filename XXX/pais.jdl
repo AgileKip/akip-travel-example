@@ -1,0 +1,122 @@
+
+application {
+  config {
+    baseName TravelTutorialCOMPLETE,
+    packageName org.agilekip.tutorials.travelcomplete,
+  }
+  entities *
+}
+
+entity Airport{
+  name String required
+    city String required
+    code String required minlength(3) maxlength(3)
+}
+entity AirlineCompany {
+  name String required
+  code String required minlength(3) maxlength(3)
+}
+entity Flight{
+  code String required minlength(3) maxlength(3)
+	departure ZonedDateTime required
+    duration Float required
+    emptySeats Integer required
+    price Integer
+}
+relationship ManyToOne {
+  Flight{from(code)} to Airport
+  Flight{to(code)} to Airport
+  Flight{airline(code)} to AirlineCompany
+}
+entity HotelCompany {
+  name String
+  place String
+}
+entity HotelRoom{
+  code String
+	sleeps Integer
+    boodked LocalDate
+    duration Integer
+    price Integer
+}
+relationship ManyToOne {
+  HotelRoom{hotelCo(name)} to HotelCompany
+}
+entity CarRentalCompany {
+  name String
+  place String
+}
+entity Car{
+  code String
+	passengers Integer
+    booked LocalDate
+    duration Integer
+    price Integer
+}
+relationship ManyToOne {
+  Car{carCo(code)} to CarRentalCompany
+}
+entity Traveler{
+  name String
+    age Integer required min(0) max(200)
+}
+enum PlanStatus {
+  UNKNOWN, CANCELED, TIMEDOUT, PAID
+}
+entity TravelPlan {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  numPax Integer
+  price Integer
+  payment String
+  hotelDuration Integer
+  carDuration Integer
+  status PlanStatus
+}
+relationship ManyToOne {
+  TravelPlan {car(code)} to Car
+  TravelPlan {flight(code)} to Flight
+  TravelPlan {hotelRoom(code)} to HotelRoom
+}
+//@UserTask ("processBpmnId": "TravelPlanProcessTIMER2", "processEntityName": "TravelPlanProcess","taskBpmnId": "TaskHotel","domainEntityName": "TravelPlan")
+entity TaskSelectHotel {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  hotelName String
+  hotelBookingNumber String
+}
+relationship ManyToOne {
+  TaskSelectHotel {hotel(code)} to HotelRoom
+}
+//@UserTask (processEntityName = TravelPlanProcess,taskBpmnId = TaskHotel,domainEntityName =TravelPlan)
+entity TaskSelectFlight {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  airlineCompanyName String
+  airlineTicketNumber String
+}
+relationship ManyToOne {
+  TaskSelectFlight {flight(code)} to Flight
+}
+//@UserTask ("processEntityName": "TravelPlanProcess","taskBpmnId": "TaskHotel","domainEntityName": "TravelPlan")
+entity TaskSelectCar {
+  name String
+  startDate LocalDate
+  endDate LocalDate
+  carBookingNumber String
+}
+relationship ManyToOne {
+  TaskSelectCar {car(code)} to Car
+}
+//this will also generate the binding JSON
+//@ProcessEntity("name": "TravelPlan")
+//@UserTask ("processBpmnId": "TravelPlanProcessTIMER2", "processEntityName": "TravelPlanProcess","taskBpmnId": "TaskHotel","domainEntityName": "TravelPlan")
+entity TravelPlanStartForm {
+  name String
+  numPax Integer
+  startDate LocalDate
+  endDate LocalDate
+}

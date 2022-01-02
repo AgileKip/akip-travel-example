@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="taskSelectHotel">
+      <h2 data-cy="taskSelectHotelDetailsHeading">
+        <span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.detail.title">Task Select Hotel</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ taskSelectHotel.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.name">Name</span></dt>
+        <dd>
+          <span>{{ taskSelectHotel.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ taskSelectHotel.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ taskSelectHotel.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.hotelName">Hotel Name</span></dt>
+        <dd>
+          <span>{{ taskSelectHotel.hotelName }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.hotelBookingNumber">Hotel Booking Number</span></dt>
+        <dd>
+          <span>{{ taskSelectHotel.hotelBookingNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.taskSelectHotel.hotel">Hotel</span></dt>
+        <dd>
+          <div *ngIf="taskSelectHotel.hotel">
+            <a [routerLink]="['/hotel-room', taskSelectHotel.hotel?.id, 'view']">{{ taskSelectHotel.hotel?.code }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/task-select-hotel', taskSelectHotel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

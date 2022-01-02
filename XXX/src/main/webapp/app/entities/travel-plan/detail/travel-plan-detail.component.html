@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="travelPlan">
+      <h2 data-cy="travelPlanDetailsHeading"><span jhiTranslate="travelTutorialCompleteApp.travelPlan.detail.title">Travel Plan</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ travelPlan.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.name">Name</span></dt>
+        <dd>
+          <span>{{ travelPlan.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ travelPlan.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ travelPlan.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.numPax">Num Pax</span></dt>
+        <dd>
+          <span>{{ travelPlan.numPax }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.price">Price</span></dt>
+        <dd>
+          <span>{{ travelPlan.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.payment">Payment</span></dt>
+        <dd>
+          <span>{{ travelPlan.payment }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.hotelDuration">Hotel Duration</span></dt>
+        <dd>
+          <span>{{ travelPlan.hotelDuration }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.carDuration">Car Duration</span></dt>
+        <dd>
+          <span>{{ travelPlan.carDuration }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'travelTutorialCompleteApp.PlanStatus.' + travelPlan.status }}">{{ travelPlan.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.car">Car</span></dt>
+        <dd>
+          <div *ngIf="travelPlan.car">
+            <a [routerLink]="['/car', travelPlan.car?.id, 'view']">{{ travelPlan.car?.code }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.flight">Flight</span></dt>
+        <dd>
+          <div *ngIf="travelPlan.flight">
+            <a [routerLink]="['/flight', travelPlan.flight?.id, 'view']">{{ travelPlan.flight?.code }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="travelTutorialCompleteApp.travelPlan.hotelRoom">Hotel Room</span></dt>
+        <dd>
+          <div *ngIf="travelPlan.hotelRoom">
+            <a [routerLink]="['/hotel-room', travelPlan.hotelRoom?.id, 'view']">{{ travelPlan.hotelRoom?.code }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/travel-plan', travelPlan.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
