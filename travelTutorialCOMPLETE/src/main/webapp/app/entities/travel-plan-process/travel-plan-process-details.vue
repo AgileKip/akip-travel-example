@@ -148,6 +148,22 @@
               </div>
               <div class="card-body py-0">
                 <div class="form-group">
+                  <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.travelPlanProcess.proceedToCheckOut')"
+                    >proceedToCheckOut</label
+                  >
+                  <input
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="proceedToCheckOut"
+                    id="travel-plan-proceedToCheckOut"
+                    data-cy="proceedToCheckOut"
+                    v-model="travelPlanProcess.travelPlan.proceedToCheckOut"
+                  />
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <div class="form-group">
                   <label
                     class="form-control-label"
                     v-text="$t('travelTutorialCompleteApp.travelPlanProcess.car')"

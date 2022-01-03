@@ -30,6 +30,8 @@ public class TravelPlanDTO implements Serializable {
 
     private PlanStatus status;
 
+    private Boolean proceedToCheckOut;
+
     private CarDTO car;
 
     private FlightDTO flight;
@@ -116,6 +118,14 @@ public class TravelPlanDTO implements Serializable {
         this.status = status;
     }
 
+    public Boolean getProceedToCheckOut() {
+        return proceedToCheckOut;
+    }
+
+    public void setProceedToCheckOut(Boolean proceedToCheckOut) {
+        this.proceedToCheckOut = proceedToCheckOut;
+    }
+
     public CarDTO getCar() {
         return car;
     }
@@ -175,6 +185,7 @@ public class TravelPlanDTO implements Serializable {
             ", hotelDuration=" + getHotelDuration() +
             ", carDuration=" + getCarDuration() +
             ", status='" + getStatus() + "'" +
+            ", proceedToCheckOut='" + getProceedToCheckOut() + "'" +
             ", car=" + getCar() +
             ", flight=" + getFlight() +
             ", hotelRoom=" + getHotelRoom() +

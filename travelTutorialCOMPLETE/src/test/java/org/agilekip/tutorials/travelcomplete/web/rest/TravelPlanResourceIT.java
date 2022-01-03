@@ -61,6 +61,9 @@ class TravelPlanResourceIT {
     private static final PlanStatus DEFAULT_STATUS = PlanStatus.UNKNOWN;
     private static final PlanStatus UPDATED_STATUS = PlanStatus.CANCELED;
 
+    private static final Boolean DEFAULT_PROCEED_TO_CHECK_OUT = false;
+    private static final Boolean UPDATED_PROCEED_TO_CHECK_OUT = true;
+
     private static final String ENTITY_API_URL = "/api/travel-plans";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -97,7 +100,8 @@ class TravelPlanResourceIT {
             .payment(DEFAULT_PAYMENT)
             .hotelDuration(DEFAULT_HOTEL_DURATION)
             .carDuration(DEFAULT_CAR_DURATION)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .proceedToCheckOut(DEFAULT_PROCEED_TO_CHECK_OUT);
         return travelPlan;
     }
 
@@ -117,7 +121,8 @@ class TravelPlanResourceIT {
             .payment(UPDATED_PAYMENT)
             .hotelDuration(UPDATED_HOTEL_DURATION)
             .carDuration(UPDATED_CAR_DURATION)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .proceedToCheckOut(UPDATED_PROCEED_TO_CHECK_OUT);
         return travelPlan;
     }
 
@@ -146,7 +151,8 @@ class TravelPlanResourceIT {
             .andExpect(jsonPath("$.[*].payment").value(hasItem(DEFAULT_PAYMENT)))
             .andExpect(jsonPath("$.[*].hotelDuration").value(hasItem(DEFAULT_HOTEL_DURATION)))
             .andExpect(jsonPath("$.[*].carDuration").value(hasItem(DEFAULT_CAR_DURATION)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
+            .andExpect(jsonPath("$.[*].proceedToCheckOut").value(hasItem(DEFAULT_PROCEED_TO_CHECK_OUT.booleanValue())));
     }
 
     @Test
@@ -169,7 +175,8 @@ class TravelPlanResourceIT {
             .andExpect(jsonPath("$.payment").value(DEFAULT_PAYMENT))
             .andExpect(jsonPath("$.hotelDuration").value(DEFAULT_HOTEL_DURATION))
             .andExpect(jsonPath("$.carDuration").value(DEFAULT_CAR_DURATION))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
+            .andExpect(jsonPath("$.proceedToCheckOut").value(DEFAULT_PROCEED_TO_CHECK_OUT.booleanValue()));
     }
 
     @Test

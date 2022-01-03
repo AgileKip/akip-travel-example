@@ -1,0 +1,28 @@
+{
+  "travelTutorialCompleteApp": {
+    "taskProceedCheckout": {
+      "home": {
+        "title": "Task Proceed Checkouts",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Task Proceed Checkout",
+        "createOrEditLabel": "Criar ou editar Task Proceed Checkout",
+        "notFound": "Nenhum Task Proceed Checkout encontrado"
+      },
+      "created": "Um novo Task Proceed Checkout foi criado com o identificador {{ param }}",
+      "updated": "Um Task Proceed Checkout foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Task Proceed Checkout foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Task Proceed Checkout {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Proceed Checkout"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "proceedToCheckOut": "Proceed To Check Out",
+      "car": "Car"
+    }
+  }
+}

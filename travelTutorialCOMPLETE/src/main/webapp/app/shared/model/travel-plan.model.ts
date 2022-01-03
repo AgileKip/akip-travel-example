@@ -14,6 +14,7 @@ export interface ITravelPlan {
   hotelDuration?: number | null;
   carDuration?: number | null;
   status?: PlanStatus | null;
+  proceedToCheckOut?: boolean | null;
   car?: ICar | null;
   flight?: IFlight | null;
   hotelRoom?: IHotelRoom | null;
@@ -31,8 +32,11 @@ export class TravelPlan implements ITravelPlan {
     public hotelDuration?: number | null,
     public carDuration?: number | null,
     public status?: PlanStatus | null,
+    public proceedToCheckOut?: boolean | null,
     public car?: ICar | null,
     public flight?: IFlight | null,
     public hotelRoom?: IHotelRoom | null
-  ) {}
+  ) {
+    this.proceedToCheckOut = this.proceedToCheckOut ?? false;
+  }
 }

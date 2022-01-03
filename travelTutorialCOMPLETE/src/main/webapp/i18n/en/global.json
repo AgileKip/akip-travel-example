@@ -26,6 +26,7 @@
         "taskChooseFlight": "Task Choose Flight",
         "taskChooseCar": "Task Choose Car",
         "taskChooseHotelRoom": "Task Choose Hotel Room",
+        "taskProceedCheckout": "Task Proceed Checkout",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

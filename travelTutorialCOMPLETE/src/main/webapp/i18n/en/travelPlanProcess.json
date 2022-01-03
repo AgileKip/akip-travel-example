@@ -27,6 +27,7 @@
       "hotelDuration": "Hotel Duration",
       "carDuration": "Car Duration",
       "status": "Status",
+      "proceedToCheckOut": "Proceed To Check Out",
       "car": "Car",
       "flight": "Flight",
       "hotelRoom": "Hotel Room"

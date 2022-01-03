@@ -7,10 +7,10 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity TravelPlan.
+        Added the entity TaskProceedCheckout.
     -->
-    <changeSet id="20210401000001-1" author="jhipster">
-        <createTable tableName="travel_plan">
+    <changeSet id="20210401000004-1" author="jhipster">
+        <createTable tableName="task_proceed_checkout">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -23,34 +23,10 @@
             <column name="end_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="num_pax" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="price" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="payment" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="hotel_duration" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="car_duration" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="status" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="proceed_to_check_out" type="boolean">
                 <constraints nullable="true" />
             </column>
             <column name="car_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="flight_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="hotel_room_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

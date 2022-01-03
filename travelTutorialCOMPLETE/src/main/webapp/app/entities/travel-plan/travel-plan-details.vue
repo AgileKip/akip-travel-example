@@ -61,6 +61,12 @@
             <span v-text="$t('travelTutorialCompleteApp.PlanStatus.' + travelPlan.status)">{{ travelPlan.status }}</span>
           </dd>
           <dt>
+            <span v-text="$t('travelTutorialCompleteApp.travelPlan.proceedToCheckOut')">Proceed To Check Out</span>
+          </dt>
+          <dd>
+            <span>{{ travelPlan.proceedToCheckOut }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('travelTutorialCompleteApp.travelPlan.car')">Car</span>
           </dt>
           <dd>

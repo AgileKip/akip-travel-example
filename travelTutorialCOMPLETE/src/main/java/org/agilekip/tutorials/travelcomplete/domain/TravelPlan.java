@@ -51,6 +51,9 @@ public class TravelPlan implements Serializable {
     @Column(name = "status")
     private PlanStatus status;
 
+    @Column(name = "proceed_to_check_out")
+    private Boolean proceedToCheckOut;
+
     @ManyToOne
     @JsonIgnoreProperties(value = { "carCo" }, allowSetters = true)
     private Car car;
@@ -194,6 +197,19 @@ public class TravelPlan implements Serializable {
         this.status = status;
     }
 
+    public Boolean getProceedToCheckOut() {
+        return this.proceedToCheckOut;
+    }
+
+    public TravelPlan proceedToCheckOut(Boolean proceedToCheckOut) {
+        this.proceedToCheckOut = proceedToCheckOut;
+        return this;
+    }
+
+    public void setProceedToCheckOut(Boolean proceedToCheckOut) {
+        this.proceedToCheckOut = proceedToCheckOut;
+    }
+
     public Car getCar() {
         return this.car;
     }
@@ -266,6 +282,7 @@ public class TravelPlan implements Serializable {
             ", hotelDuration=" + getHotelDuration() +
             ", carDuration=" + getCarDuration() +
             ", status='" + getStatus() + "'" +
+            ", proceedToCheckOut='" + getProceedToCheckOut() + "'" +
             "}";
     }
 }

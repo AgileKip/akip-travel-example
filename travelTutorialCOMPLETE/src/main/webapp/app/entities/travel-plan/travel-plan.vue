@@ -27,6 +27,7 @@
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.hotelDuration')">Hotel Duration</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.carDuration')">Car Duration</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.status')">Status</span></th>
+            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.proceedToCheckOut')">Proceed To Check Out</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.car')">Car</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.flight')">Flight</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.hotelRoom')">Hotel Room</span></th>
@@ -47,6 +48,7 @@
             <td>{{ travelPlan.hotelDuration }}</td>
             <td>{{ travelPlan.carDuration }}</td>
             <td v-text="$t('travelTutorialCompleteApp.PlanStatus.' + travelPlan.status)">{{ travelPlan.status }}</td>
+            <td>{{ travelPlan.proceedToCheckOut }}</td>
             <td>
               <div v-if="travelPlan.car">
                 <router-link :to="{ name: 'CarView', params: { carId: travelPlan.car.id } }">{{ travelPlan.car.code }}</router-link>

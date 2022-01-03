@@ -34,7 +34,7 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new TravelPlanService();
       currentDate = new Date();
-      elemDefault = new TravelPlan(0, 'AAAAAAA', currentDate, currentDate, 0, 0, 'AAAAAAA', 0, 0, PlanStatus.UNKNOWN);
+      elemDefault = new TravelPlan(0, 'AAAAAAA', currentDate, currentDate, 0, 0, 'AAAAAAA', 0, 0, PlanStatus.UNKNOWN, false);
     });
 
     describe('Service methods', () => {
@@ -75,6 +75,7 @@ describe('Service Tests', () => {
             hotelDuration: 1,
             carDuration: 1,
             status: 'BBBBBB',
+            proceedToCheckOut: true,
           },
           elemDefault
         );
