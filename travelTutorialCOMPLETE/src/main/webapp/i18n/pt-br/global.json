@@ -19,6 +19,8 @@
         "travelPlanStartForm": "Travel Plan Start Form",
         "travelPlanProcess": "Travel Plan Process",
         "taskChooseFlight": "Task Choose Flight",
+        "taskChooseCar": "Task Choose Car",
+        "taskChooseHotelRoom": "Task Choose Hotel Room",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity TaskChooseHotelRoom.
+    -->
+    <changeSet id="20210401000004-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="hotel_room_id"
+                                 baseTableName="task_choose_hotel_room"
+                                 constraintName="fk_task_choose_hotel_room__hotel_room_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hotel_room"/>
+    </changeSet>
+</databaseChangeLog>

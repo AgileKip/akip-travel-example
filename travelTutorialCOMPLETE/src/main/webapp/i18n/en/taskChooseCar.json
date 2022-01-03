@@ -1,0 +1,27 @@
+{
+  "travelTutorialCompleteApp": {
+    "taskChooseCar": {
+      "home": {
+        "title": "Task Choose Cars",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Choose Car",
+        "createOrEditLabel": "Create or edit a Task Choose Car",
+        "notFound": "No Task Choose Cars found"
+      },
+      "created": "A new Task Choose Car is created with identifier {{ param }}",
+      "updated": "A Task Choose Car is updated with identifier {{ param }}",
+      "deleted": "A Task Choose Car is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Choose Car {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Choose Car"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "car": "Car"
+    }
+  }
+}

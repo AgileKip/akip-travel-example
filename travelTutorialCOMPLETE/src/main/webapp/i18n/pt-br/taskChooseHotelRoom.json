@@ -1,0 +1,27 @@
+{
+  "travelTutorialCompleteApp": {
+    "taskChooseHotelRoom": {
+      "home": {
+        "title": "Task Choose Hotel Rooms",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Task Choose Hotel Room",
+        "createOrEditLabel": "Criar ou editar Task Choose Hotel Room",
+        "notFound": "Nenhum Task Choose Hotel Room encontrado"
+      },
+      "created": "Um novo Task Choose Hotel Room foi criado com o identificador {{ param }}",
+      "updated": "Um Task Choose Hotel Room foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Task Choose Hotel Room foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Task Choose Hotel Room {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Choose Hotel Room"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hotelRoom": "Hotel Room"
+    }
+  }
+}
