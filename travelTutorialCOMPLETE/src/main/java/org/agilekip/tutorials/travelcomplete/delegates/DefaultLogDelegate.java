@@ -12,7 +12,12 @@ public class DefaultLogDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        TravelPlanProcessDTO pi = (TravelPlanProcessDTO) delegateExecution.getVariable("pi");
+        System.out.println("+++++++++++++++++++++++");
+        System.out.println(delegateExecution.getVariable("processInstance").getClass().getName());
+        System.out.println(delegateExecution.getVariable("processInstance"));
+        System.out.println("+++++++++++++++++++++++");
+
+        TravelPlanProcessDTO pi = (TravelPlanProcessDTO) delegateExecution.getVariable("processInstance");
         String name = pi.getTravelPlan().getName();
 
         System.out.println("=================================================");

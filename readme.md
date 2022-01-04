@@ -40,3 +40,7 @@ There are examples on how to use the AgileKip Platform to generate and handle di
 | **Model/Configure Entities** | -----------                                                                                                                |
 | **Generate all Entities**    | jhipster entity TravelPlan --regenerate                                                                                    |
 | **Build the System**         | ./mvnw                                                                                                                     |
+
+## Hints
+
+Use MailDev http://maildev.github.io/maildev/ to test your MessageTasks that send emails. Just run **docker run -p 1080:80 -p 25:25** djfarrelly/maildev and the server should be running on http://localhost:1080
