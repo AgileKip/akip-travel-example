@@ -9,7 +9,7 @@
           <template v-slot:body>
             <hr />
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.name')">name</label>
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.name')">name</label>
               <input
                 readonly
                 type="text"
@@ -21,7 +21,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.startDate')">startDate</label>
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.startDate')">startDate</label>
               <input
                 readonly
                 type="text"
@@ -33,7 +33,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.endDate')">endDate</label>
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.endDate')">endDate</label>
               <input
                 readonly
                 type="text"
@@ -45,17 +45,15 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.proceedToCheckOut')"
-                >proceedToCheckOut</label
-              >
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.payment')">payment</label>
               <input
                 readonly
                 type="text"
                 class="form-control"
-                name="proceedToCheckOut"
-                id="travel-plan-proceedToCheckOut"
-                data-cy="proceedToCheckOut"
-                v-model="taskContext.travelPlanProcess.travelPlan.proceedToCheckOut"
+                name="payment"
+                id="travel-plan-payment"
+                data-cy="payment"
+                v-model="taskContext.travelPlanProcess.travelPlan.payment"
               />
             </div>
           </template>
@@ -67,7 +65,7 @@
 
         <router-link
           v-if="taskContext.taskInstance.status == 'NEW' || taskContext.taskInstance.status == 'ASSIGNED'"
-          :to="`/process-definition/TravelPlanProcessCOMPLETE/task/taskProceedCheckout/${taskContext.taskInstance.id}/execute`"
+          :to="`/process-definition/TravelPlanProcessCOMPLETE/task/taskPaymentDetails/${taskContext.taskInstance.id}/execute`"
           tag="button"
           class="btn btn-primary"
           data-cy="entityDetailsButton"
@@ -79,4 +77,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./task-proceed-checkout-details.component.ts"></script>
+<script lang="ts" src="./task-payment-details-details.component.ts"></script>

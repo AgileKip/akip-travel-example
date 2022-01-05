@@ -1,0 +1,27 @@
+{
+  "travelTutorialCompleteApp": {
+    "taskPaymentDetails": {
+      "home": {
+        "title": "Task Payment Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Payment Details",
+        "createOrEditLabel": "Create or edit a Task Payment Details",
+        "notFound": "No Task Payment Details found"
+      },
+      "created": "A new Task Payment Details is created with identifier {{ param }}",
+      "updated": "A Task Payment Details is updated with identifier {{ param }}",
+      "deleted": "A Task Payment Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Payment Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Payment Details"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "payment": "Payment"
+    }
+  }
+}

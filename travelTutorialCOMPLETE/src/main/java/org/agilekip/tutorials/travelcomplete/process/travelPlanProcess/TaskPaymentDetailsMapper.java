@@ -10,7 +10,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = { ProcessInstanceMapper.class })
-public interface TaskProceedCheckoutMapper {
+public interface TaskPaymentDetailsMapper {
     @Mapping(target = "processInstance", source = "processInstance", qualifiedByName = "loadTaskContext")
     TravelPlanProcessDTO toTravelPlanProcessDTO(TravelPlanProcess travelPlanProcess);
 
@@ -19,6 +19,6 @@ public interface TaskProceedCheckoutMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "startDate", source = "startDate")
     @Mapping(target = "endDate", source = "endDate")
-    @Mapping(target = "proceedToCheckOut", source = "proceedToCheckOut")
+    @Mapping(target = "payment", source = "payment")
     TravelPlanDTO toTravelPlanDTO(TravelPlan travelPlan);
 }

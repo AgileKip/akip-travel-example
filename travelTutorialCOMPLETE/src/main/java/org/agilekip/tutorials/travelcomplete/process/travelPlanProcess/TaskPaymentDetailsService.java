@@ -12,7 +12,7 @@ import org.akip.service.mapper.TaskInstanceMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TaskProceedCheckoutService {
+public class TaskPaymentDetailsService {
 
     private final TaskInstanceService taskInstanceService;
 
@@ -24,17 +24,17 @@ public class TaskProceedCheckoutService {
 
     private final TaskInstanceMapper taskInstanceMapper;
 
-    private final TaskProceedCheckoutMapper taskProceedCheckoutMapper;
+    private final TaskPaymentDetailsMapper taskPaymentDetailsMapper;
 
     private final TravelPlanProcessMapper travelPlanProcessMapper;
 
-    public TaskProceedCheckoutService(
+    public TaskPaymentDetailsService(
         TaskInstanceService taskInstanceService,
         TravelPlanService travelPlanService,
         TaskInstanceRepository taskInstanceRepository,
         TravelPlanProcessRepository travelPlanProcessRepository,
         TaskInstanceMapper taskInstanceMapper,
-        TaskProceedCheckoutMapper taskProceedCheckoutMapper,
+        TaskPaymentDetailsMapper taskPaymentDetailsMapper,
         TravelPlanProcessMapper travelPlanProcessMapper
     ) {
         this.taskInstanceService = taskInstanceService;
@@ -42,11 +42,11 @@ public class TaskProceedCheckoutService {
         this.taskInstanceRepository = taskInstanceRepository;
         this.travelPlanProcessRepository = travelPlanProcessRepository;
         this.taskInstanceMapper = taskInstanceMapper;
-        this.taskProceedCheckoutMapper = taskProceedCheckoutMapper;
+        this.taskPaymentDetailsMapper = taskPaymentDetailsMapper;
         this.travelPlanProcessMapper = travelPlanProcessMapper;
     }
 
-    public TaskProceedCheckoutContextDTO loadContext(Long taskInstanceId) {
+    public TaskPaymentDetailsContextDTO loadContext(Long taskInstanceId) {
         TaskInstanceDTO taskInstanceDTO = taskInstanceRepository
             .findById(taskInstanceId)
             .map(taskInstanceMapper::toDTOLoadTaskContext)
@@ -54,38 +54,38 @@ public class TaskProceedCheckoutService {
 
         TravelPlanProcessDTO travelPlanProcess = travelPlanProcessRepository
             .findByProcessInstanceId(taskInstanceDTO.getProcessInstance().getId())
-            .map(taskProceedCheckoutMapper::toTravelPlanProcessDTO)
+            .map(taskPaymentDetailsMapper::toTravelPlanProcessDTO)
             .orElseThrow();
 
-        TaskProceedCheckoutContextDTO taskProceedCheckoutContext = new TaskProceedCheckoutContextDTO();
-        taskProceedCheckoutContext.setTaskInstance(taskInstanceDTO);
-        taskProceedCheckoutContext.setTravelPlanProcess(travelPlanProcess);
+        TaskPaymentDetailsContextDTO taskPaymentDetailsContext = new TaskPaymentDetailsContextDTO();
+        taskPaymentDetailsContext.setTaskInstance(taskInstanceDTO);
+        taskPaymentDetailsContext.setTravelPlanProcess(travelPlanProcess);
 
-        return taskProceedCheckoutContext;
+        return taskPaymentDetailsContext;
     }
 
-    public TaskProceedCheckoutContextDTO claim(Long taskInstanceId) {
+    public TaskPaymentDetailsContextDTO claim(Long taskInstanceId) {
         taskInstanceService.claim(taskInstanceId);
         return loadContext(taskInstanceId);
     }
 
-    public void save(TaskProceedCheckoutContextDTO taskProceedCheckoutContext) {
+    public void save(TaskPaymentDetailsContextDTO taskPaymentDetailsContext) {
         TravelPlanDTO travelPlanDTO = travelPlanService
-            .findOne(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getId())
+            .findOne(taskPaymentDetailsContext.getTravelPlanProcess().getTravelPlan().getId())
             .orElseThrow();
-        travelPlanDTO.setName(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getName());
-        travelPlanDTO.setStartDate(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getStartDate());
-        travelPlanDTO.setEndDate(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getEndDate());
-        travelPlanDTO.setProceedToCheckOut(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getProceedToCheckOut());
+        travelPlanDTO.setName(taskPaymentDetailsContext.getTravelPlanProcess().getTravelPlan().getName());
+        travelPlanDTO.setStartDate(taskPaymentDetailsContext.getTravelPlanProcess().getTravelPlan().getStartDate());
+        travelPlanDTO.setEndDate(taskPaymentDetailsContext.getTravelPlanProcess().getTravelPlan().getEndDate());
+        travelPlanDTO.setPayment(taskPaymentDetailsContext.getTravelPlanProcess().getTravelPlan().getPayment());
         travelPlanService.save(travelPlanDTO);
     }
 
-    public void complete(TaskProceedCheckoutContextDTO taskProceedCheckoutContext) {
-        save(taskProceedCheckoutContext);
+    public void complete(TaskPaymentDetailsContextDTO taskPaymentDetailsContext) {
+        save(taskPaymentDetailsContext);
         TravelPlanProcessDTO travelPlanProcess = travelPlanProcessRepository
-            .findByProcessInstanceId(taskProceedCheckoutContext.getTravelPlanProcess().getProcessInstance().getId())
+            .findByProcessInstanceId(taskPaymentDetailsContext.getTravelPlanProcess().getProcessInstance().getId())
             .map(travelPlanProcessMapper::toDto)
             .orElseThrow();
-        taskInstanceService.complete(taskProceedCheckoutContext.getTaskInstance(), travelPlanProcess);
+        taskInstanceService.complete(taskPaymentDetailsContext.getTaskInstance(), travelPlanProcess);
     }
 }

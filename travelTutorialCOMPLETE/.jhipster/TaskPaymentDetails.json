@@ -16,15 +16,15 @@
       "fieldReadOnly": true
     },
     {
-      "fieldName": "proceedToCheckOut",
-      "fieldType": "Boolean"
+      "fieldName": "payment",
+      "fieldType": "String"
     }
   ],
   "relationships": [],
   "entityType": "user-task-form",
   "processBpmnId": "TravelPlanProcessCOMPLETE",
   "processEntityName": "TravelPlanProcess",
-  "taskBpmnId": "taskProceedCheckout",
+  "taskBpmnId": "taskPaymentDetails",
   "domainEntityName": "TravelPlan",
   "service": "serviceClass",
   "dto": "mapstruct",
@@ -32,6 +32,6 @@
   "readOnly": false,
   "pagination": "no",
   "skipFakeData": true,
-  "name": "TaskProceedCheckout",
+  "name": "TaskPaymentDetails",
   "changelogDate": "20210401000004"
 }

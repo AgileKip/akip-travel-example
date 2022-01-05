@@ -21,8 +21,7 @@
       "name": "Name",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "proceedToCheckOut": "Proceed To Check Out",
-      "car": "Car"
+      "proceedToCheckOut": "Proceed To Check Out"
     }
   }
 }

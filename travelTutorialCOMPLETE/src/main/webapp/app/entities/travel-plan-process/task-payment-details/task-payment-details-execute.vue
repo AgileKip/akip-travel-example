@@ -11,15 +11,15 @@
             <div class="form-group">
               <label
                 class="form-control-label"
-                v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.name')"
-                for="task-proceed-checkout-name"
+                v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.name')"
+                for="task-payment-details-name"
                 >Name</label
               >
               <input
                 type="text"
                 class="form-control"
                 name="name"
-                id="task-proceed-checkout-name"
+                id="task-payment-details-name"
                 readonly
                 data-cy="name"
                 :class="{
@@ -32,13 +32,13 @@
             <div class="form-group">
               <label
                 class="form-control-label"
-                v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.startDate')"
-                for="task-proceed-checkout-startDate"
+                v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.startDate')"
+                for="task-payment-details-startDate"
                 >Start Date</label
               >
               <b-input-group class="mb-3">
                 <b-form-input
-                  id="task-proceed-checkout-startDate"
+                  id="task-payment-details-startDate"
                   readonly
                   data-cy="startDate"
                   type="text"
@@ -55,13 +55,13 @@
             <div class="form-group">
               <label
                 class="form-control-label"
-                v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.endDate')"
-                for="task-proceed-checkout-endDate"
+                v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.endDate')"
+                for="task-payment-details-endDate"
                 >End Date</label
               >
               <b-input-group class="mb-3">
                 <b-form-input
-                  id="task-proceed-checkout-endDate"
+                  id="task-payment-details-endDate"
                   readonly
                   data-cy="endDate"
                   type="text"
@@ -78,21 +78,21 @@
             <div class="form-group">
               <label
                 class="form-control-label"
-                v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.proceedToCheckOut')"
-                for="task-proceed-checkout-proceedToCheckOut"
-                >Proceed To Check Out</label
+                v-text="$t('travelTutorialCompleteApp.taskPaymentDetails.payment')"
+                for="task-payment-details-payment"
+                >Payment</label
               >
               <input
-                type="checkbox"
-                class="form-check"
-                name="proceedToCheckOut"
-                id="task-proceed-checkout-proceedToCheckOut"
-                data-cy="proceedToCheckOut"
+                type="text"
+                class="form-control"
+                name="payment"
+                id="task-payment-details-payment"
+                data-cy="payment"
                 :class="{
-                  valid: !$v.taskContext.travelPlanProcess.travelPlan.proceedToCheckOut.$invalid,
-                  invalid: $v.taskContext.travelPlanProcess.travelPlan.proceedToCheckOut.$invalid,
+                  valid: !$v.taskContext.travelPlanProcess.travelPlan.payment.$invalid,
+                  invalid: $v.taskContext.travelPlanProcess.travelPlan.payment.$invalid,
                 }"
-                v-model="$v.taskContext.travelPlanProcess.travelPlan.proceedToCheckOut.$model"
+                v-model="$v.taskContext.travelPlanProcess.travelPlan.payment.$model"
               />
             </div>
           </template>
@@ -109,4 +109,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./task-proceed-checkout-execute.component.ts"></script>
+<script lang="ts" src="./task-payment-details-execute.component.ts"></script>

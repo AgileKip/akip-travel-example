@@ -1,7 +1,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import TaskProceedCheckoutService from './task-proceed-checkout.service';
-import { TaskProceedCheckoutContext } from './task-proceed-checkout.model';
+import TaskPaymentDetailsService from './task-payment-details.service';
+import { TaskPaymentDetailsContext } from './task-payment-details.model';
 
 const validations: any = {
   taskContext: {
@@ -10,7 +10,7 @@ const validations: any = {
         name: {},
         startDate: {},
         endDate: {},
-        proceedToCheckOut: {},
+        payment: {},
       },
     },
   },
@@ -19,9 +19,9 @@ const validations: any = {
 @Component({
   validations,
 })
-export default class TaskProceedCheckoutExecuteComponent extends Vue {
-  private taskProceedCheckoutService: TaskProceedCheckoutService = new TaskProceedCheckoutService();
-  private taskContext: TaskProceedCheckoutContext = {};
+export default class TaskPaymentDetailsExecuteComponent extends Vue {
+  private taskPaymentDetailsService: TaskPaymentDetailsService = new TaskPaymentDetailsService();
+  private taskContext: TaskPaymentDetailsContext = {};
   public isSaving = false;
 
   beforeRouteEnter(to, from, next) {
@@ -33,7 +33,7 @@ export default class TaskProceedCheckoutExecuteComponent extends Vue {
   }
 
   public claimTaskInstance(taskInstanceId) {
-    this.taskProceedCheckoutService.claim(taskInstanceId).then(res => {
+    this.taskPaymentDetailsService.claim(taskInstanceId).then(res => {
       this.taskContext = res;
     });
   }
@@ -43,7 +43,7 @@ export default class TaskProceedCheckoutExecuteComponent extends Vue {
   }
 
   public complete() {
-    this.taskProceedCheckoutService.complete(this.taskContext).then(res => {
+    this.taskPaymentDetailsService.complete(this.taskContext).then(res => {
       this.$router.go(-1);
     });
   }

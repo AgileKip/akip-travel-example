@@ -7,10 +7,10 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity TaskProceedCheckout.
+        Added the entity TaskPaymentDetails.
     -->
     <changeSet id="20210401000004-1" author="jhipster">
-        <createTable tableName="task_proceed_checkout">
+        <createTable tableName="task_payment_details">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -23,7 +23,7 @@
             <column name="end_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="proceed_to_check_out" type="boolean">
+            <column name="payment" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
