@@ -9,8 +9,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = { CarMapper.class, FlightMapper.class, HotelRoomMapper.class })
 public interface TravelPlanMapper extends EntityMapper<TravelPlanDTO, TravelPlan> {
-    @Mapping(target = "car", source = "car", qualifiedByName = "code")
+    @Mapping(target = "car", source = "car", qualifiedByName = "license")
     @Mapping(target = "flight", source = "flight", qualifiedByName = "code")
-    @Mapping(target = "hotelRoom", source = "hotelRoom", qualifiedByName = "code")
+    @Mapping(target = "hotelRoom", source = "hotelRoom", qualifiedByName = "roomID")
     TravelPlanDTO toDto(TravelPlan s);
 }

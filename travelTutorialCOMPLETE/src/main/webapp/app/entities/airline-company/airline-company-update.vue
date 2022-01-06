@@ -55,16 +55,16 @@
               <small
                 class="form-text text-danger"
                 v-if="!$v.airlineCompany.code.minLength"
-                v-text="$t('entity.validation.minlength', { min: 3 })"
+                v-text="$t('entity.validation.minlength', { min: 2 })"
               >
-                This field is required to be at least 3 characters.
+                This field is required to be at least 2 characters.
               </small>
               <small
                 class="form-text text-danger"
                 v-if="!$v.airlineCompany.code.maxLength"
-                v-text="$t('entity.validation.maxlength', { max: 3 })"
+                v-text="$t('entity.validation.maxlength', { max: 2 })"
               >
-                This field cannot be longer than 3 characters.
+                This field cannot be longer than 2 characters.
               </small>
             </div>
           </div>

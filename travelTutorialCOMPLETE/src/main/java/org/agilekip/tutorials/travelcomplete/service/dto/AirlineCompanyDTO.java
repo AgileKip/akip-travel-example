@@ -15,7 +15,7 @@ public class AirlineCompanyDTO implements Serializable {
     private String name;
 
     @NotNull
-    @Size(min = 3, max = 3)
+    @Size(min = 2, max = 2)
     private String code;
 
     public Long getId() {

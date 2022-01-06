@@ -33,8 +33,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class CarResourceIT {
 
-    private static final String DEFAULT_CODE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE = "BBBBBBBBBB";
+    private static final String DEFAULT_LICENSE = "AAAAAAAAAA";
+    private static final String UPDATED_LICENSE = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_PASSENGERS = 1;
     private static final Integer UPDATED_PASSENGERS = 2;
@@ -76,7 +76,7 @@ class CarResourceIT {
      */
     public static Car createEntity(EntityManager em) {
         Car car = new Car()
-            .code(DEFAULT_CODE)
+            .license(DEFAULT_LICENSE)
             .passengers(DEFAULT_PASSENGERS)
             .booked(DEFAULT_BOOKED)
             .duration(DEFAULT_DURATION)
@@ -92,7 +92,7 @@ class CarResourceIT {
      */
     public static Car createUpdatedEntity(EntityManager em) {
         Car car = new Car()
-            .code(UPDATED_CODE)
+            .license(UPDATED_LICENSE)
             .passengers(UPDATED_PASSENGERS)
             .booked(UPDATED_BOOKED)
             .duration(UPDATED_DURATION)
@@ -119,7 +119,7 @@ class CarResourceIT {
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeCreate + 1);
         Car testCar = carList.get(carList.size() - 1);
-        assertThat(testCar.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testCar.getLicense()).isEqualTo(DEFAULT_LICENSE);
         assertThat(testCar.getPassengers()).isEqualTo(DEFAULT_PASSENGERS);
         assertThat(testCar.getBooked()).isEqualTo(DEFAULT_BOOKED);
         assertThat(testCar.getDuration()).isEqualTo(DEFAULT_DURATION);
@@ -157,7 +157,7 @@ class CarResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId().intValue())))
-            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
+            .andExpect(jsonPath("$.[*].license").value(hasItem(DEFAULT_LICENSE)))
             .andExpect(jsonPath("$.[*].passengers").value(hasItem(DEFAULT_PASSENGERS)))
             .andExpect(jsonPath("$.[*].booked").value(hasItem(DEFAULT_BOOKED.toString())))
             .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION)))
@@ -176,7 +176,7 @@ class CarResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(car.getId().intValue()))
-            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
+            .andExpect(jsonPath("$.license").value(DEFAULT_LICENSE))
             .andExpect(jsonPath("$.passengers").value(DEFAULT_PASSENGERS))
             .andExpect(jsonPath("$.booked").value(DEFAULT_BOOKED.toString()))
             .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION))
@@ -202,7 +202,12 @@ class CarResourceIT {
         Car updatedCar = carRepository.findById(car.getId()).get();
         // Disconnect from session so that the updates on updatedCar are not directly saved in db
         em.detach(updatedCar);
-        updatedCar.code(UPDATED_CODE).passengers(UPDATED_PASSENGERS).booked(UPDATED_BOOKED).duration(UPDATED_DURATION).price(UPDATED_PRICE);
+        updatedCar
+            .license(UPDATED_LICENSE)
+            .passengers(UPDATED_PASSENGERS)
+            .booked(UPDATED_BOOKED)
+            .duration(UPDATED_DURATION)
+            .price(UPDATED_PRICE);
         CarDTO carDTO = carMapper.toDto(updatedCar);
 
         restCarMockMvc
@@ -217,7 +222,7 @@ class CarResourceIT {
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeUpdate);
         Car testCar = carList.get(carList.size() - 1);
-        assertThat(testCar.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testCar.getLicense()).isEqualTo(UPDATED_LICENSE);
         assertThat(testCar.getPassengers()).isEqualTo(UPDATED_PASSENGERS);
         assertThat(testCar.getBooked()).isEqualTo(UPDATED_BOOKED);
         assertThat(testCar.getDuration()).isEqualTo(UPDATED_DURATION);
@@ -301,7 +306,7 @@ class CarResourceIT {
         Car partialUpdatedCar = new Car();
         partialUpdatedCar.setId(car.getId());
 
-        partialUpdatedCar.code(UPDATED_CODE).passengers(UPDATED_PASSENGERS).booked(UPDATED_BOOKED).price(UPDATED_PRICE);
+        partialUpdatedCar.license(UPDATED_LICENSE).passengers(UPDATED_PASSENGERS).booked(UPDATED_BOOKED).price(UPDATED_PRICE);
 
         restCarMockMvc
             .perform(
@@ -315,7 +320,7 @@ class CarResourceIT {
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeUpdate);
         Car testCar = carList.get(carList.size() - 1);
-        assertThat(testCar.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testCar.getLicense()).isEqualTo(UPDATED_LICENSE);
         assertThat(testCar.getPassengers()).isEqualTo(UPDATED_PASSENGERS);
         assertThat(testCar.getBooked()).isEqualTo(UPDATED_BOOKED);
         assertThat(testCar.getDuration()).isEqualTo(DEFAULT_DURATION);
@@ -335,7 +340,7 @@ class CarResourceIT {
         partialUpdatedCar.setId(car.getId());
 
         partialUpdatedCar
-            .code(UPDATED_CODE)
+            .license(UPDATED_LICENSE)
             .passengers(UPDATED_PASSENGERS)
             .booked(UPDATED_BOOKED)
             .duration(UPDATED_DURATION)
@@ -353,7 +358,7 @@ class CarResourceIT {
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeUpdate);
         Car testCar = carList.get(carList.size() - 1);
-        assertThat(testCar.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testCar.getLicense()).isEqualTo(UPDATED_LICENSE);
         assertThat(testCar.getPassengers()).isEqualTo(UPDATED_PASSENGERS);
         assertThat(testCar.getBooked()).isEqualTo(UPDATED_BOOKED);
         assertThat(testCar.getDuration()).isEqualTo(UPDATED_DURATION);

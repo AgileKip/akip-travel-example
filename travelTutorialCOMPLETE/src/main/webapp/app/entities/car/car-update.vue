@@ -15,15 +15,15 @@
             <input type="text" class="form-control" id="id" name="id" v-model="car.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.car.code')" for="car-code">Code</label>
+            <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.car.license')" for="car-license">License</label>
             <input
               type="text"
               class="form-control"
-              name="code"
-              id="car-code"
-              data-cy="code"
-              :class="{ valid: !$v.car.code.$invalid, invalid: $v.car.code.$invalid }"
-              v-model="$v.car.code.$model"
+              name="license"
+              id="car-license"
+              data-cy="license"
+              :class="{ valid: !$v.car.license.$invalid, invalid: $v.car.license.$invalid }"
+              v-model="$v.car.license.$model"
             />
           </div>
           <div class="form-group">

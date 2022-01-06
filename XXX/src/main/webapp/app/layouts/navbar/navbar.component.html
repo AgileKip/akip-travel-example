@@ -198,6 +198,18 @@
               <span jhiTranslate="global.menu.entities.travelPlanStartForm">Travel Plan Start Form</span>
             </a>
           </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="x-1"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.x1">X 1</span>
+            </a>
+          </li>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </ul>
       </li>

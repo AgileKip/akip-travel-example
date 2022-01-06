@@ -41,8 +41,14 @@ public class TravelPlan implements Serializable {
     @Column(name = "payment")
     private String payment;
 
+    @Column(name = "hotel_start_date")
+    private LocalDate hotelStartDate;
+
     @Column(name = "hotel_duration")
     private Integer hotelDuration;
+
+    @Column(name = "car_start_date")
+    private LocalDate carStartDate;
 
     @Column(name = "car_duration")
     private Integer carDuration;
@@ -158,6 +164,19 @@ public class TravelPlan implements Serializable {
         this.payment = payment;
     }
 
+    public LocalDate getHotelStartDate() {
+        return this.hotelStartDate;
+    }
+
+    public TravelPlan hotelStartDate(LocalDate hotelStartDate) {
+        this.hotelStartDate = hotelStartDate;
+        return this;
+    }
+
+    public void setHotelStartDate(LocalDate hotelStartDate) {
+        this.hotelStartDate = hotelStartDate;
+    }
+
     public Integer getHotelDuration() {
         return this.hotelDuration;
     }
@@ -169,6 +188,19 @@ public class TravelPlan implements Serializable {
 
     public void setHotelDuration(Integer hotelDuration) {
         this.hotelDuration = hotelDuration;
+    }
+
+    public LocalDate getCarStartDate() {
+        return this.carStartDate;
+    }
+
+    public TravelPlan carStartDate(LocalDate carStartDate) {
+        this.carStartDate = carStartDate;
+        return this;
+    }
+
+    public void setCarStartDate(LocalDate carStartDate) {
+        this.carStartDate = carStartDate;
     }
 
     public Integer getCarDuration() {
@@ -279,7 +311,9 @@ public class TravelPlan implements Serializable {
             ", numPax=" + getNumPax() +
             ", price=" + getPrice() +
             ", payment='" + getPayment() + "'" +
+            ", hotelStartDate='" + getHotelStartDate() + "'" +
             ", hotelDuration=" + getHotelDuration() +
+            ", carStartDate='" + getCarStartDate() + "'" +
             ", carDuration=" + getCarDuration() +
             ", status='" + getStatus() + "'" +
             ", proceedToCheckOut='" + getProceedToCheckOut() + "'" +

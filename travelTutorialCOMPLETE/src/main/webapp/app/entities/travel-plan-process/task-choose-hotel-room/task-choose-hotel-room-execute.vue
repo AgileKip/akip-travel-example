@@ -78,6 +78,63 @@
             <div class="form-group">
               <label
                 class="form-control-label"
+                v-text="$t('travelTutorialCompleteApp.taskChooseHotelRoom.hotelStartDate')"
+                for="task-choose-hotel-room-hotelStartDate"
+                >Hotel Start Date</label
+              >
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-form-datepicker
+                    aria-controls="task-choose-hotel-room-hotelStartDate"
+                    v-model="$v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$model"
+                    name="hotelStartDate"
+                    class="form-control"
+                    :locale="currentLanguage"
+                    button-only
+                    today-button
+                    reset-button
+                    close-button
+                  >
+                  </b-form-datepicker>
+                </b-input-group-prepend>
+
+                <b-form-input
+                  id="task-choose-hotel-room-hotelStartDate"
+                  data-cy="hotelStartDate"
+                  type="text"
+                  class="form-control"
+                  name="hotelStartDate"
+                  :class="{
+                    valid: !$v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$invalid,
+                    invalid: $v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$invalid,
+                  }"
+                  v-model="$v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$model"
+                />
+              </b-input-group>
+            </div>
+            <div class="form-group">
+              <label
+                class="form-control-label"
+                v-text="$t('travelTutorialCompleteApp.taskChooseHotelRoom.hotelDuration')"
+                for="task-choose-hotel-room-hotelDuration"
+                >Hotel Duration</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                name="hotelDuration"
+                id="task-choose-hotel-room-hotelDuration"
+                data-cy="hotelDuration"
+                :class="{
+                  valid: !$v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$invalid,
+                  invalid: $v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$invalid,
+                }"
+                v-model.number="$v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$model"
+              />
+            </div>
+            <div class="form-group">
+              <label
+                class="form-control-label"
                 v-text="$t('travelTutorialCompleteApp.taskChooseHotelRoom.hotelRoom')"
                 for="task-choose-hotel-room-hotelRoom"
                 >Hotel Room</label
@@ -100,7 +157,7 @@
                   v-for="hotelRoomOption in hotelRooms"
                   :key="hotelRoomOption.id"
                 >
-                  {{ hotelRoomOption.code }}
+                  {{ hotelRoomOption.roomID }}
                 </option>
               </select>
             </div>

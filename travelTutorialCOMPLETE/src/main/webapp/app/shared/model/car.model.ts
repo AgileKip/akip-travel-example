@@ -2,7 +2,7 @@ import { ICarRentalCompany } from '@/shared/model/car-rental-company.model';
 
 export interface ICar {
   id?: number;
-  code?: string | null;
+  license?: string | null;
   passengers?: number | null;
   booked?: Date | null;
   duration?: number | null;
@@ -13,7 +13,7 @@ export interface ICar {
 export class Car implements ICar {
   constructor(
     public id?: number,
-    public code?: string | null,
+    public license?: string | null,
     public passengers?: number | null,
     public booked?: Date | null,
     public duration?: number | null,

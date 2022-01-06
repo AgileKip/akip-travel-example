@@ -14,6 +14,14 @@
       "fieldName": "endDate",
       "fieldType": "LocalDate",
       "fieldReadOnly": true
+    },
+    {
+      "fieldName": "carStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "carDuration",
+      "fieldType": "Integer"
     }
   ],
   "relationships": [
@@ -21,7 +29,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "car",
       "relationshipName": "car",
-      "otherEntityField": "code"
+      "otherEntityField": "license"
     }
   ],
   "entityType": "user-task-form",

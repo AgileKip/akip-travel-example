@@ -1,5 +1,6 @@
 package org.agilekip.tutorials.travelcomplete.service.mapper;
 
+import java.util.Set;
 import org.agilekip.tutorials.travelcomplete.domain.*;
 import org.agilekip.tutorials.travelcomplete.service.dto.CarDTO;
 import org.mapstruct.*;
@@ -11,6 +12,12 @@ import org.mapstruct.*;
 public interface CarMapper extends EntityMapper<CarDTO, Car> {
     @Mapping(target = "carCo", source = "carCo", qualifiedByName = "code")
     CarDTO toDto(Car s);
+
+    @Named("codeSet")
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "code", source = "code")
+    Set<CarDTO> toDtoCodeSet(Set<Car> car);
 
     @Named("code")
     @BeanMapping(ignoreByDefault = true)

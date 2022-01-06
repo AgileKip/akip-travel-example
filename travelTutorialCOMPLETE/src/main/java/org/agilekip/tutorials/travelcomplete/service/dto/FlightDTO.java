@@ -13,7 +13,7 @@ public class FlightDTO implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 3, max = 3)
+    @Size(min = 5, max = 5)
     private String code;
 
     @NotNull

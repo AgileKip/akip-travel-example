@@ -6,6 +6,11 @@
       "fieldValidateRules": ["required"]
     },
     {
+      "fieldName": "country",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "city",
       "fieldType": "String",
       "fieldValidateRules": ["required"]

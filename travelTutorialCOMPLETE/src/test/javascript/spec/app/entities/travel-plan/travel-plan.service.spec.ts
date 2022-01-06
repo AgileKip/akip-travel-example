@@ -34,7 +34,21 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new TravelPlanService();
       currentDate = new Date();
-      elemDefault = new TravelPlan(0, 'AAAAAAA', currentDate, currentDate, 0, 0, 'AAAAAAA', 0, 0, PlanStatus.UNKNOWN, false);
+      elemDefault = new TravelPlan(
+        0,
+        'AAAAAAA',
+        currentDate,
+        currentDate,
+        0,
+        0,
+        'AAAAAAA',
+        currentDate,
+        0,
+        currentDate,
+        0,
+        PlanStatus.UNKNOWN,
+        false
+      );
     });
 
     describe('Service methods', () => {
@@ -43,6 +57,8 @@ describe('Service Tests', () => {
           {
             startDate: dayjs(currentDate).format(DATE_FORMAT),
             endDate: dayjs(currentDate).format(DATE_FORMAT),
+            hotelStartDate: dayjs(currentDate).format(DATE_FORMAT),
+            carStartDate: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault
         );
@@ -72,7 +88,9 @@ describe('Service Tests', () => {
             numPax: 1,
             price: 1,
             payment: 'BBBBBB',
+            hotelStartDate: dayjs(currentDate).format(DATE_FORMAT),
             hotelDuration: 1,
+            carStartDate: dayjs(currentDate).format(DATE_FORMAT),
             carDuration: 1,
             status: 'BBBBBB',
             proceedToCheckOut: true,
@@ -83,6 +101,8 @@ describe('Service Tests', () => {
           {
             startDate: currentDate,
             endDate: currentDate,
+            hotelStartDate: currentDate,
+            carStartDate: currentDate,
           },
           returnedFromService
         );

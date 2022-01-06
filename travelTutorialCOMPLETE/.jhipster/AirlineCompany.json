@@ -9,8 +9,8 @@
       "fieldName": "code",
       "fieldType": "String",
       "fieldValidateRules": ["required", "minlength", "maxlength"],
-      "fieldValidateRulesMinlength": "3",
-      "fieldValidateRulesMaxlength": "3"
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesMaxlength": "2"
     }
   ],
   "name": "AirlineCompany",

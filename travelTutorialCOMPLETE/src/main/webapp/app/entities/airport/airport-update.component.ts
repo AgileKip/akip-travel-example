@@ -10,6 +10,9 @@ const validations: any = {
     name: {
       required,
     },
+    country: {
+      required,
+    },
     city: {
       required,
     },

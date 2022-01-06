@@ -21,8 +21,8 @@ public class HotelRoom implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "code")
-    private String code;
+    @Column(name = "room_id")
+    private String roomID;
 
     @Column(name = "sleeps")
     private Integer sleeps;
@@ -53,17 +53,17 @@ public class HotelRoom implements Serializable {
         return this;
     }
 
-    public String getCode() {
-        return this.code;
+    public String getRoomID() {
+        return this.roomID;
     }
 
-    public HotelRoom code(String code) {
-        this.code = code;
+    public HotelRoom roomID(String roomID) {
+        this.roomID = roomID;
         return this;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
 
     public Integer getSleeps() {
@@ -155,7 +155,7 @@ public class HotelRoom implements Serializable {
     public String toString() {
         return "HotelRoom{" +
             "id=" + getId() +
-            ", code='" + getCode() + "'" +
+            ", roomID='" + getRoomID() + "'" +
             ", sleeps=" + getSleeps() +
             ", boodked='" + getBoodked() + "'" +
             ", duration=" + getDuration() +

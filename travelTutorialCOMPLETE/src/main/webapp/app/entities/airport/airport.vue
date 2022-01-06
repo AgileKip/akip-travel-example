@@ -30,6 +30,7 @@
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.airport.name')">Name</span></th>
+            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.airport.country')">Country</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.airport.city')">City</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.airport.code')">Code</span></th>
             <th scope="row"></th>
@@ -41,6 +42,7 @@
               <router-link :to="{ name: 'AirportView', params: { airportId: airport.id } }">{{ airport.id }}</router-link>
             </td>
             <td>{{ airport.name }}</td>
+            <td>{{ airport.country }}</td>
             <td>{{ airport.city }}</td>
             <td>{{ airport.code }}</td>
             <td class="text-right">

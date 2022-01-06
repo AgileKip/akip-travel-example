@@ -11,7 +11,7 @@ public class CarDTO implements Serializable {
 
     private Long id;
 
-    private String code;
+    private String license;
 
     private Integer passengers;
 
@@ -31,12 +31,12 @@ public class CarDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getLicense() {
+        return license;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setLicense(String license) {
+        this.license = license;
     }
 
     public Integer getPassengers() {
@@ -105,7 +105,7 @@ public class CarDTO implements Serializable {
     public String toString() {
         return "CarDTO{" +
             "id=" + getId() +
-            ", code='" + getCode() + "'" +
+            ", license='" + getLicense() + "'" +
             ", passengers=" + getPassengers() +
             ", booked='" + getBooked() + "'" +
             ", duration=" + getDuration() +

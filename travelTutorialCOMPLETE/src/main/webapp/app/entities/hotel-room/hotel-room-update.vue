@@ -15,15 +15,17 @@
             <input type="text" class="form-control" id="id" name="id" v-model="hotelRoom.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.hotelRoom.code')" for="hotel-room-code">Code</label>
+            <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.hotelRoom.roomID')" for="hotel-room-roomID"
+              >Room ID</label
+            >
             <input
               type="text"
               class="form-control"
-              name="code"
-              id="hotel-room-code"
-              data-cy="code"
-              :class="{ valid: !$v.hotelRoom.code.$invalid, invalid: $v.hotelRoom.code.$invalid }"
-              v-model="$v.hotelRoom.code.$model"
+              name="roomID"
+              id="hotel-room-roomID"
+              data-cy="roomID"
+              :class="{ valid: !$v.hotelRoom.roomID.$invalid, invalid: $v.hotelRoom.roomID.$invalid }"
+              v-model="$v.hotelRoom.roomID.$model"
             />
           </div>
           <div class="form-group">

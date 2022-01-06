@@ -21,6 +21,8 @@
       "name": "Name",
       "startDate": "Start Date",
       "endDate": "End Date",
+      "hotelStartDate": "Hotel Start Date",
+      "hotelDuration": "Hotel Duration",
       "hotelRoom": "Hotel Room"
     }
   }

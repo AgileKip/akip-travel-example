@@ -61,6 +61,8 @@ public class CacheConfiguration {
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.TaskSelectFlight.class.getName());
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.TaskSelectCar.class.getName());
             createCache(cm, org.agilekip.tutorials.travelcomplete.domain.TravelPlanStartForm.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.X1.class.getName());
+            createCache(cm, org.agilekip.tutorials.travelcomplete.domain.X1.class.getName() + ".cars");
             // jhipster-needle-ehcache-add-entry
         };
     }

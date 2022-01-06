@@ -36,8 +36,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class FlightResourceIT {
 
-    private static final String DEFAULT_CODE = "AAA";
-    private static final String UPDATED_CODE = "BBB";
+    private static final String DEFAULT_CODE = "AAAAA";
+    private static final String UPDATED_CODE = "BBBBB";
 
     private static final ZonedDateTime DEFAULT_DEPARTURE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_DEPARTURE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);

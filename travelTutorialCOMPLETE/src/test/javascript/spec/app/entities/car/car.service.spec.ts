@@ -96,7 +96,7 @@ describe('Service Tests', () => {
       it('should update a Car', async () => {
         const returnedFromService = Object.assign(
           {
-            code: 'BBBBBB',
+            license: 'BBBBBB',
             passengers: 1,
             booked: dayjs(currentDate).format(DATE_FORMAT),
             duration: 1,
@@ -132,7 +132,7 @@ describe('Service Tests', () => {
       it('should partial update a Car', async () => {
         const patchObject = Object.assign(
           {
-            code: 'BBBBBB',
+            license: 'BBBBBB',
             passengers: 1,
             booked: dayjs(currentDate).format(DATE_FORMAT),
             price: 1,
@@ -168,7 +168,7 @@ describe('Service Tests', () => {
       it('should return a list of Car', async () => {
         const returnedFromService = Object.assign(
           {
-            code: 'BBBBBB',
+            license: 'BBBBBB',
             passengers: 1,
             booked: dayjs(currentDate).format(DATE_FORMAT),
             duration: 1,

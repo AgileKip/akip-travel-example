@@ -11,7 +11,9 @@ export interface ITravelPlan {
   numPax?: number | null;
   price?: number | null;
   payment?: string | null;
+  hotelStartDate?: Date | null;
   hotelDuration?: number | null;
+  carStartDate?: Date | null;
   carDuration?: number | null;
   status?: PlanStatus | null;
   proceedToCheckOut?: boolean | null;
@@ -29,7 +31,9 @@ export class TravelPlan implements ITravelPlan {
     public numPax?: number | null,
     public price?: number | null,
     public payment?: string | null,
+    public hotelStartDate?: Date | null,
     public hotelDuration?: number | null,
+    public carStartDate?: Date | null,
     public carDuration?: number | null,
     public status?: PlanStatus | null,
     public proceedToCheckOut?: boolean | null,

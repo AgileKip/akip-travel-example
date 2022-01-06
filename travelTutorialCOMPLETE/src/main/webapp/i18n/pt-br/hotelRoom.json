@@ -18,7 +18,7 @@
         "title": "Hotel Room"
       },
       "id": "ID",
-      "code": "Code",
+      "roomID": "Room ID",
       "sleeps": "Sleeps",
       "boodked": "Boodked",
       "duration": "Duration",

@@ -13,6 +13,8 @@ const validations: any = {
         name: {},
         startDate: {},
         endDate: {},
+        hotelStartDate: {},
+        hotelDuration: {},
       },
     },
   },

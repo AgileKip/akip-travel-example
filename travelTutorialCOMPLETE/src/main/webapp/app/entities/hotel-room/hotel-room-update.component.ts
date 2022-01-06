@@ -8,7 +8,7 @@ import HotelRoomService from './hotel-room.service';
 
 const validations: any = {
   hotelRoom: {
-    code: {},
+    roomID: {},
     sleeps: {},
     boodked: {},
     duration: {},

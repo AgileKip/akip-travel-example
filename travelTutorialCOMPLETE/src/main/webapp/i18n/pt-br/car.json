@@ -18,7 +18,7 @@
         "title": "Car"
       },
       "id": "ID",
-      "code": "Code",
+      "license": "License",
       "passengers": "Passengers",
       "booked": "Booked",
       "duration": "Duration",

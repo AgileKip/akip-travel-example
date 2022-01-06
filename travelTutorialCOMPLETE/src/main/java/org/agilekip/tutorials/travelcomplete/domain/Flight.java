@@ -23,8 +23,8 @@ public class Flight implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 3, max = 3)
-    @Column(name = "code", length = 3, nullable = false)
+    @Size(min = 5, max = 5)
+    @Column(name = "code", length = 5, nullable = false)
     private String code;
 
     @NotNull

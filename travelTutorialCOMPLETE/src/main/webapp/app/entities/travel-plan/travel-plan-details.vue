@@ -43,10 +43,22 @@
             <span>{{ travelPlan.payment }}</span>
           </dd>
           <dt>
+            <span v-text="$t('travelTutorialCompleteApp.travelPlan.hotelStartDate')">Hotel Start Date</span>
+          </dt>
+          <dd>
+            <span>{{ travelPlan.hotelStartDate }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('travelTutorialCompleteApp.travelPlan.hotelDuration')">Hotel Duration</span>
           </dt>
           <dd>
             <span>{{ travelPlan.hotelDuration }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('travelTutorialCompleteApp.travelPlan.carStartDate')">Car Start Date</span>
+          </dt>
+          <dd>
+            <span>{{ travelPlan.carStartDate }}</span>
           </dd>
           <dt>
             <span v-text="$t('travelTutorialCompleteApp.travelPlan.carDuration')">Car Duration</span>
@@ -71,7 +83,7 @@
           </dt>
           <dd>
             <div v-if="travelPlan.car">
-              <router-link :to="{ name: 'CarView', params: { carId: travelPlan.car.id } }">{{ travelPlan.car.code }}</router-link>
+              <router-link :to="{ name: 'CarView', params: { carId: travelPlan.car.id } }">{{ travelPlan.car.license }}</router-link>
             </div>
           </dd>
           <dt>
@@ -90,7 +102,7 @@
           <dd>
             <div v-if="travelPlan.hotelRoom">
               <router-link :to="{ name: 'HotelRoomView', params: { hotelRoomId: travelPlan.hotelRoom.id } }">{{
-                travelPlan.hotelRoom.code
+                travelPlan.hotelRoom.roomID
               }}</router-link>
             </div>
           </dd>

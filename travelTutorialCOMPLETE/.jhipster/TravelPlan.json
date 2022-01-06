@@ -25,8 +25,16 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "hotelStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
       "fieldName": "hotelDuration",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "carStartDate",
+      "fieldType": "LocalDate"
     },
     {
       "fieldName": "carDuration",
@@ -47,7 +55,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "car",
       "relationshipName": "car",
-      "otherEntityField": "code"
+      "otherEntityField": "license"
     },
     {
       "relationshipType": "many-to-one",
@@ -59,7 +67,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "hotelRoom",
       "relationshipName": "hotelRoom",
-      "otherEntityField": "code"
+      "otherEntityField": "roomID"
     }
   ],
   "name": "TravelPlan",

@@ -26,6 +26,10 @@ public class Airport implements Serializable {
     private String name;
 
     @NotNull
+    @Column(name = "country", nullable = false)
+    private String country;
+
+    @NotNull
     @Column(name = "city", nullable = false)
     private String city;
 
@@ -59,6 +63,19 @@ public class Airport implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return this.country;
+    }
+
+    public Airport country(String country) {
+        this.country = country;
+        return this;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCity() {
@@ -112,6 +129,7 @@ public class Airport implements Serializable {
         return "Airport{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", country='" + getCountry() + "'" +
             ", city='" + getCity() + "'" +
             ", code='" + getCode() + "'" +
             "}";

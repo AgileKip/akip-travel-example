@@ -69,6 +69,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'travelTutorialCompleteApp.travelPlanStartForm.home.title' },
         loadChildren: () => import('./travel-plan-start-form/travel-plan-start-form.module').then(m => m.TravelPlanStartFormModule),
       },
+      {
+        path: 'x-1',
+        data: { pageTitle: 'travelTutorialCompleteApp.x1.home.title' },
+        loadChildren: () => import('./x-1/x-1.module').then(m => m.X1Module),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

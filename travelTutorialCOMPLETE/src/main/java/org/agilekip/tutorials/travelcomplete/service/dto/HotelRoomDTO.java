@@ -11,7 +11,7 @@ public class HotelRoomDTO implements Serializable {
 
     private Long id;
 
-    private String code;
+    private String roomID;
 
     private Integer sleeps;
 
@@ -31,12 +31,12 @@ public class HotelRoomDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getRoomID() {
+        return roomID;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
 
     public Integer getSleeps() {
@@ -105,7 +105,7 @@ public class HotelRoomDTO implements Serializable {
     public String toString() {
         return "HotelRoomDTO{" +
             "id=" + getId() +
-            ", code='" + getCode() + "'" +
+            ", roomID='" + getRoomID() + "'" +
             ", sleeps=" + getSleeps() +
             ", boodked='" + getBoodked() + "'" +
             ", duration=" + getDuration() +

@@ -102,6 +102,22 @@
               </div>
               <div class="card-body py-0">
                 <div class="form-group">
+                  <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.travelPlanProcess.hotelStartDate')"
+                    >hotelStartDate</label
+                  >
+                  <input
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="hotelStartDate"
+                    id="travel-plan-hotelStartDate"
+                    data-cy="hotelStartDate"
+                    v-model="travelPlanProcess.travelPlan.hotelStartDate"
+                  />
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <div class="form-group">
                   <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.travelPlanProcess.hotelDuration')"
                     >hotelDuration</label
                   >
@@ -113,6 +129,22 @@
                     id="travel-plan-hotelDuration"
                     data-cy="hotelDuration"
                     v-model="travelPlanProcess.travelPlan.hotelDuration"
+                  />
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <div class="form-group">
+                  <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.travelPlanProcess.carStartDate')"
+                    >carStartDate</label
+                  >
+                  <input
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="carStartDate"
+                    id="travel-plan-carStartDate"
+                    data-cy="carStartDate"
+                    v-model="travelPlanProcess.travelPlan.carStartDate"
                   />
                 </div>
               </div>
@@ -178,7 +210,7 @@
                     name="car"
                     id="travel-plan-car"
                     data-cy="car"
-                    :value="travelPlanProcess.travelPlan.car.code"
+                    :value="travelPlanProcess.travelPlan.car.license"
                   />
                   <input v-else readonly type="text" class="form-control" name="car" id="travel-plan-car" data-cy="car" value="" />
                 </div>
@@ -220,7 +252,7 @@
                     name="hotelRoom"
                     id="travel-plan-hotelRoom"
                     data-cy="hotelRoom"
-                    :value="travelPlanProcess.travelPlan.hotelRoom.code"
+                    :value="travelPlanProcess.travelPlan.hotelRoom.roomID"
                   />
                   <input
                     v-else

@@ -80,6 +80,12 @@ const TravelPlanProcess_TaskProceedCheckoutExecute = () => import('@/entities/tr
 const TravelPlanProcess_TaskPaymentDetailsDetails = () => import('@/entities/travel-plan-process/task-payment-details/task-payment-details-details.vue');
 // prettier-ignore
 const TravelPlanProcess_TaskPaymentDetailsExecute = () => import('@/entities/travel-plan-process/task-payment-details/task-payment-details-execute.vue');
+// prettier-ignore
+const TravelPlan = () => import('@/entities/travel-plan/travel-plan.vue');
+// prettier-ignore
+const TravelPlanUpdate = () => import('@/entities/travel-plan/travel-plan-update.vue');
+// prettier-ignore
+const TravelPlanDetails = () => import('@/entities/travel-plan/travel-plan-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [

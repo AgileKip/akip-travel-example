@@ -29,7 +29,7 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.hotelRoom.code')">Code</span></th>
+            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.hotelRoom.roomID')">Room ID</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.hotelRoom.sleeps')">Sleeps</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.hotelRoom.boodked')">Boodked</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.hotelRoom.duration')">Duration</span></th>
@@ -43,7 +43,7 @@
             <td>
               <router-link :to="{ name: 'HotelRoomView', params: { hotelRoomId: hotelRoom.id } }">{{ hotelRoom.id }}</router-link>
             </td>
-            <td>{{ hotelRoom.code }}</td>
+            <td>{{ hotelRoom.roomID }}</td>
             <td>{{ hotelRoom.sleeps }}</td>
             <td>{{ hotelRoom.boodked }}</td>
             <td>{{ hotelRoom.duration }}</td>

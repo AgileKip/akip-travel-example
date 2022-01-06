@@ -30,11 +30,11 @@
               <small class="form-text text-danger" v-if="!$v.flight.code.required" v-text="$t('entity.validation.required')">
                 This field is required.
               </small>
-              <small class="form-text text-danger" v-if="!$v.flight.code.minLength" v-text="$t('entity.validation.minlength', { min: 3 })">
-                This field is required to be at least 3 characters.
+              <small class="form-text text-danger" v-if="!$v.flight.code.minLength" v-text="$t('entity.validation.minlength', { min: 5 })">
+                This field is required to be at least 5 characters.
               </small>
-              <small class="form-text text-danger" v-if="!$v.flight.code.maxLength" v-text="$t('entity.validation.maxlength', { max: 3 })">
-                This field cannot be longer than 3 characters.
+              <small class="form-text text-danger" v-if="!$v.flight.code.maxLength" v-text="$t('entity.validation.maxlength', { max: 5 })">
+                This field cannot be longer than 5 characters.
               </small>
             </div>
           </div>

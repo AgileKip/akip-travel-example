@@ -34,6 +34,9 @@ class AirportResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
+    private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
+
     private static final String DEFAULT_CITY = "AAAAAAAAAA";
     private static final String UPDATED_CITY = "BBBBBBBBBB";
 
@@ -67,7 +70,7 @@ class AirportResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Airport createEntity(EntityManager em) {
-        Airport airport = new Airport().name(DEFAULT_NAME).city(DEFAULT_CITY).code(DEFAULT_CODE);
+        Airport airport = new Airport().name(DEFAULT_NAME).country(DEFAULT_COUNTRY).city(DEFAULT_CITY).code(DEFAULT_CODE);
         return airport;
     }
 
@@ -78,7 +81,7 @@ class AirportResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Airport createUpdatedEntity(EntityManager em) {
-        Airport airport = new Airport().name(UPDATED_NAME).city(UPDATED_CITY).code(UPDATED_CODE);
+        Airport airport = new Airport().name(UPDATED_NAME).country(UPDATED_COUNTRY).city(UPDATED_CITY).code(UPDATED_CODE);
         return airport;
     }
 
@@ -102,6 +105,7 @@ class AirportResourceIT {
         assertThat(airportList).hasSize(databaseSizeBeforeCreate + 1);
         Airport testAirport = airportList.get(airportList.size() - 1);
         assertThat(testAirport.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testAirport.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testAirport.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testAirport.getCode()).isEqualTo(DEFAULT_CODE);
     }
@@ -131,6 +135,24 @@ class AirportResourceIT {
         int databaseSizeBeforeTest = airportRepository.findAll().size();
         // set the field null
         airport.setName(null);
+
+        // Create the Airport, which fails.
+        AirportDTO airportDTO = airportMapper.toDto(airport);
+
+        restAirportMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(airportDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Airport> airportList = airportRepository.findAll();
+        assertThat(airportList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCountryIsRequired() throws Exception {
+        int databaseSizeBeforeTest = airportRepository.findAll().size();
+        // set the field null
+        airport.setCountry(null);
 
         // Create the Airport, which fails.
         AirportDTO airportDTO = airportMapper.toDto(airport);
@@ -192,6 +214,7 @@ class AirportResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(airport.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY)))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)));
     }
@@ -209,6 +232,7 @@ class AirportResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(airport.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE));
     }
@@ -232,7 +256,7 @@ class AirportResourceIT {
         Airport updatedAirport = airportRepository.findById(airport.getId()).get();
         // Disconnect from session so that the updates on updatedAirport are not directly saved in db
         em.detach(updatedAirport);
-        updatedAirport.name(UPDATED_NAME).city(UPDATED_CITY).code(UPDATED_CODE);
+        updatedAirport.name(UPDATED_NAME).country(UPDATED_COUNTRY).city(UPDATED_CITY).code(UPDATED_CODE);
         AirportDTO airportDTO = airportMapper.toDto(updatedAirport);
 
         restAirportMockMvc
@@ -248,6 +272,7 @@ class AirportResourceIT {
         assertThat(airportList).hasSize(databaseSizeBeforeUpdate);
         Airport testAirport = airportList.get(airportList.size() - 1);
         assertThat(testAirport.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testAirport.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testAirport.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testAirport.getCode()).isEqualTo(UPDATED_CODE);
     }
@@ -329,7 +354,7 @@ class AirportResourceIT {
         Airport partialUpdatedAirport = new Airport();
         partialUpdatedAirport.setId(airport.getId());
 
-        partialUpdatedAirport.name(UPDATED_NAME).code(UPDATED_CODE);
+        partialUpdatedAirport.name(UPDATED_NAME).city(UPDATED_CITY);
 
         restAirportMockMvc
             .perform(
@@ -344,8 +369,9 @@ class AirportResourceIT {
         assertThat(airportList).hasSize(databaseSizeBeforeUpdate);
         Airport testAirport = airportList.get(airportList.size() - 1);
         assertThat(testAirport.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testAirport.getCity()).isEqualTo(DEFAULT_CITY);
-        assertThat(testAirport.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testAirport.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testAirport.getCity()).isEqualTo(UPDATED_CITY);
+        assertThat(testAirport.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test
@@ -360,7 +386,7 @@ class AirportResourceIT {
         Airport partialUpdatedAirport = new Airport();
         partialUpdatedAirport.setId(airport.getId());
 
-        partialUpdatedAirport.name(UPDATED_NAME).city(UPDATED_CITY).code(UPDATED_CODE);
+        partialUpdatedAirport.name(UPDATED_NAME).country(UPDATED_COUNTRY).city(UPDATED_CITY).code(UPDATED_CODE);
 
         restAirportMockMvc
             .perform(
@@ -375,6 +401,7 @@ class AirportResourceIT {
         assertThat(airportList).hasSize(databaseSizeBeforeUpdate);
         Airport testAirport = airportList.get(airportList.size() - 1);
         assertThat(testAirport.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testAirport.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testAirport.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testAirport.getCode()).isEqualTo(UPDATED_CODE);
     }

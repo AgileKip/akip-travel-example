@@ -13,6 +13,12 @@
             <span>{{ airport.name }}</span>
           </dd>
           <dt>
+            <span v-text="$t('travelTutorialCompleteApp.airport.country')">Country</span>
+          </dt>
+          <dd>
+            <span>{{ airport.country }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('travelTutorialCompleteApp.airport.city')">City</span>
           </dt>
           <dd>

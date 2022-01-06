@@ -24,7 +24,9 @@
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.numPax')">Num Pax</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.price')">Price</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.payment')">Payment</span></th>
+            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.hotelStartDate')">Hotel Start Date</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.hotelDuration')">Hotel Duration</span></th>
+            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.carStartDate')">Car Start Date</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.carDuration')">Car Duration</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.status')">Status</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.travelPlan.proceedToCheckOut')">Proceed To Check Out</span></th>
@@ -45,13 +47,15 @@
             <td>{{ travelPlan.numPax }}</td>
             <td>{{ travelPlan.price }}</td>
             <td>{{ travelPlan.payment }}</td>
+            <td>{{ travelPlan.hotelStartDate }}</td>
             <td>{{ travelPlan.hotelDuration }}</td>
+            <td>{{ travelPlan.carStartDate }}</td>
             <td>{{ travelPlan.carDuration }}</td>
             <td v-text="$t('travelTutorialCompleteApp.PlanStatus.' + travelPlan.status)">{{ travelPlan.status }}</td>
             <td>{{ travelPlan.proceedToCheckOut }}</td>
             <td>
               <div v-if="travelPlan.car">
-                <router-link :to="{ name: 'CarView', params: { carId: travelPlan.car.id } }">{{ travelPlan.car.code }}</router-link>
+                <router-link :to="{ name: 'CarView', params: { carId: travelPlan.car.id } }">{{ travelPlan.car.license }}</router-link>
               </div>
             </td>
             <td>
@@ -64,7 +68,7 @@
             <td>
               <div v-if="travelPlan.hotelRoom">
                 <router-link :to="{ name: 'HotelRoomView', params: { hotelRoomId: travelPlan.hotelRoom.id } }">{{
-                  travelPlan.hotelRoom.code
+                  travelPlan.hotelRoom.roomID
                 }}</router-link>
               </div>
             </td>

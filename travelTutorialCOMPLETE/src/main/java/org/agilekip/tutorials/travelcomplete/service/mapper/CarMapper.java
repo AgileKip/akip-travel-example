@@ -12,9 +12,9 @@ public interface CarMapper extends EntityMapper<CarDTO, Car> {
     @Mapping(target = "carCo", source = "carCo", qualifiedByName = "name")
     CarDTO toDto(Car s);
 
-    @Named("code")
+    @Named("license")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "code", source = "code")
-    CarDTO toDtoCode(Car car);
+    @Mapping(target = "license", source = "license")
+    CarDTO toDtoLicense(Car car);
 }

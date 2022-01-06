@@ -7,10 +7,10 @@
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('travelTutorialCompleteApp.hotelRoom.code')">Code</span>
+            <span v-text="$t('travelTutorialCompleteApp.hotelRoom.roomID')">Room ID</span>
           </dt>
           <dd>
-            <span>{{ hotelRoom.code }}</span>
+            <span>{{ hotelRoom.roomID }}</span>
           </dd>
           <dt>
             <span v-text="$t('travelTutorialCompleteApp.hotelRoom.sleeps')">Sleeps</span>

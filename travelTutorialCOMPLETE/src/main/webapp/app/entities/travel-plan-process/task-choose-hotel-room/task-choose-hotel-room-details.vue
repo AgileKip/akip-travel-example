@@ -45,6 +45,34 @@
               />
             </div>
             <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseHotelRoom.hotelStartDate')"
+                >hotelStartDate</label
+              >
+              <input
+                readonly
+                type="text"
+                class="form-control"
+                name="hotelStartDate"
+                id="travel-plan-hotelStartDate"
+                data-cy="hotelStartDate"
+                v-model="taskContext.travelPlanProcess.travelPlan.hotelStartDate"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseHotelRoom.hotelDuration')"
+                >hotelDuration</label
+              >
+              <input
+                readonly
+                type="text"
+                class="form-control"
+                name="hotelDuration"
+                id="travel-plan-hotelDuration"
+                data-cy="hotelDuration"
+                v-model="taskContext.travelPlanProcess.travelPlan.hotelDuration"
+              />
+            </div>
+            <div class="form-group">
               <label
                 class="form-control-label"
                 v-text="$t('travelTutorialCompleteApp.taskChooseHotelRoom.hotelRoom')"
@@ -59,7 +87,7 @@
                 name="hotelRoom"
                 id="travel-plan-hotelRoom"
                 data-cy="hotelRoom"
-                :value="taskContext.travelPlanProcess.travelPlan.hotelRoom.code"
+                :value="taskContext.travelPlanProcess.travelPlan.hotelRoom.roomID"
               />
               <input
                 v-else

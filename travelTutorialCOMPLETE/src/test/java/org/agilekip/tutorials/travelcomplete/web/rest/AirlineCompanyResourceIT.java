@@ -34,8 +34,8 @@ class AirlineCompanyResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CODE = "AAA";
-    private static final String UPDATED_CODE = "BBB";
+    private static final String DEFAULT_CODE = "AA";
+    private static final String UPDATED_CODE = "BB";
 
     private static final String ENTITY_API_URL = "/api/airline-companies";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";

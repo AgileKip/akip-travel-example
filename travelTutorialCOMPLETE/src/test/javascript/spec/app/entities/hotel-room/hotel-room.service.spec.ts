@@ -96,7 +96,7 @@ describe('Service Tests', () => {
       it('should update a HotelRoom', async () => {
         const returnedFromService = Object.assign(
           {
-            code: 'BBBBBB',
+            roomID: 'BBBBBB',
             sleeps: 1,
             boodked: dayjs(currentDate).format(DATE_FORMAT),
             duration: 1,
@@ -167,7 +167,7 @@ describe('Service Tests', () => {
       it('should return a list of HotelRoom', async () => {
         const returnedFromService = Object.assign(
           {
-            code: 'BBBBBB',
+            roomID: 'BBBBBB',
             sleeps: 1,
             boodked: dayjs(currentDate).format(DATE_FORMAT),
             duration: 1,

@@ -8,7 +8,7 @@ import CarService from './car.service';
 
 const validations: any = {
   car: {
-    code: {},
+    license: {},
     passengers: {},
     booked: {},
     duration: {},

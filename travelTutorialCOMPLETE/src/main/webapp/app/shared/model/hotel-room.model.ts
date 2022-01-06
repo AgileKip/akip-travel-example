@@ -2,7 +2,7 @@ import { IHotelCompany } from '@/shared/model/hotel-company.model';
 
 export interface IHotelRoom {
   id?: number;
-  code?: string | null;
+  roomID?: string | null;
   sleeps?: number | null;
   boodked?: Date | null;
   duration?: number | null;
@@ -13,7 +13,7 @@ export interface IHotelRoom {
 export class HotelRoom implements IHotelRoom {
   constructor(
     public id?: number,
-    public code?: string | null,
+    public roomID?: string | null,
     public sleeps?: number | null,
     public boodked?: Date | null,
     public duration?: number | null,

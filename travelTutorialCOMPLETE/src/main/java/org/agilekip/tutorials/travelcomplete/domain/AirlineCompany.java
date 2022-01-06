@@ -26,8 +26,8 @@ public class AirlineCompany implements Serializable {
     private String name;
 
     @NotNull
-    @Size(min = 3, max = 3)
-    @Column(name = "code", length = 3, nullable = false)
+    @Size(min = 2, max = 2)
+    @Column(name = "code", length = 2, nullable = false)
     private String code;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

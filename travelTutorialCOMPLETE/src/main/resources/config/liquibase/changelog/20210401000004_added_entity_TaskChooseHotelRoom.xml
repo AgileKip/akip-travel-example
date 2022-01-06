@@ -23,6 +23,12 @@
             <column name="end_date" type="date">
                 <constraints nullable="true" />
             </column>
+            <column name="hotel_start_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="hotel_duration" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="hotel_room_id" type="bigint">
                 <constraints nullable="true" />
             </column>

@@ -21,11 +21,13 @@ public interface TaskChooseCarMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "startDate", source = "startDate")
     @Mapping(target = "endDate", source = "endDate")
+    @Mapping(target = "carStartDate", source = "carStartDate")
+    @Mapping(target = "carDuration", source = "carDuration")
     @Mapping(target = "car", source = "car")
     TravelPlanDTO toTravelPlanDTO(TravelPlan travelPlan);
 
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "code", source = "code")
-    CarDTO toCarDTO(Car code);
+    @Mapping(target = "license", source = "license")
+    CarDTO toCarDTO(Car license);
 }

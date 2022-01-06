@@ -52,8 +52,14 @@ class TravelPlanResourceIT {
     private static final String DEFAULT_PAYMENT = "AAAAAAAAAA";
     private static final String UPDATED_PAYMENT = "BBBBBBBBBB";
 
+    private static final LocalDate DEFAULT_HOTEL_START_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_HOTEL_START_DATE = LocalDate.now(ZoneId.systemDefault());
+
     private static final Integer DEFAULT_HOTEL_DURATION = 1;
     private static final Integer UPDATED_HOTEL_DURATION = 2;
+
+    private static final LocalDate DEFAULT_CAR_START_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CAR_START_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final Integer DEFAULT_CAR_DURATION = 1;
     private static final Integer UPDATED_CAR_DURATION = 2;
@@ -98,7 +104,9 @@ class TravelPlanResourceIT {
             .numPax(DEFAULT_NUM_PAX)
             .price(DEFAULT_PRICE)
             .payment(DEFAULT_PAYMENT)
+            .hotelStartDate(DEFAULT_HOTEL_START_DATE)
             .hotelDuration(DEFAULT_HOTEL_DURATION)
+            .carStartDate(DEFAULT_CAR_START_DATE)
             .carDuration(DEFAULT_CAR_DURATION)
             .status(DEFAULT_STATUS)
             .proceedToCheckOut(DEFAULT_PROCEED_TO_CHECK_OUT);
@@ -119,7 +127,9 @@ class TravelPlanResourceIT {
             .numPax(UPDATED_NUM_PAX)
             .price(UPDATED_PRICE)
             .payment(UPDATED_PAYMENT)
+            .hotelStartDate(UPDATED_HOTEL_START_DATE)
             .hotelDuration(UPDATED_HOTEL_DURATION)
+            .carStartDate(UPDATED_CAR_START_DATE)
             .carDuration(UPDATED_CAR_DURATION)
             .status(UPDATED_STATUS)
             .proceedToCheckOut(UPDATED_PROCEED_TO_CHECK_OUT);
@@ -149,7 +159,9 @@ class TravelPlanResourceIT {
             .andExpect(jsonPath("$.[*].numPax").value(hasItem(DEFAULT_NUM_PAX)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE)))
             .andExpect(jsonPath("$.[*].payment").value(hasItem(DEFAULT_PAYMENT)))
+            .andExpect(jsonPath("$.[*].hotelStartDate").value(hasItem(DEFAULT_HOTEL_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].hotelDuration").value(hasItem(DEFAULT_HOTEL_DURATION)))
+            .andExpect(jsonPath("$.[*].carStartDate").value(hasItem(DEFAULT_CAR_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].carDuration").value(hasItem(DEFAULT_CAR_DURATION)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].proceedToCheckOut").value(hasItem(DEFAULT_PROCEED_TO_CHECK_OUT.booleanValue())));
@@ -173,7 +185,9 @@ class TravelPlanResourceIT {
             .andExpect(jsonPath("$.numPax").value(DEFAULT_NUM_PAX))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE))
             .andExpect(jsonPath("$.payment").value(DEFAULT_PAYMENT))
+            .andExpect(jsonPath("$.hotelStartDate").value(DEFAULT_HOTEL_START_DATE.toString()))
             .andExpect(jsonPath("$.hotelDuration").value(DEFAULT_HOTEL_DURATION))
+            .andExpect(jsonPath("$.carStartDate").value(DEFAULT_CAR_START_DATE.toString()))
             .andExpect(jsonPath("$.carDuration").value(DEFAULT_CAR_DURATION))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.proceedToCheckOut").value(DEFAULT_PROCEED_TO_CHECK_OUT.booleanValue()));

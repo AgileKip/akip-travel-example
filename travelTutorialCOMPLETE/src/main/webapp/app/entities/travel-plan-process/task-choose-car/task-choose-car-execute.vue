@@ -70,6 +70,63 @@
               </b-input-group>
             </div>
             <div class="form-group">
+              <label
+                class="form-control-label"
+                v-text="$t('travelTutorialCompleteApp.taskChooseCar.carStartDate')"
+                for="task-choose-car-carStartDate"
+                >Car Start Date</label
+              >
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-form-datepicker
+                    aria-controls="task-choose-car-carStartDate"
+                    v-model="$v.taskContext.travelPlanProcess.travelPlan.carStartDate.$model"
+                    name="carStartDate"
+                    class="form-control"
+                    :locale="currentLanguage"
+                    button-only
+                    today-button
+                    reset-button
+                    close-button
+                  >
+                  </b-form-datepicker>
+                </b-input-group-prepend>
+
+                <b-form-input
+                  id="task-choose-car-carStartDate"
+                  data-cy="carStartDate"
+                  type="text"
+                  class="form-control"
+                  name="carStartDate"
+                  :class="{
+                    valid: !$v.taskContext.travelPlanProcess.travelPlan.carStartDate.$invalid,
+                    invalid: $v.taskContext.travelPlanProcess.travelPlan.carStartDate.$invalid,
+                  }"
+                  v-model="$v.taskContext.travelPlanProcess.travelPlan.carStartDate.$model"
+                />
+              </b-input-group>
+            </div>
+            <div class="form-group">
+              <label
+                class="form-control-label"
+                v-text="$t('travelTutorialCompleteApp.taskChooseCar.carDuration')"
+                for="task-choose-car-carDuration"
+                >Car Duration</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                name="carDuration"
+                id="task-choose-car-carDuration"
+                data-cy="carDuration"
+                :class="{
+                  valid: !$v.taskContext.travelPlanProcess.travelPlan.carDuration.$invalid,
+                  invalid: $v.taskContext.travelPlanProcess.travelPlan.carDuration.$invalid,
+                }"
+                v-model.number="$v.taskContext.travelPlanProcess.travelPlan.carDuration.$model"
+              />
+            </div>
+            <div class="form-group">
               <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseCar.car')" for="task-choose-car-car"
                 >Car</label
               >
@@ -90,7 +147,7 @@
                   v-for="carOption in cars"
                   :key="carOption.id"
                 >
-                  {{ carOption.code }}
+                  {{ carOption.license }}
                 </option>
               </select>
             </div>

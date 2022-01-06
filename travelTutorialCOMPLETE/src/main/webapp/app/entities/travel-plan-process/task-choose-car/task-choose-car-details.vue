@@ -45,6 +45,30 @@
               />
             </div>
             <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseCar.carStartDate')">carStartDate</label>
+              <input
+                readonly
+                type="text"
+                class="form-control"
+                name="carStartDate"
+                id="travel-plan-carStartDate"
+                data-cy="carStartDate"
+                v-model="taskContext.travelPlanProcess.travelPlan.carStartDate"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseCar.carDuration')">carDuration</label>
+              <input
+                readonly
+                type="text"
+                class="form-control"
+                name="carDuration"
+                id="travel-plan-carDuration"
+                data-cy="carDuration"
+                v-model="taskContext.travelPlanProcess.travelPlan.carDuration"
+              />
+            </div>
+            <div class="form-group">
               <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseCar.car')" for="task-choose-car-car"
                 >Car</label
               >
@@ -56,7 +80,7 @@
                 name="car"
                 id="travel-plan-car"
                 data-cy="car"
-                :value="taskContext.travelPlanProcess.travelPlan.car.code"
+                :value="taskContext.travelPlanProcess.travelPlan.car.license"
               />
               <input v-else readonly type="text" class="form-control" name="car" id="travel-plan-car" data-cy="car" value="" />
             </div>

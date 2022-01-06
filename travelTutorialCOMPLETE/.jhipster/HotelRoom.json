@@ -1,7 +1,7 @@
 {
   "fields": [
     {
-      "fieldName": "code",
+      "fieldName": "roomID",
       "fieldType": "String"
     },
     {

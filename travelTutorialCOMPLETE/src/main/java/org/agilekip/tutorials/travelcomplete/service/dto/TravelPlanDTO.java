@@ -24,7 +24,11 @@ public class TravelPlanDTO implements Serializable {
 
     private String payment;
 
+    private LocalDate hotelStartDate;
+
     private Integer hotelDuration;
+
+    private LocalDate carStartDate;
 
     private Integer carDuration;
 
@@ -94,12 +98,28 @@ public class TravelPlanDTO implements Serializable {
         this.payment = payment;
     }
 
+    public LocalDate getHotelStartDate() {
+        return hotelStartDate;
+    }
+
+    public void setHotelStartDate(LocalDate hotelStartDate) {
+        this.hotelStartDate = hotelStartDate;
+    }
+
     public Integer getHotelDuration() {
         return hotelDuration;
     }
 
     public void setHotelDuration(Integer hotelDuration) {
         this.hotelDuration = hotelDuration;
+    }
+
+    public LocalDate getCarStartDate() {
+        return carStartDate;
+    }
+
+    public void setCarStartDate(LocalDate carStartDate) {
+        this.carStartDate = carStartDate;
     }
 
     public Integer getCarDuration() {
@@ -182,7 +202,9 @@ public class TravelPlanDTO implements Serializable {
             ", numPax=" + getNumPax() +
             ", price=" + getPrice() +
             ", payment='" + getPayment() + "'" +
+            ", hotelStartDate='" + getHotelStartDate() + "'" +
             ", hotelDuration=" + getHotelDuration() +
+            ", carStartDate='" + getCarStartDate() + "'" +
             ", carDuration=" + getCarDuration() +
             ", status='" + getStatus() + "'" +
             ", proceedToCheckOut='" + getProceedToCheckOut() + "'" +

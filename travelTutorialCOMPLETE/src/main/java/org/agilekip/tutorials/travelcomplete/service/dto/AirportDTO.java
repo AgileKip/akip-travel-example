@@ -15,6 +15,9 @@ public class AirportDTO implements Serializable {
     private String name;
 
     @NotNull
+    private String country;
+
+    @NotNull
     private String city;
 
     @NotNull
@@ -35,6 +38,14 @@ public class AirportDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCity() {
@@ -80,6 +91,7 @@ public class AirportDTO implements Serializable {
         return "AirportDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", country='" + getCountry() + "'" +
             ", city='" + getCity() + "'" +
             ", code='" + getCode() + "'" +
             "}";

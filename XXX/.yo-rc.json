@@ -46,7 +46,8 @@
       "TaskSelectHotel",
       "TaskSelectFlight",
       "TaskSelectCar",
-      "TravelPlanStartForm"
+      "TravelPlanStartForm",
+      "X1"
     ],
     "skipJhipsterDependencies": true,
     "skipCheckLengthOfIdentifier": false,
@@ -67,6 +68,6 @@
     "nativeLanguage": "en",
     "creationTimestamp": 1641139206971,
     "jwtSecretKey": "ZjE2NTIwMDQ4M2ZiZTE1MDUwMjFiZjE2MjRkZmIzZTY0MGU5NjVkZmQzYWUwYWZkOWJiMmMyOGUyZjBlM2FiMGM0ZGNlMTFhYTUyN2U1NWI3OWRjODQxNTNjNjM4ZTAwOTAwZTQ2YTU3MTczZmEwMzMwMGQ4MTQzOGMxOWU3YTk=",
-    "lastLiquibaseTimestamp": 1641139986000
+    "lastLiquibaseTimestamp": 1641482550000
   }
 }

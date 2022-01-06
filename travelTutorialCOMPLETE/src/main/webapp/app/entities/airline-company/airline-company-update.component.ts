@@ -12,8 +12,8 @@ const validations: any = {
     },
     code: {
       required,
-      minLength: minLength(3),
-      maxLength: maxLength(3),
+      minLength: minLength(2),
+      maxLength: maxLength(2),
     },
   },
 };

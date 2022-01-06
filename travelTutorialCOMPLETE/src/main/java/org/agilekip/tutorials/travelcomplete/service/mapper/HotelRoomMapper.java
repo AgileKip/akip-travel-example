@@ -12,9 +12,9 @@ public interface HotelRoomMapper extends EntityMapper<HotelRoomDTO, HotelRoom> {
     @Mapping(target = "hotelCo", source = "hotelCo", qualifiedByName = "name")
     HotelRoomDTO toDto(HotelRoom s);
 
-    @Named("code")
+    @Named("roomID")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "code", source = "code")
-    HotelRoomDTO toDtoCode(HotelRoom hotelRoom);
+    @Mapping(target = "roomID", source = "roomID")
+    HotelRoomDTO toDtoRoomID(HotelRoom hotelRoom);
 }

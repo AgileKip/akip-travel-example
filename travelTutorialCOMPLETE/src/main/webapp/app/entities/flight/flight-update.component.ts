@@ -17,8 +17,8 @@ const validations: any = {
   flight: {
     code: {
       required,
-      minLength: minLength(3),
-      maxLength: maxLength(3),
+      minLength: minLength(5),
+      maxLength: maxLength(5),
     },
     departure: {
       required,

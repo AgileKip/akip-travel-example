@@ -23,6 +23,12 @@
             <column name="end_date" type="date">
                 <constraints nullable="true" />
             </column>
+            <column name="car_start_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="car_duration" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="car_id" type="bigint">
                 <constraints nullable="true" />
             </column>

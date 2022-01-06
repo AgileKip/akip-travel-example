@@ -76,6 +76,8 @@ public class TaskChooseHotelRoomService {
         travelPlanDTO.setName(taskChooseHotelRoomContext.getTravelPlanProcess().getTravelPlan().getName());
         travelPlanDTO.setStartDate(taskChooseHotelRoomContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskChooseHotelRoomContext.getTravelPlanProcess().getTravelPlan().getEndDate());
+        travelPlanDTO.setHotelStartDate(taskChooseHotelRoomContext.getTravelPlanProcess().getTravelPlan().getHotelStartDate());
+        travelPlanDTO.setHotelDuration(taskChooseHotelRoomContext.getTravelPlanProcess().getTravelPlan().getHotelDuration());
         travelPlanDTO.setHotelRoom(taskChooseHotelRoomContext.getTravelPlanProcess().getTravelPlan().getHotelRoom());
         travelPlanService.save(travelPlanDTO);
     }

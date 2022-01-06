@@ -21,8 +21,8 @@ public class Car implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "code")
-    private String code;
+    @Column(name = "license")
+    private String license;
 
     @Column(name = "passengers")
     private Integer passengers;
@@ -53,17 +53,17 @@ public class Car implements Serializable {
         return this;
     }
 
-    public String getCode() {
-        return this.code;
+    public String getLicense() {
+        return this.license;
     }
 
-    public Car code(String code) {
-        this.code = code;
+    public Car license(String license) {
+        this.license = license;
         return this;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setLicense(String license) {
+        this.license = license;
     }
 
     public Integer getPassengers() {
@@ -155,7 +155,7 @@ public class Car implements Serializable {
     public String toString() {
         return "Car{" +
             "id=" + getId() +
-            ", code='" + getCode() + "'" +
+            ", license='" + getLicense() + "'" +
             ", passengers=" + getPassengers() +
             ", booked='" + getBooked() + "'" +
             ", duration=" + getDuration() +

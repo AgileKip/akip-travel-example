@@ -21,11 +21,13 @@ public interface TaskChooseHotelRoomMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "startDate", source = "startDate")
     @Mapping(target = "endDate", source = "endDate")
+    @Mapping(target = "hotelStartDate", source = "hotelStartDate")
+    @Mapping(target = "hotelDuration", source = "hotelDuration")
     @Mapping(target = "hotelRoom", source = "hotelRoom")
     TravelPlanDTO toTravelPlanDTO(TravelPlan travelPlan);
 
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "code", source = "code")
-    HotelRoomDTO toHotelRoomDTO(HotelRoom code);
+    @Mapping(target = "roomID", source = "roomID")
+    HotelRoomDTO toHotelRoomDTO(HotelRoom roomID);
 }

@@ -24,7 +24,7 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.car.code')">Code</span></th>
+            <th scope="row"><span v-text="$t('travelTutorialCompleteApp.car.license')">License</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.car.passengers')">Passengers</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.car.booked')">Booked</span></th>
             <th scope="row"><span v-text="$t('travelTutorialCompleteApp.car.duration')">Duration</span></th>
@@ -38,7 +38,7 @@
             <td>
               <router-link :to="{ name: 'CarView', params: { carId: car.id } }">{{ car.id }}</router-link>
             </td>
-            <td>{{ car.code }}</td>
+            <td>{{ car.license }}</td>
             <td>{{ car.passengers }}</td>
             <td>{{ car.booked }}</td>
             <td>{{ car.duration }}</td>

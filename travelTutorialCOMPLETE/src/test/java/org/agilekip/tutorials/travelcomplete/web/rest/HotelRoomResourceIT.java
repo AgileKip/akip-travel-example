@@ -33,8 +33,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class HotelRoomResourceIT {
 
-    private static final String DEFAULT_CODE = "AAAAAAAAAA";
-    private static final String UPDATED_CODE = "BBBBBBBBBB";
+    private static final String DEFAULT_ROOM_ID = "AAAAAAAAAA";
+    private static final String UPDATED_ROOM_ID = "BBBBBBBBBB";
 
     private static final Integer DEFAULT_SLEEPS = 1;
     private static final Integer UPDATED_SLEEPS = 2;
@@ -76,7 +76,7 @@ class HotelRoomResourceIT {
      */
     public static HotelRoom createEntity(EntityManager em) {
         HotelRoom hotelRoom = new HotelRoom()
-            .code(DEFAULT_CODE)
+            .roomID(DEFAULT_ROOM_ID)
             .sleeps(DEFAULT_SLEEPS)
             .boodked(DEFAULT_BOODKED)
             .duration(DEFAULT_DURATION)
@@ -92,7 +92,7 @@ class HotelRoomResourceIT {
      */
     public static HotelRoom createUpdatedEntity(EntityManager em) {
         HotelRoom hotelRoom = new HotelRoom()
-            .code(UPDATED_CODE)
+            .roomID(UPDATED_ROOM_ID)
             .sleeps(UPDATED_SLEEPS)
             .boodked(UPDATED_BOODKED)
             .duration(UPDATED_DURATION)
@@ -119,7 +119,7 @@ class HotelRoomResourceIT {
         List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
         assertThat(hotelRoomList).hasSize(databaseSizeBeforeCreate + 1);
         HotelRoom testHotelRoom = hotelRoomList.get(hotelRoomList.size() - 1);
-        assertThat(testHotelRoom.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testHotelRoom.getRoomID()).isEqualTo(DEFAULT_ROOM_ID);
         assertThat(testHotelRoom.getSleeps()).isEqualTo(DEFAULT_SLEEPS);
         assertThat(testHotelRoom.getBoodked()).isEqualTo(DEFAULT_BOODKED);
         assertThat(testHotelRoom.getDuration()).isEqualTo(DEFAULT_DURATION);
@@ -157,7 +157,7 @@ class HotelRoomResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(hotelRoom.getId().intValue())))
-            .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
+            .andExpect(jsonPath("$.[*].roomID").value(hasItem(DEFAULT_ROOM_ID)))
             .andExpect(jsonPath("$.[*].sleeps").value(hasItem(DEFAULT_SLEEPS)))
             .andExpect(jsonPath("$.[*].boodked").value(hasItem(DEFAULT_BOODKED.toString())))
             .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION)))
@@ -176,7 +176,7 @@ class HotelRoomResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(hotelRoom.getId().intValue()))
-            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
+            .andExpect(jsonPath("$.roomID").value(DEFAULT_ROOM_ID))
             .andExpect(jsonPath("$.sleeps").value(DEFAULT_SLEEPS))
             .andExpect(jsonPath("$.boodked").value(DEFAULT_BOODKED.toString()))
             .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION))
@@ -202,7 +202,12 @@ class HotelRoomResourceIT {
         HotelRoom updatedHotelRoom = hotelRoomRepository.findById(hotelRoom.getId()).get();
         // Disconnect from session so that the updates on updatedHotelRoom are not directly saved in db
         em.detach(updatedHotelRoom);
-        updatedHotelRoom.code(UPDATED_CODE).sleeps(UPDATED_SLEEPS).boodked(UPDATED_BOODKED).duration(UPDATED_DURATION).price(UPDATED_PRICE);
+        updatedHotelRoom
+            .roomID(UPDATED_ROOM_ID)
+            .sleeps(UPDATED_SLEEPS)
+            .boodked(UPDATED_BOODKED)
+            .duration(UPDATED_DURATION)
+            .price(UPDATED_PRICE);
         HotelRoomDTO hotelRoomDTO = hotelRoomMapper.toDto(updatedHotelRoom);
 
         restHotelRoomMockMvc
@@ -217,7 +222,7 @@ class HotelRoomResourceIT {
         List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
         assertThat(hotelRoomList).hasSize(databaseSizeBeforeUpdate);
         HotelRoom testHotelRoom = hotelRoomList.get(hotelRoomList.size() - 1);
-        assertThat(testHotelRoom.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testHotelRoom.getRoomID()).isEqualTo(UPDATED_ROOM_ID);
         assertThat(testHotelRoom.getSleeps()).isEqualTo(UPDATED_SLEEPS);
         assertThat(testHotelRoom.getBoodked()).isEqualTo(UPDATED_BOODKED);
         assertThat(testHotelRoom.getDuration()).isEqualTo(UPDATED_DURATION);
@@ -315,7 +320,7 @@ class HotelRoomResourceIT {
         List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
         assertThat(hotelRoomList).hasSize(databaseSizeBeforeUpdate);
         HotelRoom testHotelRoom = hotelRoomList.get(hotelRoomList.size() - 1);
-        assertThat(testHotelRoom.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testHotelRoom.getRoomID()).isEqualTo(DEFAULT_ROOM_ID);
         assertThat(testHotelRoom.getSleeps()).isEqualTo(UPDATED_SLEEPS);
         assertThat(testHotelRoom.getBoodked()).isEqualTo(UPDATED_BOODKED);
         assertThat(testHotelRoom.getDuration()).isEqualTo(UPDATED_DURATION);
@@ -335,7 +340,7 @@ class HotelRoomResourceIT {
         partialUpdatedHotelRoom.setId(hotelRoom.getId());
 
         partialUpdatedHotelRoom
-            .code(UPDATED_CODE)
+            .roomID(UPDATED_ROOM_ID)
             .sleeps(UPDATED_SLEEPS)
             .boodked(UPDATED_BOODKED)
             .duration(UPDATED_DURATION)
@@ -353,7 +358,7 @@ class HotelRoomResourceIT {
         List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
         assertThat(hotelRoomList).hasSize(databaseSizeBeforeUpdate);
         HotelRoom testHotelRoom = hotelRoomList.get(hotelRoomList.size() - 1);
-        assertThat(testHotelRoom.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testHotelRoom.getRoomID()).isEqualTo(UPDATED_ROOM_ID);
         assertThat(testHotelRoom.getSleeps()).isEqualTo(UPDATED_SLEEPS);
         assertThat(testHotelRoom.getBoodked()).isEqualTo(UPDATED_BOODKED);
         assertThat(testHotelRoom.getDuration()).isEqualTo(UPDATED_DURATION);

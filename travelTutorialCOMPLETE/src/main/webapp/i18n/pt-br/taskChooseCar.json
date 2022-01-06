@@ -21,6 +21,8 @@
       "name": "Name",
       "startDate": "Start Date",
       "endDate": "End Date",
+      "carStartDate": "Car Start Date",
+      "carDuration": "Car Duration",
       "car": "Car"
     }
   }

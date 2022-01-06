@@ -76,6 +76,8 @@ public class TaskChooseCarService {
         travelPlanDTO.setName(taskChooseCarContext.getTravelPlanProcess().getTravelPlan().getName());
         travelPlanDTO.setStartDate(taskChooseCarContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskChooseCarContext.getTravelPlanProcess().getTravelPlan().getEndDate());
+        travelPlanDTO.setCarStartDate(taskChooseCarContext.getTravelPlanProcess().getTravelPlan().getCarStartDate());
+        travelPlanDTO.setCarDuration(taskChooseCarContext.getTravelPlanProcess().getTravelPlan().getCarDuration());
         travelPlanDTO.setCar(taskChooseCarContext.getTravelPlanProcess().getTravelPlan().getCar());
         travelPlanService.save(travelPlanDTO);
     }

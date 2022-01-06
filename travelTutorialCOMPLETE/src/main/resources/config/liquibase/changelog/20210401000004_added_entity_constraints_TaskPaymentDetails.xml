@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity TaskPaymentDetails.
+    -->
+    <changeSet id="20210401000004-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="task_payment_details_id"
+                                 baseTableName="rel_task_payment_details__travelers"
+                                 constraintName="fk_rel_task_payment_details__tr__task_payment_details_35_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_payment_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="travelers_id"
+                                 baseTableName="rel_task_payment_details__travelers"
+                                 constraintName="fk_rel_task_payment_details__travelers__travelers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="traveler"/>
+    </changeSet>
+</databaseChangeLog>

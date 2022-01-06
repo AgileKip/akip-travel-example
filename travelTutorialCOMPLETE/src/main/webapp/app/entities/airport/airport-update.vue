@@ -33,6 +33,24 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.airport.country')" for="airport-country">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              name="country"
+              id="airport-country"
+              data-cy="country"
+              :class="{ valid: !$v.airport.country.$invalid, invalid: $v.airport.country.$invalid }"
+              v-model="$v.airport.country.$model"
+              required
+            />
+            <div v-if="$v.airport.country.$anyDirty && $v.airport.country.$invalid">
+              <small class="form-text text-danger" v-if="!$v.airport.country.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.airport.city')" for="airport-city">City</label>
             <input
               type="text"
