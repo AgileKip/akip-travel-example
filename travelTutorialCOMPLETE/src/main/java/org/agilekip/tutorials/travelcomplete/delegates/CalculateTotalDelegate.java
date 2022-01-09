@@ -58,8 +58,9 @@ public class CalculateTotalDelegate implements JavaDelegate {
 
         Integer daysCar = travelPlanDTO.getCarDuration();
         Integer daysHotel = travelPlanDTO.getHotelDuration();
+        Integer numPax = travelPlanDTO.getNumPax();
 
-        Integer flightPrice = flight.getPrice();
+        Integer flightPrice = flight.getPrice() * numPax;
         Integer hotelPrice = hotelRoom.getPrice() * daysHotel;
         Integer carPrice = car.getPrice() * daysCar;
         Integer total = flightPrice + hotelPrice + carPrice;
