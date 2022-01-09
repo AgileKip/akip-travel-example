@@ -23,6 +23,9 @@
             <column name="end_date" type="date">
                 <constraints nullable="true" />
             </column>
+            <column name="price" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="proceed_to_check_out" type="boolean">
                 <constraints nullable="true" />
             </column>

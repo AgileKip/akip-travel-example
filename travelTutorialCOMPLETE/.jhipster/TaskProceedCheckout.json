@@ -16,6 +16,11 @@
       "fieldReadOnly": true
     },
     {
+      "fieldName": "price",
+      "fieldType": "Integer",
+      "fieldReadOnly": true
+    },
+    {
       "fieldName": "proceedToCheckOut",
       "fieldType": "Boolean"
     }

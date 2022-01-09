@@ -78,6 +78,27 @@
             <div class="form-group">
               <label
                 class="form-control-label"
+                v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.price')"
+                for="task-proceed-checkout-price"
+                >Price</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                name="price"
+                id="task-proceed-checkout-price"
+                readonly
+                data-cy="price"
+                :class="{
+                  valid: !$v.taskContext.travelPlanProcess.travelPlan.price.$invalid,
+                  invalid: $v.taskContext.travelPlanProcess.travelPlan.price.$invalid,
+                }"
+                v-model.number="$v.taskContext.travelPlanProcess.travelPlan.price.$model"
+              />
+            </div>
+            <div class="form-group">
+              <label
+                class="form-control-label"
                 v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.proceedToCheckOut')"
                 for="task-proceed-checkout-proceedToCheckOut"
                 >Proceed To Check Out</label

@@ -45,6 +45,18 @@
               />
             </div>
             <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.price')">price</label>
+              <input
+                readonly
+                type="text"
+                class="form-control"
+                name="price"
+                id="travel-plan-price"
+                data-cy="price"
+                v-model="taskContext.travelPlanProcess.travelPlan.price"
+              />
+            </div>
+            <div class="form-group">
               <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskProceedCheckout.proceedToCheckOut')"
                 >proceedToCheckOut</label
               >

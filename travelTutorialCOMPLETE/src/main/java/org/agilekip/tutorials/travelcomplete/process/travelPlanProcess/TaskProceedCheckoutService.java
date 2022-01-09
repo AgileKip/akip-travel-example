@@ -76,6 +76,7 @@ public class TaskProceedCheckoutService {
         travelPlanDTO.setName(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getName());
         travelPlanDTO.setStartDate(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getEndDate());
+        travelPlanDTO.setPrice(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getPrice());
         travelPlanDTO.setProceedToCheckOut(taskProceedCheckoutContext.getTravelPlanProcess().getTravelPlan().getProceedToCheckOut());
         travelPlanService.save(travelPlanDTO);
     }

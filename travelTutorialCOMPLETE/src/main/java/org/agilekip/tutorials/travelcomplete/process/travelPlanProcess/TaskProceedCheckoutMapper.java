@@ -19,6 +19,7 @@ public interface TaskProceedCheckoutMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "startDate", source = "startDate")
     @Mapping(target = "endDate", source = "endDate")
+    @Mapping(target = "price", source = "price")
     @Mapping(target = "proceedToCheckOut", source = "proceedToCheckOut")
     TravelPlanDTO toTravelPlanDTO(TravelPlan travelPlan);
 }

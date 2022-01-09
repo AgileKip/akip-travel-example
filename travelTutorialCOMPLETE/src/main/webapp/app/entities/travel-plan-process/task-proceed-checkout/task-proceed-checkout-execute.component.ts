@@ -10,6 +10,7 @@ const validations: any = {
         name: {},
         startDate: {},
         endDate: {},
+        price: {},
         proceedToCheckOut: {},
       },
     },

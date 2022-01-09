@@ -21,6 +21,7 @@
       "name": "Name",
       "startDate": "Start Date",
       "endDate": "End Date",
+      "price": "Price",
       "proceedToCheckOut": "Proceed To Check Out"
     }
   }
