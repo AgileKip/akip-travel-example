@@ -44,22 +44,14 @@ There are examples on how to use the AgileKip Platform to generate and handle di
 
 ## Hints
 
-1. Test your Domain Model and check the relationships to verify if they work accordingly.
+1. Test your Domain Model and check the relationships to verify if they work accordingly. You can do this by generating code for the domain entities.
+
+1. Test your BPMN model using the Token Simulation application at **https://bpmn-io.github.io/bpmn-js-token-simulation/modeler.html?e=1**
 
 1. Test your Process flow before adding any code. Use the DefaultEmailDelegate and DefaultLoggerDelegate to the Message and Service tasks respectively.
 
 1. Sometimes it is useful do delete the whole target folder at YOUR_PROJECT/target. This will eliminate the complied code and reset the database (you'll have to re-deploy your processes).
 
-1. Use MailDev http://maildev.github.io/maildev/ to test your MessageTasks that send emails. Just run **docker run -p 1080:80 -p 25:25** djfarrelly/maildev and the email server should be running on http://localhost:1080.
+1. Use MailDev http://maildev.github.io/maildev/ to test your MessageTasks that send emails. Just run **docker run -p 1080:80 -p 25:25 djfarrelly/maildev** and the email server should be running on http://localhost:1080.
 
 <p>
-
-    {
-      "relationshipName": "car",
-      "otherEntityName": "car",
-      "relationshipType": "many-to-many",
-      "relationshipValidateRules": ["required"],
-      "otherEntityField": "code",
-      "ownerSide": true,
-      "otherEntityRelationshipName": "x1"
-    }
