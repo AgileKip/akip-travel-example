@@ -3,6 +3,7 @@ package org.agilekip.tutorials.travelcomplete.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -21,10 +22,13 @@ public class Car implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "license")
+    @NotNull
+    @Size(min = 2, max = 8)
+    @Column(name = "license", length = 8, nullable = false)
     private String license;
 
-    @Column(name = "passengers")
+    @NotNull
+    @Column(name = "passengers", nullable = false)
     private Integer passengers;
 
     @Column(name = "booked")
@@ -33,10 +37,12 @@ public class Car implements Serializable {
     @Column(name = "duration")
     private Integer duration;
 
-    @Column(name = "price")
+    @NotNull
+    @Column(name = "price", nullable = false)
     private Integer price;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private CarRentalCompany carCo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

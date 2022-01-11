@@ -85,8 +85,9 @@
                 data-cy="flight"
                 name="flight"
                 v-model="taskContext.travelPlanProcess.travelPlan.flight"
+                required
               >
-                <option v-bind:value="null"></option>
+                <option v-if="!taskContext.travelPlanProcess.travelPlan.flight" v-bind:value="null" selected></option>
                 <option
                   v-bind:value="
                     taskContext.travelPlanProcess.travelPlan.flight &&
@@ -100,6 +101,19 @@
                   {{ flightOption.code }}
                 </option>
               </select>
+            </div>
+            <div
+              v-if="
+                $v.taskContext.travelPlanProcess.travelPlan.flight.$anyDirty && $v.taskContext.travelPlanProcess.travelPlan.flight.$invalid
+              "
+            >
+              <small
+                class="form-text text-danger"
+                v-if="!$v.taskContext.travelPlanProcess.travelPlan.flight.required"
+                v-text="$t('entity.validation.required')"
+              >
+                This field is required.
+              </small>
             </div>
           </template>
         </akip-show-task-instance>

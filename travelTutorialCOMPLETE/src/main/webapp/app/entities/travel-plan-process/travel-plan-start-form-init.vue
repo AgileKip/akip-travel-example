@@ -32,7 +32,17 @@
                       invalid: $v.travelPlanProcess.travelPlan.name.$invalid,
                     }"
                     v-model="$v.travelPlanProcess.travelPlan.name.$model"
+                    required
                   />
+                  <div v-if="$v.travelPlanProcess.travelPlan.name.$anyDirty && $v.travelPlanProcess.travelPlan.name.$invalid">
+                    <small
+                      class="form-text text-danger"
+                      v-if="!$v.travelPlanProcess.travelPlan.name.required"
+                      v-text="$t('entity.validation.required')"
+                    >
+                      This field is required.
+                    </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label
@@ -67,8 +77,18 @@
                         invalid: $v.travelPlanProcess.travelPlan.startDate.$invalid,
                       }"
                       v-model="$v.travelPlanProcess.travelPlan.startDate.$model"
+                      required
                     />
                   </b-input-group>
+                  <div v-if="$v.travelPlanProcess.travelPlan.startDate.$anyDirty && $v.travelPlanProcess.travelPlan.startDate.$invalid">
+                    <small
+                      class="form-text text-danger"
+                      v-if="!$v.travelPlanProcess.travelPlan.startDate.required"
+                      v-text="$t('entity.validation.required')"
+                    >
+                      This field is required.
+                    </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label
@@ -103,8 +123,18 @@
                         invalid: $v.travelPlanProcess.travelPlan.endDate.$invalid,
                       }"
                       v-model="$v.travelPlanProcess.travelPlan.endDate.$model"
+                      required
                     />
                   </b-input-group>
+                  <div v-if="$v.travelPlanProcess.travelPlan.endDate.$anyDirty && $v.travelPlanProcess.travelPlan.endDate.$invalid">
+                    <small
+                      class="form-text text-danger"
+                      v-if="!$v.travelPlanProcess.travelPlan.endDate.required"
+                      v-text="$t('entity.validation.required')"
+                    >
+                      This field is required.
+                    </small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label
@@ -124,7 +154,24 @@
                       invalid: $v.travelPlanProcess.travelPlan.numPax.$invalid,
                     }"
                     v-model.number="$v.travelPlanProcess.travelPlan.numPax.$model"
+                    required
                   />
+                  <div v-if="$v.travelPlanProcess.travelPlan.numPax.$anyDirty && $v.travelPlanProcess.travelPlan.numPax.$invalid">
+                    <small
+                      class="form-text text-danger"
+                      v-if="!$v.travelPlanProcess.travelPlan.numPax.required"
+                      v-text="$t('entity.validation.required')"
+                    >
+                      This field is required.
+                    </small>
+                    <small
+                      class="form-text text-danger"
+                      v-if="!$v.travelPlanProcess.travelPlan.numPax.numeric"
+                      v-text="$t('entity.validation.number')"
+                    >
+                      This field should be a number.
+                    </small>
+                  </div>
                 </div>
               </div>
             </template>

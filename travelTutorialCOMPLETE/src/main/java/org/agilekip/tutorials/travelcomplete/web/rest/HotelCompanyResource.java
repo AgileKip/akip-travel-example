@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.agilekip.tutorials.travelcomplete.repository.HotelCompanyRepository;
 import org.agilekip.tutorials.travelcomplete.service.HotelCompanyService;
 import org.agilekip.tutorials.travelcomplete.service.dto.HotelCompanyDTO;
@@ -48,7 +50,8 @@ public class HotelCompanyResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/hotel-companies")
-    public ResponseEntity<HotelCompanyDTO> createHotelCompany(@RequestBody HotelCompanyDTO hotelCompanyDTO) throws URISyntaxException {
+    public ResponseEntity<HotelCompanyDTO> createHotelCompany(@Valid @RequestBody HotelCompanyDTO hotelCompanyDTO)
+        throws URISyntaxException {
         log.debug("REST request to save HotelCompany : {}", hotelCompanyDTO);
         if (hotelCompanyDTO.getId() != null) {
             throw new BadRequestAlertException("A new hotelCompany cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +76,7 @@ public class HotelCompanyResource {
     @PutMapping("/hotel-companies/{id}")
     public ResponseEntity<HotelCompanyDTO> updateHotelCompany(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody HotelCompanyDTO hotelCompanyDTO
+        @Valid @RequestBody HotelCompanyDTO hotelCompanyDTO
     ) throws URISyntaxException {
         log.debug("REST request to update HotelCompany : {}, {}", id, hotelCompanyDTO);
         if (hotelCompanyDTO.getId() == null) {
@@ -108,7 +111,7 @@ public class HotelCompanyResource {
     @PatchMapping(value = "/hotel-companies/{id}", consumes = "application/merge-patch+json")
     public ResponseEntity<HotelCompanyDTO> partialUpdateHotelCompany(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody HotelCompanyDTO hotelCompanyDTO
+        @NotNull @RequestBody HotelCompanyDTO hotelCompanyDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update HotelCompany partially : {}, {}", id, hotelCompanyDTO);
         if (hotelCompanyDTO.getId() == null) {

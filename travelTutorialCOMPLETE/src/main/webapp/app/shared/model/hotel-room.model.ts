@@ -2,22 +2,22 @@ import { IHotelCompany } from '@/shared/model/hotel-company.model';
 
 export interface IHotelRoom {
   id?: number;
-  roomID?: string | null;
-  sleeps?: number | null;
+  roomID?: string;
+  sleeps?: number;
   boodked?: Date | null;
   duration?: number | null;
-  price?: number | null;
-  hotelCo?: IHotelCompany | null;
+  price?: number;
+  hotelCo?: IHotelCompany;
 }
 
 export class HotelRoom implements IHotelRoom {
   constructor(
     public id?: number,
-    public roomID?: string | null,
-    public sleeps?: number | null,
+    public roomID?: string,
+    public sleeps?: number,
     public boodked?: Date | null,
     public duration?: number | null,
-    public price?: number | null,
-    public hotelCo?: IHotelCompany | null
+    public price?: number,
+    public hotelCo?: IHotelCompany
   ) {}
 }

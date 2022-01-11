@@ -31,7 +31,19 @@ const validations: any = {
       required,
       numeric,
     },
-    price: {},
+    price: {
+      required,
+      numeric,
+    },
+    from: {
+      required,
+    },
+    to: {
+      required,
+    },
+    airline: {
+      required,
+    },
   },
 };
 

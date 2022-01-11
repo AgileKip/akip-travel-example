@@ -39,16 +39,20 @@ public class Flight implements Serializable {
     @Column(name = "empty_seats", nullable = false)
     private Integer emptySeats;
 
-    @Column(name = "price")
+    @NotNull
+    @Column(name = "price", nullable = false)
     private Integer price;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private Airport from;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private Airport to;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private AirlineCompany airline;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

@@ -1,5 +1,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required, minLength, maxLength, numeric } from 'vuelidate/lib/validators';
+
 import HotelCompanyService from '@/entities/hotel-company/hotel-company.service';
 import { IHotelCompany } from '@/shared/model/hotel-company.model';
 
@@ -8,11 +10,24 @@ import HotelRoomService from './hotel-room.service';
 
 const validations: any = {
   hotelRoom: {
-    roomID: {},
-    sleeps: {},
+    roomID: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(20),
+    },
+    sleeps: {
+      required,
+      numeric,
+    },
     boodked: {},
     duration: {},
-    price: {},
+    price: {
+      required,
+      numeric,
+    },
+    hotelCo: {
+      required,
+    },
   },
 };
 

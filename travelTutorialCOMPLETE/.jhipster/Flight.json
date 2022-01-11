@@ -24,7 +24,8 @@
     },
     {
       "fieldName": "price",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [
@@ -32,18 +33,21 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "airport",
       "relationshipName": "from",
+      "relationshipValidateRules": "required",
       "otherEntityField": "code"
     },
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "airport",
       "relationshipName": "to",
+      "relationshipValidateRules": "required",
       "otherEntityField": "code"
     },
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "airlineCompany",
       "relationshipName": "airline",
+      "relationshipValidateRules": "required",
       "otherEntityField": "code"
     }
   ],

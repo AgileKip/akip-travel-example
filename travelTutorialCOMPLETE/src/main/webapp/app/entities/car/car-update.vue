@@ -24,7 +24,19 @@
               data-cy="license"
               :class="{ valid: !$v.car.license.$invalid, invalid: $v.car.license.$invalid }"
               v-model="$v.car.license.$model"
+              required
             />
+            <div v-if="$v.car.license.$anyDirty && $v.car.license.$invalid">
+              <small class="form-text text-danger" v-if="!$v.car.license.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.car.license.minLength" v-text="$t('entity.validation.minlength', { min: 2 })">
+                This field is required to be at least 2 characters.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.car.license.maxLength" v-text="$t('entity.validation.maxlength', { max: 8 })">
+                This field cannot be longer than 8 characters.
+              </small>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.car.passengers')" for="car-passengers"
@@ -38,7 +50,16 @@
               data-cy="passengers"
               :class="{ valid: !$v.car.passengers.$invalid, invalid: $v.car.passengers.$invalid }"
               v-model.number="$v.car.passengers.$model"
+              required
             />
+            <div v-if="$v.car.passengers.$anyDirty && $v.car.passengers.$invalid">
+              <small class="form-text text-danger" v-if="!$v.car.passengers.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.car.passengers.numeric" v-text="$t('entity.validation.number')">
+                This field should be a number.
+              </small>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.car.booked')" for="car-booked">Booked</label>
@@ -90,12 +111,21 @@
               data-cy="price"
               :class="{ valid: !$v.car.price.$invalid, invalid: $v.car.price.$invalid }"
               v-model.number="$v.car.price.$model"
+              required
             />
+            <div v-if="$v.car.price.$anyDirty && $v.car.price.$invalid">
+              <small class="form-text text-danger" v-if="!$v.car.price.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.car.price.numeric" v-text="$t('entity.validation.number')">
+                This field should be a number.
+              </small>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.car.carCo')" for="car-carCo">Car Co</label>
-            <select class="form-control" id="car-carCo" data-cy="carCo" name="carCo" v-model="car.carCo">
-              <option v-bind:value="null"></option>
+            <select class="form-control" id="car-carCo" data-cy="carCo" name="carCo" v-model="car.carCo" required>
+              <option v-if="!car.carCo" v-bind:value="null" selected></option>
               <option
                 v-bind:value="car.carCo && carRentalCompanyOption.id === car.carCo.id ? car.carCo : carRentalCompanyOption"
                 v-for="carRentalCompanyOption in carRentalCompanies"
@@ -104,6 +134,11 @@
                 {{ carRentalCompanyOption.name }}
               </option>
             </select>
+          </div>
+          <div v-if="$v.car.carCo.$anyDirty && $v.car.carCo.$invalid">
+            <small class="form-text text-danger" v-if="!$v.car.carCo.required" v-text="$t('entity.validation.required')">
+              This field is required.
+            </small>
           </div>
         </div>
         <div>

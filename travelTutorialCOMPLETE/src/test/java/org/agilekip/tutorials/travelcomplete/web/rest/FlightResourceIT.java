@@ -15,6 +15,8 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.agilekip.tutorials.travelcomplete.IntegrationTest;
+import org.agilekip.tutorials.travelcomplete.domain.AirlineCompany;
+import org.agilekip.tutorials.travelcomplete.domain.Airport;
 import org.agilekip.tutorials.travelcomplete.domain.Flight;
 import org.agilekip.tutorials.travelcomplete.repository.FlightRepository;
 import org.agilekip.tutorials.travelcomplete.service.dto.FlightDTO;
@@ -84,6 +86,28 @@ class FlightResourceIT {
             .duration(DEFAULT_DURATION)
             .emptySeats(DEFAULT_EMPTY_SEATS)
             .price(DEFAULT_PRICE);
+        // Add required entity
+        Airport airport;
+        if (TestUtil.findAll(em, Airport.class).isEmpty()) {
+            airport = AirportResourceIT.createEntity(em);
+            em.persist(airport);
+            em.flush();
+        } else {
+            airport = TestUtil.findAll(em, Airport.class).get(0);
+        }
+        flight.setFrom(airport);
+        // Add required entity
+        flight.setTo(airport);
+        // Add required entity
+        AirlineCompany airlineCompany;
+        if (TestUtil.findAll(em, AirlineCompany.class).isEmpty()) {
+            airlineCompany = AirlineCompanyResourceIT.createEntity(em);
+            em.persist(airlineCompany);
+            em.flush();
+        } else {
+            airlineCompany = TestUtil.findAll(em, AirlineCompany.class).get(0);
+        }
+        flight.setAirline(airlineCompany);
         return flight;
     }
 
@@ -100,6 +124,28 @@ class FlightResourceIT {
             .duration(UPDATED_DURATION)
             .emptySeats(UPDATED_EMPTY_SEATS)
             .price(UPDATED_PRICE);
+        // Add required entity
+        Airport airport;
+        if (TestUtil.findAll(em, Airport.class).isEmpty()) {
+            airport = AirportResourceIT.createUpdatedEntity(em);
+            em.persist(airport);
+            em.flush();
+        } else {
+            airport = TestUtil.findAll(em, Airport.class).get(0);
+        }
+        flight.setFrom(airport);
+        // Add required entity
+        flight.setTo(airport);
+        // Add required entity
+        AirlineCompany airlineCompany;
+        if (TestUtil.findAll(em, AirlineCompany.class).isEmpty()) {
+            airlineCompany = AirlineCompanyResourceIT.createUpdatedEntity(em);
+            em.persist(airlineCompany);
+            em.flush();
+        } else {
+            airlineCompany = TestUtil.findAll(em, AirlineCompany.class).get(0);
+        }
+        flight.setAirline(airlineCompany);
         return flight;
     }
 
@@ -208,6 +254,24 @@ class FlightResourceIT {
         int databaseSizeBeforeTest = flightRepository.findAll().size();
         // set the field null
         flight.setEmptySeats(null);
+
+        // Create the Flight, which fails.
+        FlightDTO flightDTO = flightMapper.toDto(flight);
+
+        restFlightMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(flightDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Flight> flightList = flightRepository.findAll();
+        assertThat(flightList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkPriceIsRequired() throws Exception {
+        int databaseSizeBeforeTest = flightRepository.findAll().size();
+        // set the field null
+        flight.setPrice(null);
 
         // Create the Flight, which fails.
         FlightDTO flightDTO = flightMapper.toDto(flight);

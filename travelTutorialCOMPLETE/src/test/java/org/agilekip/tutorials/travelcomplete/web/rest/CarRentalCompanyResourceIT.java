@@ -127,6 +127,46 @@ class CarRentalCompanyResourceIT {
 
     @Test
     @Transactional
+    void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = carRentalCompanyRepository.findAll().size();
+        // set the field null
+        carRentalCompany.setName(null);
+
+        // Create the CarRentalCompany, which fails.
+        CarRentalCompanyDTO carRentalCompanyDTO = carRentalCompanyMapper.toDto(carRentalCompany);
+
+        restCarRentalCompanyMockMvc
+            .perform(
+                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(carRentalCompanyDTO))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<CarRentalCompany> carRentalCompanyList = carRentalCompanyRepository.findAll();
+        assertThat(carRentalCompanyList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkPlaceIsRequired() throws Exception {
+        int databaseSizeBeforeTest = carRentalCompanyRepository.findAll().size();
+        // set the field null
+        carRentalCompany.setPlace(null);
+
+        // Create the CarRentalCompany, which fails.
+        CarRentalCompanyDTO carRentalCompanyDTO = carRentalCompanyMapper.toDto(carRentalCompany);
+
+        restCarRentalCompanyMockMvc
+            .perform(
+                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(carRentalCompanyDTO))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<CarRentalCompany> carRentalCompanyList = carRentalCompanyRepository.findAll();
+        assertThat(carRentalCompanyList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllCarRentalCompanies() throws Exception {
         // Initialize the database
         carRentalCompanyRepository.saveAndFlush(carRentalCompany);

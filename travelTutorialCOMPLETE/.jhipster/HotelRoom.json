@@ -2,11 +2,15 @@
   "fields": [
     {
       "fieldName": "roomID",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesMaxlength": "20"
     },
     {
       "fieldName": "sleeps",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "boodked",
@@ -18,7 +22,8 @@
     },
     {
       "fieldName": "price",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [
@@ -26,6 +31,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "hotelCompany",
       "relationshipName": "hotelCo",
+      "relationshipValidateRules": ["required"],
       "otherEntityField": "name"
     }
   ],

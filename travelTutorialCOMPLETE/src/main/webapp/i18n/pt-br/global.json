@@ -18,11 +18,11 @@
         "hotelCompany": "Hotel Company",
         "travelPlanStartForm": "Travel Plan Start Form",
         "travelPlanProcess": "Travel Plan Process",
-        "taskChooseFlight": "Task Choose Flight",
+        "taskPaymentDetails": "Task Payment Details",
         "taskChooseCar": "Task Choose Car",
         "taskChooseHotelRoom": "Task Choose Hotel Room",
         "taskProceedCheckout": "Task Proceed Checkout",
-        "taskPaymentDetails": "Task Payment Details",
+        "taskChooseFlight": "Task Choose Flight",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

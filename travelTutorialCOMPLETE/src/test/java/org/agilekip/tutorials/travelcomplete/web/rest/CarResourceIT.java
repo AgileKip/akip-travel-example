@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.agilekip.tutorials.travelcomplete.IntegrationTest;
 import org.agilekip.tutorials.travelcomplete.domain.Car;
+import org.agilekip.tutorials.travelcomplete.domain.CarRentalCompany;
 import org.agilekip.tutorials.travelcomplete.repository.CarRepository;
 import org.agilekip.tutorials.travelcomplete.service.dto.CarDTO;
 import org.agilekip.tutorials.travelcomplete.service.mapper.CarMapper;
@@ -33,8 +34,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class CarResourceIT {
 
-    private static final String DEFAULT_LICENSE = "AAAAAAAAAA";
-    private static final String UPDATED_LICENSE = "BBBBBBBBBB";
+    private static final String DEFAULT_LICENSE = "AAAAAAAA";
+    private static final String UPDATED_LICENSE = "BBBBBBBB";
 
     private static final Integer DEFAULT_PASSENGERS = 1;
     private static final Integer UPDATED_PASSENGERS = 2;
@@ -81,6 +82,16 @@ class CarResourceIT {
             .booked(DEFAULT_BOOKED)
             .duration(DEFAULT_DURATION)
             .price(DEFAULT_PRICE);
+        // Add required entity
+        CarRentalCompany carRentalCompany;
+        if (TestUtil.findAll(em, CarRentalCompany.class).isEmpty()) {
+            carRentalCompany = CarRentalCompanyResourceIT.createEntity(em);
+            em.persist(carRentalCompany);
+            em.flush();
+        } else {
+            carRentalCompany = TestUtil.findAll(em, CarRentalCompany.class).get(0);
+        }
+        car.setCarCo(carRentalCompany);
         return car;
     }
 
@@ -97,6 +108,16 @@ class CarResourceIT {
             .booked(UPDATED_BOOKED)
             .duration(UPDATED_DURATION)
             .price(UPDATED_PRICE);
+        // Add required entity
+        CarRentalCompany carRentalCompany;
+        if (TestUtil.findAll(em, CarRentalCompany.class).isEmpty()) {
+            carRentalCompany = CarRentalCompanyResourceIT.createUpdatedEntity(em);
+            em.persist(carRentalCompany);
+            em.flush();
+        } else {
+            carRentalCompany = TestUtil.findAll(em, CarRentalCompany.class).get(0);
+        }
+        car.setCarCo(carRentalCompany);
         return car;
     }
 
@@ -143,6 +164,60 @@ class CarResourceIT {
         // Validate the Car in the database
         List<Car> carList = carRepository.findAll();
         assertThat(carList).hasSize(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    void checkLicenseIsRequired() throws Exception {
+        int databaseSizeBeforeTest = carRepository.findAll().size();
+        // set the field null
+        car.setLicense(null);
+
+        // Create the Car, which fails.
+        CarDTO carDTO = carMapper.toDto(car);
+
+        restCarMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(carDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Car> carList = carRepository.findAll();
+        assertThat(carList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkPassengersIsRequired() throws Exception {
+        int databaseSizeBeforeTest = carRepository.findAll().size();
+        // set the field null
+        car.setPassengers(null);
+
+        // Create the Car, which fails.
+        CarDTO carDTO = carMapper.toDto(car);
+
+        restCarMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(carDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Car> carList = carRepository.findAll();
+        assertThat(carList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkPriceIsRequired() throws Exception {
+        int databaseSizeBeforeTest = carRepository.findAll().size();
+        // set the field null
+        car.setPrice(null);
+
+        // Create the Car, which fails.
+        CarDTO carDTO = carMapper.toDto(car);
+
+        restCarMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(carDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Car> carList = carRepository.findAll();
+        assertThat(carList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test

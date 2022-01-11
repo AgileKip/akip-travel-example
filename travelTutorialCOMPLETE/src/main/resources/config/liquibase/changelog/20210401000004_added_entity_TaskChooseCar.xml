@@ -24,13 +24,13 @@
                 <constraints nullable="true" />
             </column>
             <column name="car_start_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="car_duration" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="car_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

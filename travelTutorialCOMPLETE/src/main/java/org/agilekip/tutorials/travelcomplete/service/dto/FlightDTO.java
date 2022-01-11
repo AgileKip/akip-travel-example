@@ -25,6 +25,7 @@ public class FlightDTO implements Serializable {
     @NotNull
     private Integer emptySeats;
 
+    @NotNull
     private Integer price;
 
     private AirportDTO from;

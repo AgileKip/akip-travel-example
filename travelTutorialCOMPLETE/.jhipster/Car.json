@@ -2,11 +2,15 @@
   "fields": [
     {
       "fieldName": "license",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesMaxlength": "8"
     },
     {
       "fieldName": "passengers",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "booked",
@@ -18,12 +22,14 @@
     },
     {
       "fieldName": "price",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [
     {
       "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
       "otherEntityName": "carRentalCompany",
       "relationshipName": "carCo",
       "otherEntityField": "name"

@@ -1,5 +1,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required } from 'vuelidate/lib/validators';
+
 import FlightService from '@/entities/flight/flight.service';
 import { IFlight } from '@/shared/model/flight.model';
 
@@ -13,6 +15,9 @@ const validations: any = {
         name: {},
         startDate: {},
         endDate: {},
+        flight: {
+          required,
+        },
       },
     },
   },

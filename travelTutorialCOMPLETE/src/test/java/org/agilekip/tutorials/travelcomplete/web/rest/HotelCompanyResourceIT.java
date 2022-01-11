@@ -127,6 +127,46 @@ class HotelCompanyResourceIT {
 
     @Test
     @Transactional
+    void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelCompanyRepository.findAll().size();
+        // set the field null
+        hotelCompany.setName(null);
+
+        // Create the HotelCompany, which fails.
+        HotelCompanyDTO hotelCompanyDTO = hotelCompanyMapper.toDto(hotelCompany);
+
+        restHotelCompanyMockMvc
+            .perform(
+                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(hotelCompanyDTO))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<HotelCompany> hotelCompanyList = hotelCompanyRepository.findAll();
+        assertThat(hotelCompanyList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkPlaceIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelCompanyRepository.findAll().size();
+        // set the field null
+        hotelCompany.setPlace(null);
+
+        // Create the HotelCompany, which fails.
+        HotelCompanyDTO hotelCompanyDTO = hotelCompanyMapper.toDto(hotelCompany);
+
+        restHotelCompanyMockMvc
+            .perform(
+                post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(hotelCompanyDTO))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<HotelCompany> hotelCompanyList = hotelCompanyRepository.findAll();
+        assertThat(hotelCompanyList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllHotelCompanies() throws Exception {
         // Initialize the database
         hotelCompanyRepository.saveAndFlush(hotelCompany);

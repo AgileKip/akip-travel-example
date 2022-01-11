@@ -24,7 +24,7 @@
                 <constraints nullable="true" />
             </column>
             <column name="flight_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

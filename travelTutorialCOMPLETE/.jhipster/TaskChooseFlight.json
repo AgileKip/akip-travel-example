@@ -21,6 +21,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "flight",
       "relationshipName": "flight",
+      "relationshipValidateRules": ["required"],
       "otherEntityField": "code"
     }
   ],

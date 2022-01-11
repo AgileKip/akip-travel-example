@@ -7,10 +7,10 @@ export interface IFlight {
   departure?: Date;
   duration?: number;
   emptySeats?: number;
-  price?: number | null;
-  from?: IAirport | null;
-  to?: IAirport | null;
-  airline?: IAirlineCompany | null;
+  price?: number;
+  from?: IAirport;
+  to?: IAirport;
+  airline?: IAirlineCompany;
 }
 
 export class Flight implements IFlight {
@@ -20,9 +20,9 @@ export class Flight implements IFlight {
     public departure?: Date,
     public duration?: number,
     public emptySeats?: number,
-    public price?: number | null,
-    public from?: IAirport | null,
-    public to?: IAirport | null,
-    public airline?: IAirlineCompany | null
+    public price?: number,
+    public from?: IAirport,
+    public to?: IAirport,
+    public airline?: IAirlineCompany
   ) {}
 }

@@ -2,6 +2,7 @@ package org.agilekip.tutorials.travelcomplete.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -20,10 +21,13 @@ public class HotelCompany implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Size(min = 2, max = 20)
+    @Column(name = "name", length = 20, nullable = false)
     private String name;
 
-    @Column(name = "place")
+    @NotNull
+    @Column(name = "place", nullable = false)
     private String place;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

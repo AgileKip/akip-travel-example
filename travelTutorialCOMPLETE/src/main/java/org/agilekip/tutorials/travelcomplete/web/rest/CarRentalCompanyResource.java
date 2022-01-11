@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.agilekip.tutorials.travelcomplete.repository.CarRentalCompanyRepository;
 import org.agilekip.tutorials.travelcomplete.service.CarRentalCompanyService;
 import org.agilekip.tutorials.travelcomplete.service.dto.CarRentalCompanyDTO;
@@ -51,7 +53,7 @@ public class CarRentalCompanyResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/car-rental-companies")
-    public ResponseEntity<CarRentalCompanyDTO> createCarRentalCompany(@RequestBody CarRentalCompanyDTO carRentalCompanyDTO)
+    public ResponseEntity<CarRentalCompanyDTO> createCarRentalCompany(@Valid @RequestBody CarRentalCompanyDTO carRentalCompanyDTO)
         throws URISyntaxException {
         log.debug("REST request to save CarRentalCompany : {}", carRentalCompanyDTO);
         if (carRentalCompanyDTO.getId() != null) {
@@ -77,7 +79,7 @@ public class CarRentalCompanyResource {
     @PutMapping("/car-rental-companies/{id}")
     public ResponseEntity<CarRentalCompanyDTO> updateCarRentalCompany(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody CarRentalCompanyDTO carRentalCompanyDTO
+        @Valid @RequestBody CarRentalCompanyDTO carRentalCompanyDTO
     ) throws URISyntaxException {
         log.debug("REST request to update CarRentalCompany : {}, {}", id, carRentalCompanyDTO);
         if (carRentalCompanyDTO.getId() == null) {
@@ -112,7 +114,7 @@ public class CarRentalCompanyResource {
     @PatchMapping(value = "/car-rental-companies/{id}", consumes = "application/merge-patch+json")
     public ResponseEntity<CarRentalCompanyDTO> partialUpdateCarRentalCompany(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody CarRentalCompanyDTO carRentalCompanyDTO
+        @NotNull @RequestBody CarRentalCompanyDTO carRentalCompanyDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update CarRentalCompany partially : {}, {}", id, carRentalCompanyDTO);
         if (carRentalCompanyDTO.getId() == null) {

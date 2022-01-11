@@ -50,20 +50,32 @@ public class CalculateTotalDelegate implements JavaDelegate {
         TravelPlanProcessDTO pi = (TravelPlanProcessDTO) delegateExecution.getVariable("processInstance");
         TravelPlanDTO travelPlanDTO = pi.getTravelPlan();
 
-        HotelRoom hotelRoom = this.hotelRoomRepo.findById(travelPlanDTO.getHotelRoom().getId()).get();
-        Flight flight = this.flightRepo.findById(travelPlanDTO.getFlight().getId()).get();
-        Car car = this.carRepo.findById(travelPlanDTO.getCar().getId()).get();
-
         String name = travelPlanDTO.getName();
 
         Integer daysCar = travelPlanDTO.getCarDuration();
         Integer daysHotel = travelPlanDTO.getHotelDuration();
         Integer numPax = travelPlanDTO.getNumPax();
 
-        Integer flightPrice = flight.getPrice() * numPax;
-        Integer hotelPrice = hotelRoom.getPrice() * daysHotel;
-        Integer carPrice = car.getPrice() * daysCar;
-        Integer total = flightPrice + hotelPrice + carPrice;
+        Integer flightPrice = 0;
+        Integer hotelPrice = 0;
+        Integer carPrice = 0;
+        Integer total = 0;
+
+        if (travelPlanDTO.getFlight() != null) {
+            Flight flight = this.flightRepo.findById(travelPlanDTO.getFlight().getId()).get();
+            flightPrice = flight.getPrice() * numPax;
+        }
+        if (travelPlanDTO.getHotelRoom() != null) {
+            HotelRoom hotelRoom = this.hotelRoomRepo.findById(travelPlanDTO.getHotelRoom().getId()).get();
+            hotelPrice = hotelRoom.getPrice() * daysHotel;
+        }
+
+        if (travelPlanDTO.getCar() != null) {
+            Car car = this.carRepo.findById(travelPlanDTO.getCar().getId()).get();
+            carPrice = car.getPrice() * daysCar;
+        }
+
+        total = flightPrice + hotelPrice + carPrice;
 
         TravelPlan travelPlanObj = travelPlanRepo.findById(travelPlanDTO.getId()).get();
         // Set the new values to the DTO and the Object so they are in sync

@@ -1,5 +1,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required, minLength, maxLength, numeric } from 'vuelidate/lib/validators';
+
 import CarRentalCompanyService from '@/entities/car-rental-company/car-rental-company.service';
 import { ICarRentalCompany } from '@/shared/model/car-rental-company.model';
 
@@ -8,11 +10,24 @@ import CarService from './car.service';
 
 const validations: any = {
   car: {
-    license: {},
-    passengers: {},
+    license: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(8),
+    },
+    passengers: {
+      required,
+      numeric,
+    },
     booked: {},
     duration: {},
-    price: {},
+    price: {
+      required,
+      numeric,
+    },
+    carCo: {
+      required,
+    },
   },
 };
 

@@ -3,6 +3,7 @@ package org.agilekip.tutorials.travelcomplete.service.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link org.agilekip.tutorials.travelcomplete.domain.Car} entity.
@@ -11,14 +12,18 @@ public class CarDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(min = 2, max = 8)
     private String license;
 
+    @NotNull
     private Integer passengers;
 
     private LocalDate booked;
 
     private Integer duration;
 
+    @NotNull
     private Integer price;
 
     private CarRentalCompanyDTO carCo;

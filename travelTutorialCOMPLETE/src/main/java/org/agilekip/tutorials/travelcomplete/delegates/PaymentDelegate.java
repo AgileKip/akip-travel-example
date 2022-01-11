@@ -53,18 +53,23 @@ public class PaymentDelegate implements JavaDelegate {
         // save the modified obj to the repo
         travelPlanRepo.save(travelPlanObj);
 
-        HotelRoom hotelRoom = this.hotelRoomRepo.findById(travelPlanDTO.getHotelRoom().getId()).get();
-        hotelRoom.setBoodked(travelPlanDTO.getHotelStartDate());
-        hotelRoom.setDuration(travelPlanDTO.getHotelDuration());
-        hotelRoomRepo.save(hotelRoom);
+        if (travelPlanDTO.getFlight() != null) {
+            Flight flight = this.flightRepo.findById(travelPlanDTO.getFlight().getId()).get();
+            flight.setEmptySeats(flight.getEmptySeats() - travelPlanDTO.getNumPax());
+            flightRepo.save(flight);
+        }
+        if (travelPlanDTO.getHotelRoom() != null) {
+            HotelRoom hotelRoom = this.hotelRoomRepo.findById(travelPlanDTO.getHotelRoom().getId()).get();
+            hotelRoom.setBoodked(travelPlanDTO.getHotelStartDate());
+            hotelRoom.setDuration(travelPlanDTO.getHotelDuration());
+            hotelRoomRepo.save(hotelRoom);
+        }
 
-        Flight flight = this.flightRepo.findById(travelPlanDTO.getFlight().getId()).get();
-        flight.setEmptySeats(flight.getEmptySeats() - travelPlanDTO.getNumPax());
-        flightRepo.save(flight);
-
-        Car car = this.carRepo.findById(travelPlanDTO.getCar().getId()).get();
-        car.setBooked(travelPlanDTO.getCarStartDate());
-        car.setDuration(travelPlanDTO.getCarDuration());
-        carRepo.save(car);
+        if (travelPlanDTO.getCar() != null) {
+            Car car = this.carRepo.findById(travelPlanDTO.getCar().getId()).get();
+            car.setBooked(travelPlanDTO.getCarStartDate());
+            car.setDuration(travelPlanDTO.getCarDuration());
+            carRepo.save(car);
+        }
     }
 }

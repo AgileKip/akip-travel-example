@@ -1,12 +1,20 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required, minLength, maxLength } from 'vuelidate/lib/validators';
+
 import { IHotelCompany, HotelCompany } from '@/shared/model/hotel-company.model';
 import HotelCompanyService from './hotel-company.service';
 
 const validations: any = {
   hotelCompany: {
-    name: {},
-    place: {},
+    name: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(20),
+    },
+    place: {
+      required,
+    },
   },
 };
 

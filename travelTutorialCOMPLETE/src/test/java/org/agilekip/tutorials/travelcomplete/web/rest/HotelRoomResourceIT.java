@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.agilekip.tutorials.travelcomplete.IntegrationTest;
+import org.agilekip.tutorials.travelcomplete.domain.HotelCompany;
 import org.agilekip.tutorials.travelcomplete.domain.HotelRoom;
 import org.agilekip.tutorials.travelcomplete.repository.HotelRoomRepository;
 import org.agilekip.tutorials.travelcomplete.service.dto.HotelRoomDTO;
@@ -81,6 +82,16 @@ class HotelRoomResourceIT {
             .boodked(DEFAULT_BOODKED)
             .duration(DEFAULT_DURATION)
             .price(DEFAULT_PRICE);
+        // Add required entity
+        HotelCompany hotelCompany;
+        if (TestUtil.findAll(em, HotelCompany.class).isEmpty()) {
+            hotelCompany = HotelCompanyResourceIT.createEntity(em);
+            em.persist(hotelCompany);
+            em.flush();
+        } else {
+            hotelCompany = TestUtil.findAll(em, HotelCompany.class).get(0);
+        }
+        hotelRoom.setHotelCo(hotelCompany);
         return hotelRoom;
     }
 
@@ -97,6 +108,16 @@ class HotelRoomResourceIT {
             .boodked(UPDATED_BOODKED)
             .duration(UPDATED_DURATION)
             .price(UPDATED_PRICE);
+        // Add required entity
+        HotelCompany hotelCompany;
+        if (TestUtil.findAll(em, HotelCompany.class).isEmpty()) {
+            hotelCompany = HotelCompanyResourceIT.createUpdatedEntity(em);
+            em.persist(hotelCompany);
+            em.flush();
+        } else {
+            hotelCompany = TestUtil.findAll(em, HotelCompany.class).get(0);
+        }
+        hotelRoom.setHotelCo(hotelCompany);
         return hotelRoom;
     }
 
@@ -143,6 +164,60 @@ class HotelRoomResourceIT {
         // Validate the HotelRoom in the database
         List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
         assertThat(hotelRoomList).hasSize(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    void checkRoomIDIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRoomRepository.findAll().size();
+        // set the field null
+        hotelRoom.setRoomID(null);
+
+        // Create the HotelRoom, which fails.
+        HotelRoomDTO hotelRoomDTO = hotelRoomMapper.toDto(hotelRoom);
+
+        restHotelRoomMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(hotelRoomDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
+        assertThat(hotelRoomList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkSleepsIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRoomRepository.findAll().size();
+        // set the field null
+        hotelRoom.setSleeps(null);
+
+        // Create the HotelRoom, which fails.
+        HotelRoomDTO hotelRoomDTO = hotelRoomMapper.toDto(hotelRoom);
+
+        restHotelRoomMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(hotelRoomDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
+        assertThat(hotelRoomList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkPriceIsRequired() throws Exception {
+        int databaseSizeBeforeTest = hotelRoomRepository.findAll().size();
+        // set the field null
+        hotelRoom.setPrice(null);
+
+        // Create the HotelRoom, which fails.
+        HotelRoomDTO hotelRoomDTO = hotelRoomMapper.toDto(hotelRoom);
+
+        restHotelRoomMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(hotelRoomDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<HotelRoom> hotelRoomList = hotelRoomRepository.findAll();
+        assertThat(hotelRoomList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test

@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.agilekip.tutorials.travelcomplete.repository.CarRepository;
 import org.agilekip.tutorials.travelcomplete.service.CarService;
 import org.agilekip.tutorials.travelcomplete.service.dto.CarDTO;
@@ -48,7 +50,7 @@ public class CarResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/cars")
-    public ResponseEntity<CarDTO> createCar(@RequestBody CarDTO carDTO) throws URISyntaxException {
+    public ResponseEntity<CarDTO> createCar(@Valid @RequestBody CarDTO carDTO) throws URISyntaxException {
         log.debug("REST request to save Car : {}", carDTO);
         if (carDTO.getId() != null) {
             throw new BadRequestAlertException("A new car cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +73,7 @@ public class CarResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/cars/{id}")
-    public ResponseEntity<CarDTO> updateCar(@PathVariable(value = "id", required = false) final Long id, @RequestBody CarDTO carDTO)
+    public ResponseEntity<CarDTO> updateCar(@PathVariable(value = "id", required = false) final Long id, @Valid @RequestBody CarDTO carDTO)
         throws URISyntaxException {
         log.debug("REST request to update Car : {}, {}", id, carDTO);
         if (carDTO.getId() == null) {
@@ -104,8 +106,10 @@ public class CarResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/cars/{id}", consumes = "application/merge-patch+json")
-    public ResponseEntity<CarDTO> partialUpdateCar(@PathVariable(value = "id", required = false) final Long id, @RequestBody CarDTO carDTO)
-        throws URISyntaxException {
+    public ResponseEntity<CarDTO> partialUpdateCar(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody CarDTO carDTO
+    ) throws URISyntaxException {
         log.debug("REST request to partial update Car partially : {}, {}", id, carDTO);
         if (carDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

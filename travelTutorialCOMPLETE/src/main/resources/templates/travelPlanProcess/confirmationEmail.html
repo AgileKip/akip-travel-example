@@ -10,9 +10,9 @@
     <ul>
       <li><b>Start</b>: <span th:text="${travelPlan.startDate}"></span></li>
       <li><b>End</b>: <span th:text="${travelPlan.endDate}"></span></li>
-      <li><b>Flight</b>: <span th:text="${travelPlan.flight.getCode()}"></span></li>
-      <li><b>Car</b>: <span th:text="${travelPlan.car.getLicense()}"></span></li>
-      <li><b>Hotel</b>: <span th:text="${travelPlan.hotelRoom.getRoomID}"></span></li>
+      <li><b>Flight</b>: <span th:text="${flight}"></span></li>
+      <li><b>Car</b>: <span th:text="${car}"></span></li>
+      <li><b>Hotel</b>: <span th:text="${hotelRoom}"></span></li>
       <li><b>Price</b>: <span th:text="${travelPlan.price}"></span></li>
     </ul>
     <p>

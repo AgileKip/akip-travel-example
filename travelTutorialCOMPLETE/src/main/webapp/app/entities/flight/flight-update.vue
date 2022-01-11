@@ -124,12 +124,21 @@
               data-cy="price"
               :class="{ valid: !$v.flight.price.$invalid, invalid: $v.flight.price.$invalid }"
               v-model.number="$v.flight.price.$model"
+              required
             />
+            <div v-if="$v.flight.price.$anyDirty && $v.flight.price.$invalid">
+              <small class="form-text text-danger" v-if="!$v.flight.price.required" v-text="$t('entity.validation.required')">
+                This field is required.
+              </small>
+              <small class="form-text text-danger" v-if="!$v.flight.price.numeric" v-text="$t('entity.validation.number')">
+                This field should be a number.
+              </small>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.flight.from')" for="flight-from">From</label>
-            <select class="form-control" id="flight-from" data-cy="from" name="from" v-model="flight.from">
-              <option v-bind:value="null"></option>
+            <select class="form-control" id="flight-from" data-cy="from" name="from" v-model="flight.from" required>
+              <option v-if="!flight.from" v-bind:value="null" selected></option>
               <option
                 v-bind:value="flight.from && airportOption.id === flight.from.id ? flight.from : airportOption"
                 v-for="airportOption in airports"
@@ -139,10 +148,15 @@
               </option>
             </select>
           </div>
+          <div v-if="$v.flight.from.$anyDirty && $v.flight.from.$invalid">
+            <small class="form-text text-danger" v-if="!$v.flight.from.required" v-text="$t('entity.validation.required')">
+              This field is required.
+            </small>
+          </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.flight.to')" for="flight-to">To</label>
-            <select class="form-control" id="flight-to" data-cy="to" name="to" v-model="flight.to">
-              <option v-bind:value="null"></option>
+            <select class="form-control" id="flight-to" data-cy="to" name="to" v-model="flight.to" required>
+              <option v-if="!flight.to" v-bind:value="null" selected></option>
               <option
                 v-bind:value="flight.to && airportOption.id === flight.to.id ? flight.to : airportOption"
                 v-for="airportOption in airports"
@@ -152,10 +166,15 @@
               </option>
             </select>
           </div>
+          <div v-if="$v.flight.to.$anyDirty && $v.flight.to.$invalid">
+            <small class="form-text text-danger" v-if="!$v.flight.to.required" v-text="$t('entity.validation.required')">
+              This field is required.
+            </small>
+          </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.flight.airline')" for="flight-airline">Airline</label>
-            <select class="form-control" id="flight-airline" data-cy="airline" name="airline" v-model="flight.airline">
-              <option v-bind:value="null"></option>
+            <select class="form-control" id="flight-airline" data-cy="airline" name="airline" v-model="flight.airline" required>
+              <option v-if="!flight.airline" v-bind:value="null" selected></option>
               <option
                 v-bind:value="flight.airline && airlineCompanyOption.id === flight.airline.id ? flight.airline : airlineCompanyOption"
                 v-for="airlineCompanyOption in airlineCompanies"
@@ -164,6 +183,11 @@
                 {{ airlineCompanyOption.code }}
               </option>
             </select>
+          </div>
+          <div v-if="$v.flight.airline.$anyDirty && $v.flight.airline.$invalid">
+            <small class="form-text text-danger" v-if="!$v.flight.airline.required" v-text="$t('entity.validation.required')">
+              This field is required.
+            </small>
           </div>
         </div>
         <div>

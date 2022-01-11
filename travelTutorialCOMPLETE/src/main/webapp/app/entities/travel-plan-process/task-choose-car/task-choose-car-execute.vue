@@ -103,8 +103,23 @@
                     invalid: $v.taskContext.travelPlanProcess.travelPlan.carStartDate.$invalid,
                   }"
                   v-model="$v.taskContext.travelPlanProcess.travelPlan.carStartDate.$model"
+                  required
                 />
               </b-input-group>
+              <div
+                v-if="
+                  $v.taskContext.travelPlanProcess.travelPlan.carStartDate.$anyDirty &&
+                  $v.taskContext.travelPlanProcess.travelPlan.carStartDate.$invalid
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.carStartDate.required"
+                  v-text="$t('entity.validation.required')"
+                >
+                  This field is required.
+                </small>
+              </div>
             </div>
             <div class="form-group">
               <label
@@ -124,7 +139,29 @@
                   invalid: $v.taskContext.travelPlanProcess.travelPlan.carDuration.$invalid,
                 }"
                 v-model.number="$v.taskContext.travelPlanProcess.travelPlan.carDuration.$model"
+                required
               />
+              <div
+                v-if="
+                  $v.taskContext.travelPlanProcess.travelPlan.carDuration.$anyDirty &&
+                  $v.taskContext.travelPlanProcess.travelPlan.carDuration.$invalid
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.carDuration.required"
+                  v-text="$t('entity.validation.required')"
+                >
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.carDuration.numeric"
+                  v-text="$t('entity.validation.number')"
+                >
+                  This field should be a number.
+                </small>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelTutorialCompleteApp.taskChooseCar.car')" for="task-choose-car-car"
@@ -136,8 +173,9 @@
                 data-cy="car"
                 name="car"
                 v-model="taskContext.travelPlanProcess.travelPlan.car"
+                required
               >
-                <option v-bind:value="null"></option>
+                <option v-if="!taskContext.travelPlanProcess.travelPlan.car" v-bind:value="null" selected></option>
                 <option
                   v-bind:value="
                     taskContext.travelPlanProcess.travelPlan.car && carOption.id === taskContext.travelPlanProcess.travelPlan.car.id
@@ -150,6 +188,17 @@
                   {{ carOption.license }}
                 </option>
               </select>
+            </div>
+            <div
+              v-if="$v.taskContext.travelPlanProcess.travelPlan.car.$anyDirty && $v.taskContext.travelPlanProcess.travelPlan.car.$invalid"
+            >
+              <small
+                class="form-text text-danger"
+                v-if="!$v.taskContext.travelPlanProcess.travelPlan.car.required"
+                v-text="$t('entity.validation.required')"
+              >
+                This field is required.
+              </small>
             </div>
           </template>
         </akip-show-task-instance>

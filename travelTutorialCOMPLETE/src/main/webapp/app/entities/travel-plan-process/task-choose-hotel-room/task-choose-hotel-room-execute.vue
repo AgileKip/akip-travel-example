@@ -109,8 +109,23 @@
                     invalid: $v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$invalid,
                   }"
                   v-model="$v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$model"
+                  required
                 />
               </b-input-group>
+              <div
+                v-if="
+                  $v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$anyDirty &&
+                  $v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.$invalid
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.hotelStartDate.required"
+                  v-text="$t('entity.validation.required')"
+                >
+                  This field is required.
+                </small>
+              </div>
             </div>
             <div class="form-group">
               <label
@@ -130,7 +145,29 @@
                   invalid: $v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$invalid,
                 }"
                 v-model.number="$v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$model"
+                required
               />
+              <div
+                v-if="
+                  $v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$anyDirty &&
+                  $v.taskContext.travelPlanProcess.travelPlan.hotelDuration.$invalid
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.hotelDuration.required"
+                  v-text="$t('entity.validation.required')"
+                >
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.hotelDuration.numeric"
+                  v-text="$t('entity.validation.number')"
+                >
+                  This field should be a number.
+                </small>
+              </div>
             </div>
             <div class="form-group">
               <label
@@ -145,8 +182,9 @@
                 data-cy="hotelRoom"
                 name="hotelRoom"
                 v-model="taskContext.travelPlanProcess.travelPlan.hotelRoom"
+                required
               >
-                <option v-bind:value="null"></option>
+                <option v-if="!taskContext.travelPlanProcess.travelPlan.hotelRoom" v-bind:value="null" selected></option>
                 <option
                   v-bind:value="
                     taskContext.travelPlanProcess.travelPlan.hotelRoom &&
@@ -160,6 +198,20 @@
                   {{ hotelRoomOption.roomID }}
                 </option>
               </select>
+            </div>
+            <div
+              v-if="
+                $v.taskContext.travelPlanProcess.travelPlan.hotelRoom.$anyDirty &&
+                $v.taskContext.travelPlanProcess.travelPlan.hotelRoom.$invalid
+              "
+            >
+              <small
+                class="form-text text-danger"
+                v-if="!$v.taskContext.travelPlanProcess.travelPlan.hotelRoom.required"
+                v-text="$t('entity.validation.required')"
+              >
+                This field is required.
+              </small>
             </div>
           </template>
         </akip-show-task-instance>

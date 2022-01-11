@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.agilekip.tutorials.travelcomplete.repository.HotelRoomRepository;
 import org.agilekip.tutorials.travelcomplete.service.HotelRoomService;
 import org.agilekip.tutorials.travelcomplete.service.dto.HotelRoomDTO;
@@ -48,7 +50,7 @@ public class HotelRoomResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/hotel-rooms")
-    public ResponseEntity<HotelRoomDTO> createHotelRoom(@RequestBody HotelRoomDTO hotelRoomDTO) throws URISyntaxException {
+    public ResponseEntity<HotelRoomDTO> createHotelRoom(@Valid @RequestBody HotelRoomDTO hotelRoomDTO) throws URISyntaxException {
         log.debug("REST request to save HotelRoom : {}", hotelRoomDTO);
         if (hotelRoomDTO.getId() != null) {
             throw new BadRequestAlertException("A new hotelRoom cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +75,7 @@ public class HotelRoomResource {
     @PutMapping("/hotel-rooms/{id}")
     public ResponseEntity<HotelRoomDTO> updateHotelRoom(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody HotelRoomDTO hotelRoomDTO
+        @Valid @RequestBody HotelRoomDTO hotelRoomDTO
     ) throws URISyntaxException {
         log.debug("REST request to update HotelRoom : {}, {}", id, hotelRoomDTO);
         if (hotelRoomDTO.getId() == null) {
@@ -108,7 +110,7 @@ public class HotelRoomResource {
     @PatchMapping(value = "/hotel-rooms/{id}", consumes = "application/merge-patch+json")
     public ResponseEntity<HotelRoomDTO> partialUpdateHotelRoom(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody HotelRoomDTO hotelRoomDTO
+        @NotNull @RequestBody HotelRoomDTO hotelRoomDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update HotelRoom partially : {}, {}", id, hotelRoomDTO);
         if (hotelRoomDTO.getId() == null) {

@@ -30,6 +30,21 @@ public class ConfirmationEmailDelegate implements JavaDelegate {
         String subject = "[Travel Complete] Confirmation email " + travelPlan.getName();
         Context context = new Context(Locale.getDefault());
         context.setVariable("travelPlan", travelPlan);
+        if (travelPlan.getFlight() != null) {
+            context.setVariable("flight", travelPlan.getFlight().getCode());
+        } else {
+            context.setVariable("flight", "Not Selected");
+        }
+        if (travelPlan.getCar() != null) {
+            context.setVariable("car", travelPlan.getCar().getLicense());
+        } else {
+            context.setVariable("car", "Not Selected");
+        }
+        if (travelPlan.getHotelRoom() != null) {
+            context.setVariable("hotelRoom", travelPlan.getHotelRoom().getRoomID());
+        } else {
+            context.setVariable("hotelRoom", "Not Selected");
+        }
         String content = templateEngine.process("travelPlanProcess/confirmationEmail", context);
         mailService.sendEmail(to, subject, content, false, true);
     }

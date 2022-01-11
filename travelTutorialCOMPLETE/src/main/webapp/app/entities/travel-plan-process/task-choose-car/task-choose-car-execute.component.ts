@@ -1,5 +1,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required } from 'vuelidate/lib/validators';
+
 import CarService from '@/entities/car/car.service';
 import { ICar } from '@/shared/model/car.model';
 
@@ -15,6 +17,9 @@ const validations: any = {
         endDate: {},
         carStartDate: {},
         carDuration: {},
+        car: {
+          required,
+        },
       },
     },
   },

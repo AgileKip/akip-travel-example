@@ -61,9 +61,9 @@ const TravelPlanProcessDetails = () => import('@/entities/travel-plan-process/tr
 // prettier-ignore
 const TravelPlanProcessList = () => import('@/entities/travel-plan-process/travel-plan-process-list.vue');
 // prettier-ignore
-const TravelPlanProcess_TaskChooseFlightDetails = () => import('@/entities/travel-plan-process/task-choose-flight/task-choose-flight-details.vue');
+const TravelPlanProcess_TaskPaymentDetailsDetails = () => import('@/entities/travel-plan-process/task-payment-details/task-payment-details-details.vue');
 // prettier-ignore
-const TravelPlanProcess_TaskChooseFlightExecute = () => import('@/entities/travel-plan-process/task-choose-flight/task-choose-flight-execute.vue');
+const TravelPlanProcess_TaskPaymentDetailsExecute = () => import('@/entities/travel-plan-process/task-payment-details/task-payment-details-execute.vue');
 // prettier-ignore
 const TravelPlanProcess_TaskChooseCarDetails = () => import('@/entities/travel-plan-process/task-choose-car/task-choose-car-details.vue');
 // prettier-ignore
@@ -77,15 +77,9 @@ const TravelPlanProcess_TaskProceedCheckoutDetails = () => import('@/entities/tr
 // prettier-ignore
 const TravelPlanProcess_TaskProceedCheckoutExecute = () => import('@/entities/travel-plan-process/task-proceed-checkout/task-proceed-checkout-execute.vue');
 // prettier-ignore
-const TravelPlanProcess_TaskPaymentDetailsDetails = () => import('@/entities/travel-plan-process/task-payment-details/task-payment-details-details.vue');
+const TravelPlanProcess_TaskChooseFlightDetails = () => import('@/entities/travel-plan-process/task-choose-flight/task-choose-flight-details.vue');
 // prettier-ignore
-const TravelPlanProcess_TaskPaymentDetailsExecute = () => import('@/entities/travel-plan-process/task-payment-details/task-payment-details-execute.vue');
-// prettier-ignore
-const TravelPlan = () => import('@/entities/travel-plan/travel-plan.vue');
-// prettier-ignore
-const TravelPlanUpdate = () => import('@/entities/travel-plan/travel-plan-update.vue');
-// prettier-ignore
-const TravelPlanDetails = () => import('@/entities/travel-plan/travel-plan-details.vue');
+const TravelPlanProcess_TaskChooseFlightExecute = () => import('@/entities/travel-plan-process/task-choose-flight/task-choose-flight-execute.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -312,15 +306,15 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskChooseFlight/:taskInstanceId/view',
-    name: 'TravelPlanProcess_TaskChooseFlightDetails',
-    component: TravelPlanProcess_TaskChooseFlightDetails,
+    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskPaymentDetails/:taskInstanceId/view',
+    name: 'TravelPlanProcess_TaskPaymentDetailsDetails',
+    component: TravelPlanProcess_TaskPaymentDetailsDetails,
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskChooseFlight/:taskInstanceId/execute',
-    name: 'TravelPlanProcess_TaskChooseFlightExecute',
-    component: TravelPlanProcess_TaskChooseFlightExecute,
+    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskPaymentDetails/:taskInstanceId/execute',
+    name: 'TravelPlanProcess_TaskPaymentDetailsExecute',
+    component: TravelPlanProcess_TaskPaymentDetailsExecute,
     meta: { authorities: [Authority.USER] },
   },
   {
@@ -360,15 +354,15 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskPaymentDetails/:taskInstanceId/view',
-    name: 'TravelPlanProcess_TaskPaymentDetailsDetails',
-    component: TravelPlanProcess_TaskPaymentDetailsDetails,
+    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskChooseFlight/:taskInstanceId/view',
+    name: 'TravelPlanProcess_TaskChooseFlightDetails',
+    component: TravelPlanProcess_TaskChooseFlightDetails,
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskPaymentDetails/:taskInstanceId/execute',
-    name: 'TravelPlanProcess_TaskPaymentDetailsExecute',
-    component: TravelPlanProcess_TaskPaymentDetailsExecute,
+    path: '/process-definition/TravelPlanProcessCOMPLETE/task/taskChooseFlight/:taskInstanceId/execute',
+    name: 'TravelPlanProcess_TaskChooseFlightExecute',
+    component: TravelPlanProcess_TaskChooseFlightExecute,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

@@ -1,5 +1,7 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required } from 'vuelidate/lib/validators';
+
 import HotelRoomService from '@/entities/hotel-room/hotel-room.service';
 import { IHotelRoom } from '@/shared/model/hotel-room.model';
 
@@ -15,6 +17,9 @@ const validations: any = {
         endDate: {},
         hotelStartDate: {},
         hotelDuration: {},
+        hotelRoom: {
+          required,
+        },
       },
     },
   },

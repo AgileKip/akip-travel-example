@@ -1,12 +1,20 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import { required, minLength, maxLength } from 'vuelidate/lib/validators';
+
 import { ICarRentalCompany, CarRentalCompany } from '@/shared/model/car-rental-company.model';
 import CarRentalCompanyService from './car-rental-company.service';
 
 const validations: any = {
   carRentalCompany: {
-    name: {},
-    place: {},
+    name: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(20),
+    },
+    place: {
+      required,
+    },
   },
 };
 
