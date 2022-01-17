@@ -1,6 +1,6 @@
 ## Examples
 
-There are examples on how to use the AgileKip Platform to generate and handle different times of Process Aware Information Systems based on the Travel Plan model.
+These are examples on how to use the AgileKip Platform to generate and handle different types of Process Aware Information Systems based on the Travel Plan model.
 
 | Example                                                                 | Description |
 | ----------------------------------------------------------------------- | ----------- |
