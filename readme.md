@@ -26,8 +26,9 @@ These are examples on how to use the AgileKip Platform to generate and handle di
 | Sending messages programmatically (WIP)                                 | --                                  |
 | Making Decisions with DMN (WIP)                                         | --                                  |
 | Connecting Front and Back for New Features (WIP)                        | --                                  |
-| Putting it all together                                                 | --                                  |
-| Using Transactions (WIP)                                                | [here](/travelTutorialCOMPLETE)     |
+| Putting it all together                                                 | [here](/travelTutorialCOMPLETE)     |
+| Using Transactions (WIP)                                                | --                                  |
+| Using Variables (WIP)                                                   | --                                  |
 
 <p>
 
