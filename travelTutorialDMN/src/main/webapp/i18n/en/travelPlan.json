@@ -1,0 +1,26 @@
+{
+  "travelPlanApp": {
+    "travelPlan": {
+      "home": {
+        "title": "Travel Plans",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Travel Plans found"
+      },
+      "detail": {
+        "title": "Travel Plan"
+      },
+      "id": "ID",
+      "travelName": "Travel Name",
+      "userName": "User Name",
+      "userEmail": "User Email",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "airlineTicketNumber": "Airline Ticket Number",
+      "hotelBookingNumber": "Hotel Booking Number",
+      "carBookingNumber": "Car Booking Number",
+      "airlineCompany": "Airline Company",
+      "hotel": "Hotel",
+      "rentalCarCompany": "Rental Car Company"
+    }
+  }
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.2.0">
+  <bpmn:process id="TravelPlanProcess" name="Travel Plan Process" isExecutable="true">
+    <bpmn:documentation>**Planning a trip can feel like both the most exciting AND the most overwhelming part of travel.**
+Sure, creating a Pinterest board full of gorgeous pictures is fun, but then you start trying to figure out the actual logistics and it hits you … oh god, this is SO MUCH WORK.
+
+But planning a trip doesn’t have to be the source of constant anxiety and overwhelm! Through the years, I’ve perfected my trip planning process, and I’ve got it down to a fine science.
+Er, well, maybe not a science, but sort of like a general step-by-step outline.  
+**Breaking down each of the steps to planning a trip helps me cut through the confusion and tackle stuff in a practical, down to earth way.** 
+
+
+
+So, this travel plan process aids you in this mission and consists of the following tasks:
+
+1. Buy **Flight** Tickets
+1. Book a **Hotel**
+1. Rent a **Car**</bpmn:documentation>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:documentation>Domain fields updated:
+- businessKey
+- originCity
+- destinCity
+- initialDate
+- endDate
+- travelPlan.status = PENDING</bpmn:documentation>
+      <bpmn:outgoing>SequenceFlow_125v9sm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="TaskCar" name="Rent a car">
+      <bpmn:documentation># Renting a car
+
+
+Many folks might pack up their own car for such an adventure. But if you want to save on mileage, or simply secure a vehicle that’s bigger or better than your own, you might consider a rental instead. Here are 10 things to do whenever you rent a car to ensure you get the best deal, earn bonus points or cash back when possible, and are protected if things go wrong.
+
+
+1. Avoid airport locations
+1. Comparison shop
+1. Check the details
+1. Score bonuses and discounts through partnerships
+1. Hit the gas on credit card category bonuses
+1. Ensure you’re insured
+1. Think about roadside assistance</bpmn:documentation>
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0zzu1gn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y4ta08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_1x9cyv3">
+      <bpmn:incoming>Flow_0g6w5kp</bpmn:incoming>
+      <bpmn:incoming>Flow_0d290kr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_125v9sm" sourceRef="StartEvent_1" targetRef="TaskFlight" />
+    <bpmn:userTask id="TaskHotel" name="Book a hotel">
+      <bpmn:documentation># Booking your accommodation
+
+
+There are tricks and tips you can use to find the best room rates so you can enjoy your trip guilt-free.
+
+
+1. Look into business hotels.
+1. Ask for a corner room.
+1. Check in near the end of the day.
+1. Bundle your hotel and flight booking.
+1. Sign up for a hotel's loyalty programs.
+1. Sign up for alerts on price drops.
+1. Use coupon codes.</bpmn:documentation>
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1oys1mq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1l1bpoh</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="TaskFlight" name="Choose flight">
+      <bpmn:documentation># Buying the Flight Tickets
+
+
+Airfare can easily be the largest expense of your trip. Expensive plane tickets mean you need to choose a more affordable destination or spend less money at your vacation stop to stay within your spending limit. If the idea of booking cheap flights sounds appealing to you, these 10 tips will help your air travel become more reasonable.
+
+
+1. Book Early for Cheap Flights
+1. Set Price Alerts
+1. Be Flexible
+1. Book a Connecting Flight
+1. Consider Discount Airlines
+1. Use More Than One Travel Portal
+1. Browse Airline Specials
+1. Use an Airline Credit Card to Avoid Baggage Fees
+1. Use Award Miles
+1. Use Your Credit Card Travel Credits</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_125v9sm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oys1mq</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0g6w5kp" sourceRef="Activity_Email_Summary_TravelPlan" targetRef="EndEvent_1x9cyv3" />
+    <bpmn:sendTask id="Activity_Email_Summary_TravelPlan" name="Email summary to client" camunda:delegateExpression="${emailTravelPlanSummaryDelegate}">
+      <bpmn:incoming>Flow_1y4ta08</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g6w5kp</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:businessRuleTask id="Activity_0h260ug" name="Calculate Day" camunda:resultVariable="result" camunda:decisionRef="calculate_day" camunda:mapDecisionResult="singleEntry">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1l1bpoh</bpmn:incoming>
+      <bpmn:outgoing>Flow_16qck2k</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_0xwfpx9">
+      <bpmn:incoming>Flow_16qck2k</bpmn:incoming>
+      <bpmn:outgoing>Flow_0d290kr</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0zzu1gn</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0d290kr" sourceRef="Gateway_0xwfpx9" targetRef="EndEvent_1x9cyv3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${result == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0zzu1gn" sourceRef="Gateway_0xwfpx9" targetRef="TaskCar">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${result == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1y4ta08" sourceRef="TaskCar" targetRef="Activity_Email_Summary_TravelPlan" />
+    <bpmn:sequenceFlow id="Flow_1oys1mq" sourceRef="TaskFlight" targetRef="TaskHotel" />
+    <bpmn:sequenceFlow id="Flow_1l1bpoh" sourceRef="TaskHotel" targetRef="Activity_0h260ug" />
+    <bpmn:sequenceFlow id="Flow_16qck2k" sourceRef="Activity_0h260ug" targetRef="Gateway_0xwfpx9" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelPlanProcess">
+      <bpmndi:BPMNEdge id="Flow_1y4ta08_di" bpmnElement="Flow_1y4ta08">
+        <di:waypoint x="870" y="119" />
+        <di:waypoint x="960" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zzu1gn_di" bpmnElement="Flow_0zzu1gn">
+        <di:waypoint x="705" y="119" />
+        <di:waypoint x="770" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d290kr_di" bpmnElement="Flow_0d290kr">
+        <di:waypoint x="680" y="144" />
+        <di:waypoint x="680" y="370" />
+        <di:waypoint x="1140" y="370" />
+        <di:waypoint x="1140" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g6w5kp_di" bpmnElement="Flow_0g6w5kp">
+        <di:waypoint x="1060" y="119" />
+        <di:waypoint x="1122" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_125v9sm_di" bpmnElement="SequenceFlow_125v9sm">
+        <di:waypoint x="188" y="119" />
+        <di:waypoint x="240" y="119" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="134" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oys1mq_di" bpmnElement="Flow_1oys1mq">
+        <di:waypoint x="340" y="119" />
+        <di:waypoint x="390" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l1bpoh_di" bpmnElement="Flow_1l1bpoh">
+        <di:waypoint x="490" y="119" />
+        <di:waypoint x="530" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16qck2k_di" bpmnElement="Flow_16qck2k">
+        <di:waypoint x="630" y="119" />
+        <di:waypoint x="655" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_09smfnk_di" bpmnElement="TaskCar">
+        <dc:Bounds x="770" y="79" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1x9cyv3_di" bpmnElement="EndEvent_1x9cyv3">
+        <dc:Bounds x="1122" y="101" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="882" y="167" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17wjryx_di" bpmnElement="Activity_Email_Summary_TravelPlan">
+        <dc:Bounds x="960" y="79" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0xwfpx9_di" bpmnElement="Gateway_0xwfpx9" isMarkerVisible="true">
+        <dc:Bounds x="655" y="94" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="101" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="96" y="167" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qv27z0_di" bpmnElement="TaskFlight">
+        <dc:Bounds x="240" y="79" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
+        <dc:Bounds x="390" y="79" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qoviam_di" bpmnElement="Activity_0h260ug">
+        <dc:Bounds x="530" y="79" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_1hxmcq9" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.2.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <decision id="calculate_day" name="Calculate Day">
+    <decisionTable id="DecisionTable_0rlb4ct" hitPolicy="FIRST">
+      <input id="Input_1" label="Duração da viagem" biodi:width="477" camunda:inputVariable="dias">
+        <inputExpression id="InputExpression_1" typeRef="integer" expressionLanguage="feel">
+          <text>(date(processInstance.travelPlan.endDate) - date(processInstance.travelPlan.startDate)).days</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Resultado" name="result" typeRef="boolean" biodi:width="150" />
+      <rule id="DecisionRule_1lxqg6m">
+        <inputEntry id="UnaryTests_1cxp0yx">
+          <text>&gt;= 5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hnfbgd">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1npj6j2">
+        <inputEntry id="UnaryTests_1cg1k1k">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_027ohxq">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="calculate_day">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
