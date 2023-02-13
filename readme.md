@@ -3,7 +3,7 @@
 These are examples on how to use the AgileKip Platform to generate and handle different types of Process Aware Information Systems based on the Travel Plan model.
 
 | Example                                                                 | Description                         |
-| ----------------------------------------------------------------------- | ----------------------------------- |
+|-------------------------------------------------------------------------|-------------------------------------|
 | Simple Travel Plan                                                      | [here](/travelTutorialSIMPLE)       |
 | Handling XOR Gateway                                                    | [here](/travelTutorialXOR)          |
 | Handling AND Gateway                                                    | [here](/travelTutorialAND)          |
@@ -24,7 +24,7 @@ These are examples on how to use the AgileKip Platform to generate and handle di
 | Adding Validations to Forms Programmatically (WIP)                      | --                                  |
 | Canceling Processes Nicely **(FAILING - JOB EXECUTOR IS NOT STARTING)** | [here](/travelTutorialTIMER2CANCEL) |
 | Sending messages programmatically (WIP)                                 | --                                  |
-| Making Decisions with DMN (WIP)                                         | --                                  |
+| Making Decisions with DMN                                               | [here](/travelTutorialDMN)   |
 | Connecting Front and Back for New Features (WIP)                        | --                                  |
 | Putting it all together                                                 | [here](/travelTutorialCOMPLETE)     |
 | Using Transactions (WIP)                                                | --                                  |
