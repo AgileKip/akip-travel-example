@@ -68,6 +68,10 @@
             <font-awesome-icon icon="asterisk" />
             <span v-text="$t('global.menu.entities.processDefinition')">Process Definitions</span>
           </b-dropdown-item>
+          <b-dropdown-item to="/process-definition-dmn">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.processDefinitionDMN')">Process Definitions DMN</span>
+          </b-dropdown-item>
           <b-dropdown-item to="/process-instances">
             <font-awesome-icon icon="asterisk" />
             <span v-text="$t('global.menu.entities.processInstance')">Process Instances</span>
