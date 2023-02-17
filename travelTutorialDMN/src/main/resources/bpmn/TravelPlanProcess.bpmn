@@ -45,7 +45,6 @@ Many folks might pack up their own car for such an adventure. But if you want to
     </bpmn:userTask>
     <bpmn:endEvent id="EndEvent_1x9cyv3">
       <bpmn:incoming>Flow_0g6w5kp</bpmn:incoming>
-      <bpmn:incoming>Flow_0d290kr</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_125v9sm" sourceRef="StartEvent_1" targetRef="TaskFlight" />
     <bpmn:userTask id="TaskHotel" name="Book a hotel">
@@ -86,9 +85,9 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
       <bpmn:incoming>SequenceFlow_125v9sm</bpmn:incoming>
       <bpmn:outgoing>Flow_1oys1mq</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="Flow_0g6w5kp" sourceRef="Activity_Email_Summary_TravelPlan" targetRef="EndEvent_1x9cyv3" />
     <bpmn:sendTask id="Activity_Email_Summary_TravelPlan" name="Email summary to client" camunda:delegateExpression="${emailTravelPlanSummaryDelegate}">
       <bpmn:incoming>Flow_1y4ta08</bpmn:incoming>
+      <bpmn:incoming>Flow_0d290kr</bpmn:incoming>
       <bpmn:outgoing>Flow_0g6w5kp</bpmn:outgoing>
     </bpmn:sendTask>
     <bpmn:businessRuleTask id="Activity_0h260ug" name="Calculate Day" camunda:resultVariable="result" camunda:decisionRef="calculate_day" camunda:mapDecisionResult="singleEntry">
@@ -101,7 +100,7 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
       <bpmn:outgoing>Flow_0d290kr</bpmn:outgoing>
       <bpmn:outgoing>Flow_0zzu1gn</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0d290kr" sourceRef="Gateway_0xwfpx9" targetRef="EndEvent_1x9cyv3">
+    <bpmn:sequenceFlow id="Flow_0d290kr" sourceRef="Gateway_0xwfpx9" targetRef="Activity_Email_Summary_TravelPlan">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${result == false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0zzu1gn" sourceRef="Gateway_0xwfpx9" targetRef="TaskCar">
@@ -111,9 +110,22 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
     <bpmn:sequenceFlow id="Flow_1oys1mq" sourceRef="TaskFlight" targetRef="TaskHotel" />
     <bpmn:sequenceFlow id="Flow_1l1bpoh" sourceRef="TaskHotel" targetRef="Activity_0h260ug" />
     <bpmn:sequenceFlow id="Flow_16qck2k" sourceRef="Activity_0h260ug" targetRef="Gateway_0xwfpx9" />
+    <bpmn:sequenceFlow id="Flow_0g6w5kp" sourceRef="Activity_Email_Summary_TravelPlan" targetRef="EndEvent_1x9cyv3" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelPlanProcess">
+      <bpmndi:BPMNEdge id="Flow_16qck2k_di" bpmnElement="Flow_16qck2k">
+        <di:waypoint x="630" y="119" />
+        <di:waypoint x="655" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l1bpoh_di" bpmnElement="Flow_1l1bpoh">
+        <di:waypoint x="490" y="119" />
+        <di:waypoint x="530" y="119" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oys1mq_di" bpmnElement="Flow_1oys1mq">
+        <di:waypoint x="340" y="119" />
+        <di:waypoint x="390" y="119" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1y4ta08_di" bpmnElement="Flow_1y4ta08">
         <di:waypoint x="870" y="119" />
         <di:waypoint x="960" y="119" />
@@ -124,9 +136,9 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0d290kr_di" bpmnElement="Flow_0d290kr">
         <di:waypoint x="680" y="144" />
-        <di:waypoint x="680" y="370" />
-        <di:waypoint x="1140" y="370" />
-        <di:waypoint x="1140" y="137" />
+        <di:waypoint x="680" y="270" />
+        <di:waypoint x="1010" y="270" />
+        <di:waypoint x="1010" y="159" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0g6w5kp_di" bpmnElement="Flow_0g6w5kp">
         <di:waypoint x="1060" y="119" />
@@ -139,18 +151,12 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
           <dc:Bounds x="162" y="134" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1oys1mq_di" bpmnElement="Flow_1oys1mq">
-        <di:waypoint x="340" y="119" />
-        <di:waypoint x="390" y="119" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1l1bpoh_di" bpmnElement="Flow_1l1bpoh">
-        <di:waypoint x="490" y="119" />
-        <di:waypoint x="530" y="119" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_16qck2k_di" bpmnElement="Flow_16qck2k">
-        <di:waypoint x="630" y="119" />
-        <di:waypoint x="655" y="119" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="101" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="96" y="167" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_09smfnk_di" bpmnElement="TaskCar">
         <dc:Bounds x="770" y="79" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -160,29 +166,23 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
           <dc:Bounds x="882" y="167" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_17wjryx_di" bpmnElement="Activity_Email_Summary_TravelPlan">
-        <dc:Bounds x="960" y="79" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0xwfpx9_di" bpmnElement="Gateway_0xwfpx9" isMarkerVisible="true">
-        <dc:Bounds x="655" y="94" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="152" y="101" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="96" y="167" width="0" height="0" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
+        <dc:Bounds x="390" y="79" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1qv27z0_di" bpmnElement="TaskFlight">
         <dc:Bounds x="240" y="79" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
-        <dc:Bounds x="390" y="79" width="100" height="80" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNShape id="Activity_17wjryx_di" bpmnElement="Activity_Email_Summary_TravelPlan">
+        <dc:Bounds x="960" y="79" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0qoviam_di" bpmnElement="Activity_0h260ug">
         <dc:Bounds x="530" y="79" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0xwfpx9_di" bpmnElement="Gateway_0xwfpx9" isMarkerVisible="true">
+        <dc:Bounds x="655" y="94" width="50" height="50" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

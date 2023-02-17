@@ -2,7 +2,7 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_1hxmcq9" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.2.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
   <decision id="calculate_day" name="Calculate Day">
     <decisionTable id="DecisionTable_0rlb4ct" hitPolicy="FIRST">
-      <input id="Input_1" label="Duração da viagem" biodi:width="477" camunda:inputVariable="dias">
+      <input id="Input_1" label="Duração da viagem em dias" biodi:width="477" camunda:inputVariable="daysDuration">
         <inputExpression id="InputExpression_1" typeRef="integer" expressionLanguage="feel">
           <text>(date(processInstance.travelPlan.endDate) - date(processInstance.travelPlan.startDate)).days</text>
         </inputExpression>
