@@ -31,5 +31,7 @@
     <include file="config/liquibase/changelog/20210401000005_added_entity_constraints_TaskCar.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210401000002_added_entity_constraints_TravelPlanProcess.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <include file="config/liquibase/changelog/20230222000001_added_entity_DecisionDefinitionEntity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230222000002_added_entity_DecisionDeploymentEntity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
