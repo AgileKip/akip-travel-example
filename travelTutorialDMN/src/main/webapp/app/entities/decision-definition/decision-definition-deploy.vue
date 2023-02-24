@@ -15,6 +15,7 @@
                   v-on:click="openFile(decisionDeployment.specificationFileContentType, decisionDeployment.specificationFile)"
                   v-text="$t('entity.action.open')"
                   >open</a
+                >
                 ><br />
                 <span class="pull-left"
                   >{{ decisionDeployment.specificationFileContentType }}, {{ byteSize(decisionDeployment.specificationFile) }}</span
@@ -61,7 +62,7 @@
           </div>
 
           <div class="col-sm">
-            <label v-text="$t('decisionDefinitionDmn.deploy.tenant')">Tenant</label>
+            <label v-text="$t('decisionDefinition.deploy.tenant')">Tenant</label>
             <select class="form-control" name="tenant" v-model="decisionDeployment.tenant">
               <option :value="null"></option>
               <option v-for="tenant in tenants" :key="tenant.id" :value="tenant">
