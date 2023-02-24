@@ -9,7 +9,7 @@ import NotifyMixin from '@/shared/notify/notify.mixin';
 
 @Component
 export default class DecisionDeploymentDetails extends mixins(NotifyMixin) {
-  @Inject('decisionDeploymentService') private decisionDeploymentService: () => DecisionDeploymentService;
+  private decisionDeploymentService: DecisionDeploymentService = new DecisionDeploymentService();
 
   public decisionDeployment: IDecisionDeployment = {};
 
@@ -31,17 +31,15 @@ export default class DecisionDeploymentDetails extends mixins(NotifyMixin) {
 
   public retrieveDecisionDeployment(id) {
     this.isFetching = true;
-    this.decisionDeploymentService()
-      .find(id)
-      .then(
-        res => {
-          this.decisionDeployment = res;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-        }
-      );
+    this.decisionDeploymentService.find(id).then(
+      res => {
+        this.decisionDeployment = res;
+        this.isFetching = false;
+      },
+      err => {
+        this.isFetching = false;
+      }
+    );
   }
 
   public previousState() {

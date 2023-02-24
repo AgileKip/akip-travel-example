@@ -54,7 +54,7 @@
                 </router-link>
 
                 <router-link
-                  :to="{ name: 'Dashboard', params: { decisionDefinitionId: decisionDefinition.dmnDecisionDefinitionId } }"
+                  :to="{ name: 'DecisionDefinitionView', params: { decisionDefinitionId: decisionDefinition.dmnDecisionDefinitionId } }"
                   class="btn btn-info btn-sm details"
                   data-cy="entityDetailsButton"
                 >

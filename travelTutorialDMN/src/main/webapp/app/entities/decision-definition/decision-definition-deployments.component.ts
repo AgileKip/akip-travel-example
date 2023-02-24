@@ -5,10 +5,11 @@ import { IDecisionDeployment } from '@/shared/model/decision-deployment.model';
 
 import DecisionDefinitionService from '@/entities/decision-definition/decision-definition.service';
 import { StatusDecisionDeployment } from '@/shared/model/enumerations/status-decision-deployment.model';
+import DecisionDeploymentService from '@/entities/decision-deployment/decision-deployment.service';
 
 @Component
 export default class DecisionDefinitionDeployments extends Vue {
-  @Inject('decisionDefinitionService') private decisionDefinitionService: () => DecisionDefinitionService;
+  private decisionDefinitionService: DecisionDefinitionService = new DecisionDefinitionService();
 
   public decisionDefinitionId: any = 0;
   public decisionDefinition: IDecisionDefinition = {};
@@ -39,32 +40,28 @@ export default class DecisionDefinitionDeployments extends Vue {
 
   public retrieveDecisionDefinition() {
     this.isFetchingDecisionDefinition = true;
-    this.decisionDefinitionService()
-      .find(this.decisionDefinitionId)
-      .then(
-        res => {
-          this.decisionDefinition = res;
-          this.isFetchingDecisionDefinition = false;
-        },
-        err => {
-          this.isFetchingDecisionDefinition = false;
-        }
-      );
+    this.decisionDefinitionService.find(this.decisionDefinitionId).then(
+      res => {
+        this.decisionDefinition = res;
+        this.isFetchingDecisionDefinition = false;
+      },
+      err => {
+        this.isFetchingDecisionDefinition = false;
+      }
+    );
   }
 
   public retrieveDecisionDeployments(): void {
     this.isFetchingDecisionDeployments = true;
-    this.decisionDefinitionService()
-      .findDecisionDeployments(this.decisionDefinitionId)
-      .then(
-        res => {
-          this.decisionDeployments = res;
-          this.isFetchingDecisionDeployments = false;
-        },
-        err => {
-          this.isFetchingDecisionDeployments = false;
-        }
-      );
+    this.decisionDefinitionService.findDecisionDeployments(this.decisionDefinitionId).then(
+      res => {
+        this.decisionDeployments = res;
+        this.isFetchingDecisionDeployments = false;
+      },
+      err => {
+        this.isFetchingDecisionDeployments = false;
+      }
+    );
   }
 
   get isFetching(): boolean {

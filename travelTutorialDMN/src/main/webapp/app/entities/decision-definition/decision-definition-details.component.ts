@@ -8,7 +8,8 @@ import DecisionDefinitionService from './decision-definition.service';
 
 @Component
 export default class DecisionDefinitionDetails extends mixins(JhiDataUtils) {
-  @Inject('decisonDefinitionService') private decisionDefinitionService: () => DecisionDefinitionService;
+  private decisionDefinitionService: DecisionDefinitionService = new DecisionDefinitionService();
+
   public decisionDefinition: IDecisionDefinition = {};
 
   beforeRouteEnter(to, from, next) {
@@ -20,11 +21,9 @@ export default class DecisionDefinitionDetails extends mixins(JhiDataUtils) {
   }
 
   public retrieveDecisionDefinition(decisionDefinitionId) {
-    this.decisionDefinitionService()
-      .find(decisionDefinitionId)
-      .then(res => {
-        this.decisionDefinition = res;
-      });
+    this.decisionDefinitionService.find(decisionDefinitionId).then(res => {
+      this.decisionDefinition = res;
+    });
   }
 
   public previousState() {

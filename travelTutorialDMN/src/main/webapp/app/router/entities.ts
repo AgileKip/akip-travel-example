@@ -44,8 +44,6 @@ const RentalCarCompanyUpdate = () => import('@/entities/rental-car-company/renta
 // prettier-ignore
 const RentalCarCompanyDetails = () => import('@/entities/rental-car-company/rental-car-company-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
-const DecisionDefinition = () => import('@/entities/decision-definition/decision-definition.vue');
-const DecisionDefinitionDeploy = () => import('@/entities/decision-definition/decision-definition-deploy.vue');
 
 export default [
   {
@@ -185,18 +183,6 @@ export default [
     path: '/rental-car-company/:rentalCarCompanyId/view',
     name: 'RentalCarCompanyView',
     component: RentalCarCompanyDetails,
-    meta: { authorities: [Authority.USER] },
-  },
-  {
-    path: '/decision-definition',
-    name: 'DecisionDefinition',
-    component: DecisionDefinition,
-    meta: { authorities: [Authority.USER] },
-  },
-  {
-    path: '/decision-definition-deploy',
-    name: 'DecisionDefinitionDeploy',
-    component: DecisionDefinitionDeploy,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

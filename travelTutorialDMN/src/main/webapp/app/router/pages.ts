@@ -2,6 +2,13 @@ import { Authority } from '@/shared/security/authority';
 /* tslint:disable */
 // prettier-ignore
 
+const DecisionDefinition = () => import('@/entities/decision-definition/decision-definition.vue');
+// prettier-ignore
+const DecisionDefinitionDeploy = () => import('@/entities/decision-definition/decision-definition-deploy.vue');
+// prettier-ignore
+const DecisionDefinitionDeployments = () => import('@/entities/decision-definition/decision-definition-deployments.vue');
+// prettier-ignore
+const DecisionDefinitionDetails = () => import('@/entities/decision-definition/decision-definition-details.vue');
 // prettier-ignore
 const ProcessDefinition = () => import('@/entities/process-definition/process-definition.vue');
 // prettier-ignore
@@ -107,6 +114,30 @@ export default [
     path: '/process-definition/:processDefinitionId/task/:taskDefinitionKey/:taskInstanceId/execute',
     name: 'TaskInstanceExecute',
     component: TaskInstanceExecute,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/decision-definition',
+    name: 'DecisionDefinition',
+    component: DecisionDefinition,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/decision-definition-deploy',
+    name: 'DecisionDefinitionDeploy',
+    component: DecisionDefinitionDeploy,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/decision-definition/:decisionDefinitionId/deployments',
+    name: 'DecisionDefinitionDeployments',
+    component: DecisionDefinitionDeployments,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/decision-definition/:decisionDefinitionId/view',
+    name: 'DecisionDefinitionView',
+    component: DecisionDefinitionDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
