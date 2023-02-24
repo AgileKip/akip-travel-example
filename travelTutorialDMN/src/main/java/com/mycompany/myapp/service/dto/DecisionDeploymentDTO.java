@@ -1,7 +1,6 @@
 package com.mycompany.myapp.service.dto;
 
 import com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -30,8 +29,6 @@ public class DecisionDeploymentDTO implements Serializable {
     private LocalDateTime activationDate;
 
     private LocalDateTime inactivationDate;
-
-    private Map<String, String> props;
 
     private DecisionDefinitionDTO decisionDefinition;
 
@@ -117,14 +114,6 @@ public class DecisionDeploymentDTO implements Serializable {
         this.inactivationDate = inactivationDate;
     }
 
-    public Map<String, String> getProps() {
-        return props;
-    }
-
-    public void setProps(Map<String, String> props) {
-        this.props = props;
-    }
-
     public DecisionDefinitionDTO getDecisionDefinition() {
         return decisionDefinition;
     }
@@ -161,5 +150,4 @@ public class DecisionDeploymentDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(this.id);
     }
-
 }

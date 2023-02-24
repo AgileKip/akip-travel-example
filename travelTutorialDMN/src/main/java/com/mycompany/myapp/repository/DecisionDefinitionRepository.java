@@ -1,9 +1,7 @@
 package com.mycompany.myapp.repository;
 
-
-import java.util.Optional;
-
 import com.mycompany.myapp.domain.DecisionDefinition;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 

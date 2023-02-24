@@ -24,8 +24,8 @@
     <include file="config/liquibase/changelog/20211109000001_added_entity_AirlineCompany.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20211109000002_added_entity_Hotel.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20211109000003_added_entity_RentalCarCompany.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20230222000001_added_entity_DecisionDefinitionEntity.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20230222000002_added_entity_DecisionDeploymentEntity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230222000001_added_entity_DecisionDefinition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230222000002_added_entity_DecisionDeployment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20210401000001_added_entity_constraints_TravelPlan.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210401000003_added_entity_constraints_TaskHotel.xml" relativeToChangelogFile="false"/>

@@ -3,21 +3,21 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.service.DecisionDeploymentService;
 import com.mycompany.myapp.service.dto.DecisionDeploymentDTO;
 import com.mycompany.myapp.service.dto.DecisionDeploymentDmnModelDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import tech.jhipster.web.util.HeaderUtil;
-import tech.jhipster.web.util.ResponseUtil;
 import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing {@link com.mycompany.myapp.domain.DecisionDeployment}.
@@ -70,12 +70,12 @@ public class DecisionDeploymentResource {
     }
 
     /**
-     * {@code GET  /process-definition-deployment/:id} : get the processDeployment.
+     * {@code GET  /decision-definition-deployment/:id} : get the decisionDeployment.
      *
-     * @param id the id of the processDeployment to retrieve.
+     * @param id the id of the decisionDeployment to retrieve.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @GetMapping("/process-deployment/{id}/bpmnModel")
+    @GetMapping("/decision-deployment/{id}/dmnModel")
     public ResponseEntity<DecisionDeploymentDmnModelDTO> getDecisionDeploymentDmnModel(@PathVariable Long id) {
         log.debug("REST request to get ProcessDeployment : {}", id);
         Optional<DecisionDeploymentDmnModelDTO> result = decisionDeploymentService.findDmnModel(id);

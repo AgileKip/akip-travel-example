@@ -1,11 +1,10 @@
 package com.mycompany.myapp.repository;
 
+import com.mycompany.myapp.domain.DecisionDeployment;
+import com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
-import com.mycompany.myapp.domain.DecisionDeployment;
-import com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -21,7 +20,7 @@ public interface DecisionDeploymentRepository extends JpaRepository<DecisionDepl
 
     Optional<DecisionDeployment> findByCamundaDecisionDefinitionId(String camundaDecisionDefinitionId);
 
-    List<DecisionDeployment> findByDecisionDefinitionIdAndStatusAndTenantIsNull(Long decisionDefinitionId, StatusDecisionDeployment status);
+    List<DecisionDeployment> findByDecisionDefinitionIdAndStatusAndTenantIsNull(Long processDefinitionId, StatusDecisionDeployment status);
 
     List<DecisionDeployment> findByDecisionDefinitionIdAndStatusAndTenantId(
         Long decisionDefinitionId,
@@ -46,9 +45,9 @@ public interface DecisionDeploymentRepository extends JpaRepository<DecisionDepl
     void updatePropertiesById(String propertiesAsString, Long id);
 
     @Query(
-        "from DecisionDeployment where decisionDefinition.id = ?1 and Tenant is null and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
+        "from DecisionDeployment where decisionDefinition.id = ?1 and tenant is null and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
     )
-    Optional<DecisionDeployment> findByDecisionDefinitionIdAndStatusIsActiveAndTenantIsNull(Long decisionDefinitionId);
+    List<DecisionDeployment> findByDecisionDefinitionIdAndStatusIsActiveAndTenantIsNull(Long decisionDefinitionId);
 
     @Query(
         "from DecisionDeployment where decisionDefinition.id = ?1 and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
@@ -56,12 +55,12 @@ public interface DecisionDeploymentRepository extends JpaRepository<DecisionDepl
     List<DecisionDeployment> findByDecisionDefinitionIdAndStatusIsActive(Long decisionDefinitionId);
 
     @Query(
-        "from DecisionDeployment where decisionDefinition.id = ?1 and Tenant is not null and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
+        "from DecisionDeployment where decisionDefinition.id = ?1 and tenant is not null and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
     )
     List<DecisionDeployment> findByDecisionDefinitionIdAndStatusIsActiveAndTenantIsNotNull(Long decisionDefinitionId);
 
     @Query(
-        "from DecisionDeployment where decisionDefinition.id = ?1 and Tenant.id = ?2 and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
+        "from DecisionDeployment where decisionDefinition.id = ?1 and tenant.id = ?2 and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
     )
     Optional<DecisionDeployment> findByDecisionDefinitionIdAndStatusIsActiveAndTenantId(Long decisionDefinitionId, Long tenantId);
 }

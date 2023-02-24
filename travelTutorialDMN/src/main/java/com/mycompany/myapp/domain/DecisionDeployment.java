@@ -1,12 +1,12 @@
 package com.mycompany.myapp.domain;
 
 import com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.Cache;
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import javax.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "decision_deployment")
@@ -50,11 +50,6 @@ public class DecisionDeployment implements Serializable {
 
     @Column(name = "inactivation_date")
     private LocalDateTime inactivationDate;
-
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "props")
-    private String props;
 
     @ManyToOne
     private DecisionDefinition decisionDefinition;
@@ -142,14 +137,6 @@ public class DecisionDeployment implements Serializable {
         this.inactivationDate = inactivationDate;
     }
 
-    public String getProps() {
-        return props;
-    }
-
-    public void setProps(String props) {
-        this.props = props;
-    }
-
     public DecisionDefinition getDecisionDefinition() {
         return decisionDefinition;
     }
@@ -183,4 +170,3 @@ public class DecisionDeployment implements Serializable {
         return getClass().hashCode();
     }
 }
-

@@ -7,7 +7,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity ProcessDeployment.
+        Added the entity DecisionDeployment.
     -->
     <changeSet id="20230222000002-1" author="cassiojr" context="dev or prod">
         <createTable tableName="decision_deployment">
@@ -35,8 +35,27 @@
             <column name="decision_definition_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="tenant_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="deploy_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="activation_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="inactivation_date" type="${datetimeType}">
+            <constraints nullable="true" />
+            </column>
         </createTable>
     </changeSet>
 
+    <changeSet id="20230224000002-2" author="cassiojr">
+        <addForeignKeyConstraint baseColumnNames="decision_definition_id"
+                                 baseTableName="decision_deployment"
+                                 constraintName="fk_dec_depl_dec_def_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="decision_definition"/>
+    </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 </databaseChangeLog>
