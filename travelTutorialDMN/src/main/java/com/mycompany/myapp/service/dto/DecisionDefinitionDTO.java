@@ -14,18 +14,6 @@ public class DecisionDefinitionDTO implements Serializable {
 
     private String name;
 
-    private String description;
-
-    private byte[] specificationFile;
-
-    private String specificationFileContentType;
-
-    private String camundaDeploymentMessage;
-
-    private String camundaDeploymentId;
-
-    private String camundaDecisionDefinitionId;
-
     private String dmnDecisionDefinitionId;
 
     public Long getId() {
@@ -42,54 +30,6 @@ public class DecisionDefinitionDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public byte[] getSpecificationFile() {
-        return specificationFile;
-    }
-
-    public void setSpecificationFile(byte[] specificationFile) {
-        this.specificationFile = specificationFile;
-    }
-
-    public String getSpecificationFileContentType() {
-        return specificationFileContentType;
-    }
-
-    public void setSpecificationFileContentType(String specificationFileContentType) {
-        this.specificationFileContentType = specificationFileContentType;
-    }
-
-    public String getCamundaDeploymentMessage() {
-        return camundaDeploymentMessage;
-    }
-
-    public void setCamundaDeploymentMessage(String camundaDeploymentMessage) {
-        this.camundaDeploymentMessage = camundaDeploymentMessage;
-    }
-
-    public String getCamundaDeploymentId() {
-        return camundaDeploymentId;
-    }
-
-    public void setCamundaDeploymentId(String camundaDeploymentId) {
-        this.camundaDeploymentId = camundaDeploymentId;
-    }
-
-    public String getCamundaDecisionDefinitionId() {
-        return camundaDecisionDefinitionId;
-    }
-
-    public void setCamundaDecisionDefinitionId(String camundaDecisionDefinitionId) {
-        this.camundaDecisionDefinitionId = camundaDecisionDefinitionId;
     }
 
     public String getDmnDecisionDefinitionId() {

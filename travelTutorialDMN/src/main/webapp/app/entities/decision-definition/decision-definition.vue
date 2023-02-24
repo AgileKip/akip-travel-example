@@ -61,17 +61,6 @@
                   <font-awesome-icon icon="eye"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                 </router-link>
-
-                <b-button
-                  v-on:click="prepareRemove(decisionDefinition)"
-                  variant="danger"
-                  class="btn btn-sm"
-                  data-cy="entityDeleteButton"
-                  v-b-modal.removeEntity
-                >
-                  <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
-                </b-button>
               </div>
             </td>
           </tr>

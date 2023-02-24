@@ -23,28 +23,7 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="specification_file" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="specification_file_c_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="camunda_deployment_id" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="camunda_decision_definition_id" type="varchar(255)">
-                <constraints nullable="true"/>
-            </column>
             <column name="dmn_decision_definition_id" type="varchar(255)">
-                <constraints nullable="true"/>
-            </column>
-            <column name="camunda_deployment_message" type="${clobType}">
-                <constraints nullable="true" />
-            </column>
-            <column name="description" type="varchar(255)">
-                <constraints nullable="true"/>
-            </column>
-            <column name="require_a_tenant" type="boolean">
                 <constraints nullable="true"/>
             </column>
         </createTable>
