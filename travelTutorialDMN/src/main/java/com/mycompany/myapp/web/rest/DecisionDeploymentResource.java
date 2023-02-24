@@ -9,8 +9,6 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,12 +41,12 @@ public class DecisionDeploymentResource {
      * {@code POST  /decision-definitions} : Create a new Definition.
      *
      * @param decisionDeploymentDTO the decisionDeploymentDTO to deploy.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new decisionDeploymentDTO, or with status {@code 400 (Bad Request)} if the processDeploymentDTO has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new decisionDeploymentDTO, or with status {@code 400 (Bad Request)} if the decisionDeploymentDTO has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/admin/process-deployment/deploy")
     public ResponseEntity<Void> deploy(@RequestBody DecisionDeploymentDTO decisionDeploymentDTO) throws URISyntaxException {
-        log.debug("REST request to deploy ProcessDeployment : {}", decisionDeploymentDTO);
+        log.debug("REST request to deploy DecisionDeployment : {}", decisionDeploymentDTO);
         DecisionDeploymentDTO result = decisionDeploymentService.deploy(decisionDeploymentDTO);
         return ResponseEntity
             .noContent()
@@ -64,7 +62,7 @@ public class DecisionDeploymentResource {
      */
     @GetMapping("/decision-deployment/{id}")
     public ResponseEntity<DecisionDeploymentDTO> getProcessDeployment(@PathVariable Long id) {
-        log.debug("REST request to get ProcessDeployment : {}", id);
+        log.debug("REST request to get DecisionDeployment : {}", id);
         Optional<DecisionDeploymentDTO> result = decisionDeploymentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(result);
     }
@@ -77,15 +75,15 @@ public class DecisionDeploymentResource {
      */
     @GetMapping("/decision-deployment/{id}/dmnModel")
     public ResponseEntity<DecisionDeploymentDmnModelDTO> getDecisionDeploymentDmnModel(@PathVariable Long id) {
-        log.debug("REST request to get ProcessDeployment : {}", id);
+        log.debug("REST request to get DecisionDeployment : {}", id);
         Optional<DecisionDeploymentDmnModelDTO> result = decisionDeploymentService.findDmnModel(id);
         return ResponseUtil.wrapOrNotFound(result);
     }
 
     /**
-     * {@code GET  /process-definition-deployment/:id/active} : active the "id" processDeployment.
+     * {@code GET  /decision-definition-deployment/:id/active} : active the "id" decisionDeployment.
      *
-     * @param id the id of the processDeployment to inactive.
+     * @param id the id of the decisionDeployment to inactive.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @GetMapping("/decision-deployment/{id}/active")
@@ -116,7 +114,7 @@ public class DecisionDeploymentResource {
 
     @PutMapping("/admin/decision-deployment/{id}/properties")
     public ResponseEntity<Void> saveProperties(@PathVariable Long id, @RequestBody Map<String, String> properties) {
-        log.debug("REST request to save ProcessDeployment properties: {}", id);
+        log.debug("REST request to save DecisionDeployment properties: {}", id);
         decisionDeploymentService.saveProperties(id, properties);
         return ResponseEntity
             .noContent()

@@ -40,10 +40,6 @@ public interface DecisionDeploymentRepository extends JpaRepository<DecisionDepl
     @Query("update DecisionDeployment set inactivationDate = ?1 where id = ?2")
     void updateInactivationDateById(LocalDateTime localDateTime, Long id);
 
-    @Modifying
-    @Query("update DecisionDeployment set props = ?1 where id = ?2")
-    void updatePropertiesById(String propertiesAsString, Long id);
-
     @Query(
         "from DecisionDeployment where decisionDefinition.id = ?1 and tenant is null and status = com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment.ACTIVE"
     )
