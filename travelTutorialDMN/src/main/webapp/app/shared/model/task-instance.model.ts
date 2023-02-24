@@ -1,5 +1,5 @@
-import { IProcessDefinitionDMN } from '@/shared/model/process-definition-dmn.model';
-import { IProcessInstanceDMN } from '@/shared/model/process-instance-dmn.model';
+import { IDecisionDefinition } from '@/shared/model/decision-definition.model';
+import { IProcessInstanceDMN } from '@/shared/model/decision-instance.model';
 
 import { StatusTaskInstance } from '@/shared/model/enumerations/status-task-instance.model';
 import { TypeTaskInstance } from '@/shared/model/enumerations/type-task-instance.model';
@@ -23,7 +23,7 @@ export interface ITaskInstance {
   candidateGroups?: string[] | null;
   suspended?: boolean | null;
   priority?: number | null;
-  processDefinition?: IProcessDefinitionDMN | null;
+  processDefinition?: IDecisionDefinition | null;
   processInstance?: IProcessInstanceDMN | null;
 }
 
@@ -47,7 +47,7 @@ export class TaskInstance implements ITaskInstance {
     public candidateGroups?: string[] | null,
     public suspended?: boolean | null,
     public priority?: number | null,
-    public processDefinition?: IProcessDefinitionDMN | null,
+    public processDefinition?: IDecisionDefinition | null,
     public processInstance?: IProcessInstanceDMN | null
   ) {
     this.suspended = this.suspended ?? false;

@@ -1,15 +1,14 @@
 package com.mycompany.myapp.service;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import com.mycompany.myapp.domain.DecisionDefinition;
 import com.mycompany.myapp.repository.DecisionDefinitionRepository;
 import com.mycompany.myapp.service.dto.DecisionDefinitionDTO;
 import com.mycompany.myapp.service.mapper.DecisionDefinitionMapper;
+import java.util.*;
+import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
-import org.camunda.bpm.model.bpmn.instance.Process;
 import org.camunda.bpm.model.dmn.DmnModelInstance;
+import org.camunda.bpm.model.dmn.instance.Decision;
 import org.camunda.bpm.model.xml.type.ModelElementType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,54 +29,51 @@ public class DecisionDefinitionService {
     private final DecisionDefinitionMapper decisionDefinitionMapper;
 
     public DecisionDefinitionService(
-        DecisionDefinitionRepository decisionDefinitionRepository, DecisionDefinitionMapper decisionDefinitionMapper) {
+        DecisionDefinitionRepository decisionDefinitionRepository,
+        DecisionDefinitionMapper decisionDefinitionMapper
+    ) {
         this.decisionDefinitionRepository = decisionDefinitionRepository;
         this.decisionDefinitionMapper = decisionDefinitionMapper;
     }
 
     public DecisionDefinition createOrUpdateDecisionDefinition(DmnModelInstance dmnModelInstance) {
-        Process process = extracAndValidProcessFromModel(dmnModelInstance);
-        Optional<DecisionDefinition> optionalProcessDefinition = decisionDefinitionRepository.findByDmnDecisionDefinitionId(process.getId());
+        Decision decision = extracAndValidDecisionFromModel(dmnModelInstance);
+        Optional<DecisionDefinition> optionalDecisionDefinition = decisionDefinitionRepository.findByDmnDecisionDefinitionId(
+            decision.getId()
+        );
 
-        if (optionalProcessDefinition.isPresent()) {
-            return updateDecisionDefinition(process);
+        if (optionalDecisionDefinition.isPresent()) {
+            return updateDecisionDefinition(decision);
         }
-
-        return createDecisionDefinition(process);
+        return createDecisionDefinition(decision);
     }
 
-    private Process extracAndValidProcessFromModel(DmnModelInstance modelInstance) {
-        ModelElementType processType = modelInstance.getModel().getType(Process.class);
-        Process process = (Process) modelInstance.getModelElementsByType(processType).iterator().next();
+    private Decision extracAndValidDecisionFromModel(DmnModelInstance modelInstance) {
+        ModelElementType decisionType = modelInstance.getModel().getType(Decision.class);
+        Decision decision = (Decision) modelInstance.getModelElementsByType(decisionType).iterator().next();
+        //
+        //        if (!decision.isExecutable()) {
+        //            throw new BadRequestErrorException("loginProcessosApp.processDefinition.error.bpmnProcessIsNotExecutable");
+        //        }
 
-        if (!process.isExecutable()) {
-            throw new BadRequestErrorException("loginProcessosApp.processDefinition.error.bpmnProcessIsNotExecutable");
-        }
-
-        if (StringUtils.isBlank(process.getName())) {
+        if (StringUtils.isBlank(decision.getName())) {
             throw new BadRequestErrorException("loginProcessosApp.processDefinition.error.bpmnNameNotProvided");
         }
 
-        return process;
+        return decision;
     }
 
-    private DecisionDefinition createDecisionDefinition(Process process) {
+    private DecisionDefinition createDecisionDefinition(Decision decision) {
         DecisionDefinition decisionDefinition = new DecisionDefinition();
-        decisionDefinition.setDmnDecisionDefinitionId(process.getId());
-        decisionDefinition.setName(process.getName());
-        if (!process.getDocumentations().isEmpty()) {
-            decisionDefinition.setDescription(process.getDocumentations().iterator().next().getRawTextContent());
-        }
+        decisionDefinition.setDmnDecisionDefinitionId(decision.getId());
+        decisionDefinition.setName(decision.getName());
 
         return decisionDefinitionRepository.save(decisionDefinition);
     }
 
-    private DecisionDefinition updateDecisionDefinition(Process process) {
-        DecisionDefinition decisionDefinition = decisionDefinitionRepository.findByDmnDecisionDefinitionId(process.getId()).orElseThrow();
-        decisionDefinition.setName(process.getName());
-        if (!process.getDocumentations().isEmpty()) {
-            decisionDefinition.setDescription(process.getDocumentations().iterator().next().getRawTextContent());
-        }
+    private DecisionDefinition updateDecisionDefinition(Decision decision) {
+        DecisionDefinition decisionDefinition = decisionDefinitionRepository.findByDmnDecisionDefinitionId(decision.getId()).orElseThrow();
+        decisionDefinition.setName(decision.getName());
 
         return decisionDefinitionRepository.save(decisionDefinition);
     }
@@ -105,7 +101,7 @@ public class DecisionDefinitionService {
      */
     @Transactional(readOnly = true)
     public Optional<DecisionDefinitionDTO> findByIdOrDmnDecisionDefinitionId(String idOrDmnDecisionDefinitionId) {
-        log.debug("Request to get ProcessDefinition : {}", idOrDmnDecisionDefinitionId);
+        log.debug("Request to get DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
         if (StringUtils.isNumeric(idOrDmnDecisionDefinitionId)) {
             return decisionDefinitionRepository.findById(Long.parseLong(idOrDmnDecisionDefinitionId)).map(decisionDefinitionMapper::toDto);
         }

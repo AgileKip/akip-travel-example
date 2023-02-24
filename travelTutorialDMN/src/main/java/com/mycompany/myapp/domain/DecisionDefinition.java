@@ -1,23 +1,21 @@
 package com.mycompany.myapp.domain;
 
+import java.io.Serializable;
+import javax.persistence.*;
+import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.Cache;
-import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "decision_definition")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-
 public class DecisionDefinition implements Serializable {
 
-    private static final long serialVersionId = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator", sequenceName = "hibernate_sequence")
     private Long id;
 
     @Column(name = "name")

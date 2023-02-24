@@ -68,9 +68,9 @@
             <font-awesome-icon icon="asterisk" />
             <span v-text="$t('global.menu.entities.processDefinition')">Process Definitions</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/process-definition-dmn">
+          <b-dropdown-item to="/decision-definition">
             <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.processDefinitionDMN')">Process Definitions DMN</span>
+            <span v-text="$t('global.menu.entities.decisionDefinition')">Decision Definitions</span>
           </b-dropdown-item>
           <b-dropdown-item to="/process-instances">
             <font-awesome-icon icon="asterisk" />

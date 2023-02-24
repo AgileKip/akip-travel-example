@@ -44,8 +44,8 @@ const RentalCarCompanyUpdate = () => import('@/entities/rental-car-company/renta
 // prettier-ignore
 const RentalCarCompanyDetails = () => import('@/entities/rental-car-company/rental-car-company-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
-const ProcessDefinitionDmn = () => import ('@/entities/process-definition-dmn/process-definition-dmn.vue')
-const ProcessDefinitionDmnDeploy = () => import ('@/entities/process-definition-dmn/process-definition-dmn-deploy.vue')
+const DecisionDefinition = () => import('@/entities/decision-definition/decision-definition.vue');
+const DecisionDefinitionDeploy = () => import('@/entities/decision-definition/decision-definition-deploy.vue');
 
 export default [
   {
@@ -188,15 +188,15 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/process-definition-dmn',
-    name: 'ProcessDefinitionDmn',
-    component: ProcessDefinitionDmn,
+    path: '/decision-definition',
+    name: 'DecisionDefinition',
+    component: DecisionDefinition,
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/process-definition-dmn-deploy',
-    name: 'ProcessDefinitionDmnDeploy',
-    component: ProcessDefinitionDmnDeploy,
+    path: '/decision-definition-deploy',
+    name: 'DecisionDefinitionDeploy',
+    component: DecisionDefinitionDeploy,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

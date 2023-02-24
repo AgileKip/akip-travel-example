@@ -8,7 +8,7 @@
       "entities": {
         "main": "Entities",
         "processDefinition": "Process Definitions",
-        "processDefinitionDMN": "Process Definitions DMN",
+        "decisionDefinition": "Decision Definitions",
         "processDeployment": "Process Deployments",
         "processInstance": "Process Instances",
         "taskInstance": "All Tasks",

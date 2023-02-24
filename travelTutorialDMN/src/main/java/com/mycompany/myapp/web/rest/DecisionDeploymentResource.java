@@ -26,7 +26,7 @@ public class DecisionDeploymentResource {
 
     private final Logger log = LoggerFactory.getLogger(DecisionDeploymentResource.class);
 
-    private static final String ENTITY_NAME = "processDeployment";
+    private static final String ENTITY_NAME = "decisionDeployment";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -44,7 +44,7 @@ public class DecisionDeploymentResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new decisionDeploymentDTO, or with status {@code 400 (Bad Request)} if the decisionDeploymentDTO has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/admin/process-deployment/deploy")
+    @PostMapping("/admin/decision-deployment/deploy")
     public ResponseEntity<Void> deploy(@RequestBody DecisionDeploymentDTO decisionDeploymentDTO) throws URISyntaxException {
         log.debug("REST request to deploy DecisionDeployment : {}", decisionDeploymentDTO);
         DecisionDeploymentDTO result = decisionDeploymentService.deploy(decisionDeploymentDTO);
@@ -61,7 +61,7 @@ public class DecisionDeploymentResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @GetMapping("/decision-deployment/{id}")
-    public ResponseEntity<DecisionDeploymentDTO> getProcessDeployment(@PathVariable Long id) {
+    public ResponseEntity<DecisionDeploymentDTO> getDecisionDeployment(@PathVariable Long id) {
         log.debug("REST request to get DecisionDeployment : {}", id);
         Optional<DecisionDeploymentDTO> result = decisionDeploymentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(result);
@@ -115,7 +115,6 @@ public class DecisionDeploymentResource {
     @PutMapping("/admin/decision-deployment/{id}/properties")
     public ResponseEntity<Void> saveProperties(@PathVariable Long id, @RequestBody Map<String, String> properties) {
         log.debug("REST request to save DecisionDeployment properties: {}", id);
-        decisionDeploymentService.saveProperties(id, properties);
         return ResponseEntity
             .noContent()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME + ".properties", id.toString()))

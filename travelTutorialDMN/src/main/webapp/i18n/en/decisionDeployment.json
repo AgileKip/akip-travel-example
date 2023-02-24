@@ -1,0 +1,21 @@
+{
+  "decisionDeployment": {
+    "home": {
+      "notInactiveDecisionDeployment": "No decisionDeployments found",
+      "refreshListLabel": "Refresh List"
+    },
+    "deploy": {
+      "title": "Deploy a Decision"
+    },
+    "detail": {
+      "title": "Decision Deployment",
+      "card-header": "Decision Deployment"
+    },
+    "status": "Status",
+    "camundaDecisionDefinitionId": "Camunda Decision Definition Id",
+    "camundaDeploymentId": "Camunda Decision Deployment Id",
+    "deployDate": "Deploy Date",
+    "inactivationDate": "Inactivation Date",
+    "tenant": "Tenant"
+  }
+}

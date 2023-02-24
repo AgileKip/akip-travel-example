@@ -1,6 +1,5 @@
 package com.mycompany.myapp.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mycompany.myapp.domain.DecisionDefinition;
 import com.mycompany.myapp.domain.DecisionDeployment;
 import com.mycompany.myapp.domain.enumeration.StatusDecisionDeployment;
@@ -14,13 +13,8 @@ import java.io.ByteArrayInputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.camunda.bpm.engine.RepositoryService;
-import org.camunda.bpm.model.bpmn.instance.camunda.CamundaExecutionListener;
-import org.camunda.bpm.model.bpmn.instance.camunda.CamundaProperties;
 import org.camunda.bpm.model.dmn.Dmn;
 import org.camunda.bpm.model.dmn.DmnModelInstance;
-import org.camunda.bpm.model.dmn.instance.Decision;
-import org.camunda.bpm.model.dmn.instance.ExtensionElements;
-import org.camunda.bpm.model.xml.type.ModelElementType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -62,8 +56,8 @@ public class DecisionDeploymentService {
             dmnModelInstance
         );
 
-        org.camunda.bpm.engine.repository.ProcessDefinition camundaDecisionDefinition = repositoryService
-            .createProcessDefinitionQuery()
+        org.camunda.bpm.engine.repository.DecisionDefinition camundaDecisionDefinition = repositoryService
+            .createDecisionDefinitionQuery()
             .deploymentId(camundaDeployment.getId())
             .singleResult();
 
@@ -165,14 +159,5 @@ public class DecisionDeploymentService {
             StatusDecisionDeployment.ACTIVE,
             decisionDeployment.getTenant().getId()
         );
-    }
-
-    public void saveProperties(Long id, Map<String, String> properties) {
-        try {
-            String propertiesAsString = decisionDeploymentMapper.mapToString(properties);
-            decisionDeploymentRepository.updatePropertiesById(propertiesAsString, id);
-        } catch (JsonProcessingException e) {
-            throw new BadRequestErrorException(e.getMessage());
-        }
     }
 }
