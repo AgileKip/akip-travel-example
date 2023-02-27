@@ -3,12 +3,12 @@
     <div class="col-10">
       <div v-if="decisionDeployment">
         <h2 class="jh-entity-heading" data-cy="decisionDeploymentDetailsHeading">
-          <span v-text="$t('decisionDeploymentDmn.detail.title')">Decision Deployment</span>
+          <span v-text="$t('decisionDeployment.detail.title')">Decision Deployment</span>
         </h2>
         <div class="card mb-3">
           <h5 class="card-header">
             <span class="title">
-              <span v-text="$t('decisionDeploymentDmn.detail.card-header')">Decision Deployment</span>
+              <span v-text="$t('decisionDeployment.detail.card-header')">Decision Deployment</span>
               #{{ decisionDeployment.id }}
             </span>
             <akip-show-decision-deployment-status :status="decisionDeployment.status"></akip-show-decision-deployment-status>
@@ -32,33 +32,33 @@
               </div>
 
               <div class="col-sm">
-                <span class="label" v-text="$t('decisionDeploymentDmn.camundaDeploymentId')">Decision Definition </span>:
+                <span class="label" v-text="$t('decisionDeployment.camundaDeploymentId')">Decision Definition </span>:
                 <br />
                 <strong>{{ decisionDeployment.camundaDeploymentId }}</strong>
               </div>
 
               <div class="col-sm">
-                <span class="label" v-text="$t('decisionDeploymentDmn.tenant')">Tenant </span>:
+                <span class="label" v-text="$t('decisionDeployment.tenant')">Tenant </span>:
                 <br />
                 <strong v-if="decisionDeployment.tenant">{{ decisionDeployment.tenant.name }}</strong>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-3">
-                <span class="label" v-text="$t('decisionDeploymentDmn.deployDate')">Deploy Date</span>:
+                <span class="label" v-text="$t('decisionDeployment.deployDate')">Deploy Date</span>:
                 <br />
                 <strong>{{ decisionDeployment.deployDate ? $d(Date.parse(decisionDeployment.deployDate), 'short', 'pt-BR') : '' }}</strong>
               </div>
 
               <div class="col-sm-3" v-if="isActive">
-                <span class="label" v-text="$t('decisionDeploymentDmn.activationDate')">Activation Date</span>:
+                <span class="label" v-text="$t('decisionDeployment.activationDate')">Activation Date</span>:
                 <br />
                 <strong>{{
                   decisionDeployment.activationDate ? $d(Date.parse(decisionDeployment.activationDate), 'short', 'pt-BR') : ''
                 }}</strong>
               </div>
               <div class="col-sm-3" v-else>
-                <span class="label" v-text="$t('decisionDeploymentDmn.inactivationDate')">Inactivation Date</span>:
+                <span class="label" v-text="$t('decisionDeployment.inactivationDate')">Inactivation Date</span>:
                 <br />
                 <strong>{{
                   decisionDeployment.inactivationDate ? $d(Date.parse(decisionDeployment.inactivationDate), 'short', 'pt-BR') : ''
@@ -72,9 +72,9 @@
                 <font-awesome-icon icon="expand-alt" v-else></font-awesome-icon>
               </h4>
               <b-collapse v-model="collapseController.showDecision" id="collapse-decision">
-                <akip-show-decision-deployment-bpmn-model
+                <akip-show-decision-deployment-dmn-model
                   :decisionDeploymentId="decisionDeployment.id"
-                ></akip-show-decision-deployment-bpmn-model>
+                ></akip-show-decision-deployment-dmn-model>
               </b-collapse>
             </div>
           </div>

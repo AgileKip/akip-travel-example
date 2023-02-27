@@ -61,7 +61,7 @@ export default class DecisionDeploymentService {
   public findDmnModel(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(`${baseApiUrl}/${id}/bpmnModel`)
+        .get(`${baseApiUrl}/${id}/dmnModel`)
         .then(res => {
           resolve(res.data);
         })
