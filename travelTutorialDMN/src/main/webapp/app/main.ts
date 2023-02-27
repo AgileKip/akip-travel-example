@@ -36,6 +36,7 @@ import TravelPlanProcessService from '@/entities/travel-plan-process/travel-plan
 import AirlineCompanyService from '@/entities/airline-company/airline-company.service';
 import HotelService from '@/entities/hotel/hotel.service';
 import RentalCarCompanyService from '@/entities/rental-car-company/rental-car-company.service';
+import AkipShowDecisionDefinitionComponent from '@/shared/akip/akip-show-decision-definition.vue';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -49,6 +50,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
 Vue.component('infinite-loading', InfiniteLoading);
+Vue.component('akip-show-decision-definition', AkipShowDecisionDefinitionComponent);
 
 Vue.use(Akip);
 Vue.component('vue-markdown', VueMarkdown);

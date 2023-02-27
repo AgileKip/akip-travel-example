@@ -69,7 +69,7 @@
                 <td class="text-right">
                   <div class="btn-group">
                     <router-link
-                      :to="`/decision-definition/${decisionDeployment.decisionDefinition.dmnDecisionDefinitionId}/deployment/${decisionDeployment.id}/view`"
+                      :to="`/decision-deployment/${decisionDeployment.id}/view`"
                       class="btn btn-info btn-sm details"
                       data-cy="entityDetailsButton"
                     >
@@ -91,6 +91,7 @@
         <font-awesome-icon icon="compress-alt" v-if="collapseController.showInactiveDeployments"></font-awesome-icon>
         <font-awesome-icon icon="expand-alt" v-else></font-awesome-icon>
       </h4>
+
       <b-collapse v-model="collapseController.showInactiveDeployments" id="collapse-inactive-deployments">
         <div class="alert alert-warning mb-0" v-if="!isFetching && inactiveDecisionDeployments && inactiveDecisionDeployments.length === 0">
           <span v-text="$t('decisionDeployment.home.notInactiveDecisionDeployment')">No decisionDeployments found</span>
@@ -131,7 +132,7 @@
                 <td class="text-right">
                   <div class="btn-group">
                     <router-link
-                      :to="`/decision-definition/${decisionDeployment.decisionDefinition.dmnDecisionDefinitionId}/deployment/${decisionDeployment.id}/view`"
+                      :to="`/decision-deployment/${decisionDeployment.id}/view`"
                       class="btn btn-info btn-sm details"
                       data-cy="entityDetailsButton"
                     >

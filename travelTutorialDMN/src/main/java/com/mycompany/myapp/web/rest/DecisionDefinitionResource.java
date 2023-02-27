@@ -52,7 +52,7 @@ public class DecisionDefinitionResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of decisionDefinitions in body.
      */
     @GetMapping("/decision-definitions")
-    public List<DecisionDefinitionDTO> getAllProcessDefinitions() {
+    public List<DecisionDefinitionDTO> getAllDecisionDefinitions() {
         log.debug("REST request to get all DecisionDefinitions");
         return decisionDefinitionService.findAll();
     }
@@ -63,13 +63,13 @@ public class DecisionDefinitionResource {
      * @param idOrDmnDecisionDefinitionId the id of the decisionDefinitionDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the decisionDefinitionDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/decission-definitions/{idOrDmnDecisionDefinitionId}")
-    public ResponseEntity<DecisionDefinitionDTO> getProcessDefinition(@PathVariable String idOrDmnDecisionDefinitionId) {
+    @GetMapping("/decision-definitions/{idOrDmnDecisionDefinitionId}")
+    public ResponseEntity<DecisionDefinitionDTO> getDecisionDefinition(@PathVariable String idOrDmnDecisionDefinitionId) {
         log.debug("REST request to get DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
-        Optional<DecisionDefinitionDTO> processDefinitionDTO = decisionDefinitionService.findByIdOrDmnDecisionDefinitionId(
+        Optional<DecisionDefinitionDTO> decisionDefinitionDTO = decisionDefinitionService.findByIdOrDmnDecisionDefinitionId(
             idOrDmnDecisionDefinitionId
         );
-        return ResponseUtil.wrapOrNotFound(processDefinitionDTO);
+        return ResponseUtil.wrapOrNotFound(decisionDefinitionDTO);
     }
 
     /**
@@ -79,7 +79,7 @@ public class DecisionDefinitionResource {
      * @return the list of tenantsDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/decision-definitions/{idOrDmnDecisionDefinitionId}/active-deployments")
-    public List<DecisionDeploymentDTO> getActiveProcessDeployments(@PathVariable String idOrDmnDecisionDefinitionId) {
+    public List<DecisionDeploymentDTO> getActiveDecisionDeployments(@PathVariable String idOrDmnDecisionDefinitionId) {
         log.debug("REST request to get Tenants of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
         return decisionDeploymentService.findActiveByDecisionDefinition(idOrDmnDecisionDefinitionId);
     }
@@ -91,7 +91,7 @@ public class DecisionDefinitionResource {
      * @return the list of decisionInstanceDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/decision-definitions/{idOrDmnDecisionDefinitionId}/deployments")
-    public List<DecisionDeploymentDTO> getProcessDeployments(@PathVariable String idOrDmnDecisionDefinitionId) {
+    public List<DecisionDeploymentDTO> getDecisionDeployments(@PathVariable String idOrDmnDecisionDefinitionId) {
         log.debug("REST request to get DecisionDeployments of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
         return decisionDeploymentService.findByDecisionDefinition(idOrDmnDecisionDefinitionId);
     }
@@ -125,7 +125,7 @@ public class DecisionDefinitionResource {
      * @param idOrDmnDecisionDefinitionId the id or dmnDecisionDefinitionId of the decisionDefinition owner of the TaskInstances.
      * @return the list of decisionInstanceDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/decision-definition/{idOrBpmnProcessDefinitionId}/tasks")
+    @GetMapping("/decision-definition/{idOrDmnDecisionDefinitionId}/tasks")
     public List<TaskInstanceDTO> getTaskInstances(@PathVariable String idOrDmnDecisionDefinitionId) {
         log.debug("REST request to get TaskInstances of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
         return taskInstanceService.findByProcessDefinition(idOrDmnDecisionDefinitionId);

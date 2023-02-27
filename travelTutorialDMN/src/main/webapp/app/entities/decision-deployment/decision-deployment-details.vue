@@ -19,10 +19,7 @@
                 <span class="label" v-text="$t('decisionInstance.decisionDefinition')">Decision Definition </span>:
                 <br />
                 <span class="link" v-if="decisionDeployment.decisionDefinition">
-                  <router-link
-                    class="link"
-                    :to="`/decision-definition/${decisionDeployment.decisionDefinition.dmnDecisionDefinitionId}/view`"
-                  >
+                  <router-link class="link" :to="`/decision-deployment/${decisionDeployment.id}/view`">
                     {{ decisionDeployment.decisionDefinition.name }}
                   </router-link>
                 </span>

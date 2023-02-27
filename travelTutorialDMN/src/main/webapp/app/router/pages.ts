@@ -10,6 +10,8 @@ const DecisionDefinitionDeployments = () => import('@/entities/decision-definiti
 // prettier-ignore
 const DecisionDefinitionDetails = () => import('@/entities/decision-definition/decision-definition-details.vue');
 // prettier-ignore
+const DecisionDeploymentDetails = () => import('@/entities/decision-deployment/decision-deployment-details.vue');
+// prettier-ignore
 const ProcessDefinition = () => import('@/entities/process-definition/process-definition.vue');
 // prettier-ignore
 const ProcessDefinitionDeploy = () => import('@/entities/process-definition/process-definition-deploy.vue');
@@ -138,6 +140,12 @@ export default [
     path: '/decision-definition/:decisionDefinitionId/view',
     name: 'DecisionDefinitionView',
     component: DecisionDefinitionDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/decision-deployment/:decisionDeploymentId/view',
+    name: 'DecisionDeploymentView',
+    component: DecisionDeploymentDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

@@ -1,6 +1,8 @@
 package com.mycompany.myapp.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -18,12 +20,15 @@ public class DecisionDefinition implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
     @NaturalId
     @Column(name = "dmn_decision_definition_id")
     private String dmnDecisionDefinitionId;
+
+    @Column(name = "name")
+    private String name;
+
+    @OneToMany(mappedBy = "decisionDefinition")
+    private List<DecisionDeployment> decisionDeployments = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -47,6 +52,14 @@ public class DecisionDefinition implements Serializable {
 
     public void setDmnDecisionDefinitionId(String dmnDecisionDefinitionId) {
         this.dmnDecisionDefinitionId = dmnDecisionDefinitionId;
+    }
+
+    public List<DecisionDeployment> getDecisionDeployments() {
+        return decisionDeployments;
+    }
+
+    public void setDecisionDeployments(List<DecisionDeployment> decisionDeployments) {
+        this.decisionDeployments = decisionDeployments;
     }
 
     @Override

@@ -5,7 +5,7 @@
         <h2 class="jh-entity-heading" data-cy="decisionDefinitionDetailsHeading">
           <span v-text="$t('decisionDefinition.detail.title')">DecisionDefinition</span>
         </h2>
-        <akip-show-process-definition :processDefinition="decisionDefinition"> </akip-show-process-definition>
+        <akip-show-decision-definition :decisionDefinition="decisionDefinition"> </akip-show-decision-definition>
         <br />
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
