@@ -7,7 +7,7 @@
       "notActiveDecisionDeployment": "No decisionDeployments found"
     },
     "deploy": {
-      "title": "Deploy Decision Model and Notation",
+      "title": "Deploy a DMN",
       "specificationFile": "Specification File",
       "tenant": "Tenant",
       "deployLabel": "Deploy"

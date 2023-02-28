@@ -9,16 +9,6 @@
       <div class="xcontainer">
         <div class="row px-3">
           <div class="col summary" v-if="!hideSidebarSummary">
-            <div class="label" v-text="$t('decisionDefinition.camundaDeploymentId')">Camunda Deployment Id</div>
-            <div class="link" v-if="decisionDefinition.camundaDeploymentId">
-              {{ decisionDefinition.camundaDeploymentId }}
-            </div>
-            <hr />
-            <div class="label" v-text="$t('decisionDefinition.camundaDecisionDefinitionId')">Camunda Decision Definition Id</div>
-            <div class="link" v-if="decisionDefinition.camundaDecisionDefinitionId">
-              {{ decisionDefinition.camundaDecisionDefinitionId }}
-            </div>
-            <hr />
             <div class="label" v-text="$t('decisionDefinition.dmnDecisionDefinitionId')">BPMN Process Definition Id</div>
             <div class="link" v-if="decisionDefinition.dmnDecisionDefinitionId">
               {{ decisionDefinition.dmnDecisionDefinitionId }}
