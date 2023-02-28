@@ -59,19 +59,6 @@ export default class DecisionDefinitionService {
     });
   }
 
-  public findDecisionInstances(idOrDmnDecisionDefinitionId: any): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      axios
-        .get(`${baseApiUrl}/${idOrDmnDecisionDefinitionId}/instances`)
-        .then(res => {
-          resolve(res);
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  }
-
   public retrieve(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

@@ -7,7 +7,6 @@ import { IDecisionDefinition } from '@/shared/model/decision-definition.model';
 import JhiDataUtils from '@/shared/data/data-utils.service';
 import NotifyMixin from '@/shared/notify/notify.mixin';
 import DecisionDefinitionService from '@/entities/decision-definition/decision-definition.service';
-import { ProcessDefinitionService } from 'akip-vue-community';
 
 @Component({
   mixins: [Vue2Filters.mixin],

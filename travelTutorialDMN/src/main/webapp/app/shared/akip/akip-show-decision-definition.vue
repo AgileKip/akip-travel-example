@@ -9,7 +9,7 @@
       <div class="xcontainer">
         <div class="row px-3">
           <div class="col summary" v-if="!hideSidebarSummary">
-            <div class="label" v-text="$t('decisionDefinition.dmnDecisionDefinitionId')">DMN Process Definition Id</div>
+            <div class="label" v-text="$t('decisionDefinition.dmnDecisionDefinitionId')">DMN Decision Definition Id</div>
             <div class="link" v-if="decisionDefinition.dmnDecisionDefinitionId">
               {{ decisionDefinition.dmnDecisionDefinitionId }}
             </div>

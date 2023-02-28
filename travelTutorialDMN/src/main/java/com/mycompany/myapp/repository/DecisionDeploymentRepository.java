@@ -16,11 +16,11 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface DecisionDeploymentRepository extends JpaRepository<DecisionDeployment, Long> {
-    List<DecisionDeployment> findByDecisionDefinitionId(Long processDefinitionId);
+    List<DecisionDeployment> findByDecisionDefinitionId(Long decisionDefinitionId);
 
     Optional<DecisionDeployment> findByCamundaDecisionDefinitionId(String camundaDecisionDefinitionId);
 
-    List<DecisionDeployment> findByDecisionDefinitionIdAndStatusAndTenantIsNull(Long processDefinitionId, StatusDecisionDeployment status);
+    List<DecisionDeployment> findByDecisionDefinitionIdAndStatusAndTenantIsNull(Long decisionDefinitionId, StatusDecisionDeployment status);
 
     List<DecisionDeployment> findByDecisionDefinitionIdAndStatusAndTenantId(
         Long decisionDefinitionId,

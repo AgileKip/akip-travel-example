@@ -28,6 +28,9 @@
     "dmnDecisionDefinitionId": "DMN Decision Definition Id",
     "deployDate": "Deploy Date",
     "activationDate": "Activation Date",
-    "tenant": "Tenant"
+    "tenant": "Tenant",
+    "error": {
+      "dmnNameNotProvided": "DMN Decision name not provided"
+    }
   }
 }

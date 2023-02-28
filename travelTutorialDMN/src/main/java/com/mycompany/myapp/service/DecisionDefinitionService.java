@@ -51,13 +51,9 @@ public class DecisionDefinitionService {
     private Decision extracAndValidDecisionFromModel(DmnModelInstance modelInstance) {
         ModelElementType decisionType = modelInstance.getModel().getType(Decision.class);
         Decision decision = (Decision) modelInstance.getModelElementsByType(decisionType).iterator().next();
-        //
-        //        if (!decision.isExecutable()) {
-        //            throw new BadRequestErrorException("loginProcessosApp.processDefinition.error.bpmnProcessIsNotExecutable");
-        //        }
 
         if (StringUtils.isBlank(decision.getName())) {
-            throw new BadRequestErrorException("loginProcessosApp.processDefinition.error.bpmnNameNotProvided");
+            throw new BadRequestErrorException("decisionDefinition.error.dmnNameNotProvided");
         }
 
         return decision;

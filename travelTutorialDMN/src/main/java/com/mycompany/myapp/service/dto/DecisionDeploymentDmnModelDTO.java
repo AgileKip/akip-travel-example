@@ -45,11 +45,11 @@ public class DecisionDeploymentDmnModelDTO {
             return false;
         }
 
-        DecisionDeploymentDmnModelDTO processDeploymentDTO = (DecisionDeploymentDmnModelDTO) o;
+        DecisionDeploymentDmnModelDTO decisionDeploymentDTO = (DecisionDeploymentDmnModelDTO) o;
         if (this.id == null) {
             return false;
         }
-        return Objects.equals(this.id, processDeploymentDTO.id);
+        return Objects.equals(this.id, decisionDeploymentDTO.id);
     }
 
     @Override

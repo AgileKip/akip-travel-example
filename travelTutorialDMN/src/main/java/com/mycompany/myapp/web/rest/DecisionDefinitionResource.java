@@ -34,16 +34,12 @@ public class DecisionDefinitionResource {
 
     private final DecisionDeploymentService decisionDeploymentService;
 
-    private final TaskInstanceService taskInstanceService;
-
     public DecisionDefinitionResource(
         DecisionDefinitionService decisionDefinitionService,
-        DecisionDeploymentService decisionDeploymentService,
-        TaskInstanceService taskInstanceService
+        DecisionDeploymentService decisionDeploymentService
     ) {
         this.decisionDefinitionService = decisionDefinitionService;
         this.decisionDeploymentService = decisionDeploymentService;
-        this.taskInstanceService = taskInstanceService;
     }
 
     /**
@@ -94,41 +90,6 @@ public class DecisionDefinitionResource {
     public List<DecisionDeploymentDTO> getDecisionDeployments(@PathVariable String idOrDmnDecisionDefinitionId) {
         log.debug("REST request to get DecisionDeployments of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
         return decisionDeploymentService.findByDecisionDefinition(idOrDmnDecisionDefinitionId);
-    }
-
-    /**
-     * {@code GET  /decision-definitions/:idOrDmnDecisionDefinitionId/instances} : get the "idOrDmnDecisionDefinitionId" decisionDefinition.
-     *
-     * @param idOrDmnDecisionDefinitionId the id of the DefinitionDTO owner of the DecisionInstances.
-     * @return the list of decisionInstanceDTO, or with status {@code 404 (Not Found)}.
-     */
-    //    @GetMapping("/decision-definitions/{idOrBpmnDecisionDefinitionId}/instances")
-    //    public List<DecisionInstanceDTO> getDecisionInstances(@PathVariable String idOrDmnDecisionDefinitionId) {
-    //        log.debug("REST request to get DecisionInstances of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
-    //        return decisionInstanceService.findByDecisionDefinition(idOrBpmnDecisionDefinitionId);
-    //    }
-
-    /**
-     * {@code GET  /decision-definition/:idOrDmnDecisionDefinitionId/candidateTenants} : get the "id" decisionInstance.
-     *
-     * @param idOrDmnDecisionDefinitionId the id or dmnDecisionDefinitionId of the decisionDefinition owner of the TaskInstances.
-     * @return the list of candidateTenants, or with status {@code 404 (Not Found)}.**/
-    //    @GetMapping("/decision-definitions/{idOrDmnDecisionDefinitionId}/candidateTenantsCurrentUser")
-    //    public List<TenantDTO> getCandidateTenantsCurrentUser(@PathVariable String idOrDmnDecisionDefinitionId) {
-    //        log.debug("REST request to get TaskInstances of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
-    //        return decisionInstanceService.getCandidateTenantsCurrentUser(idOrDmnDecisionDefinitionId);
-    //    }
-
-    /**
-     * {@code GET  /decision-definition/:idOrDmnDecisionDefinitionId/tasks} : get the "id" decisionInstance.
-     *
-     * @param idOrDmnDecisionDefinitionId the id or dmnDecisionDefinitionId of the decisionDefinition owner of the TaskInstances.
-     * @return the list of decisionInstanceDTO, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/decision-definition/{idOrDmnDecisionDefinitionId}/tasks")
-    public List<TaskInstanceDTO> getTaskInstances(@PathVariable String idOrDmnDecisionDefinitionId) {
-        log.debug("REST request to get TaskInstances of the DecisionDefinition : {}", idOrDmnDecisionDefinitionId);
-        return taskInstanceService.findByProcessDefinition(idOrDmnDecisionDefinitionId);
     }
 
     /**
