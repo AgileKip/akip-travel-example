@@ -2,6 +2,7 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import TaskBookAHotelService from './task-book-a-hotel.service';
 import { TaskBookAHotelContext } from './task-book-a-hotel.model';
+import {required} from "vuelidate/lib/validators";
 
 const validations: any = {
   taskContext: {
@@ -10,8 +11,8 @@ const validations: any = {
         name: {},
         startDate: {},
         endDate: {},
-        hotelName: {},
-        hotelBookingNumber: {},
+        hotelName: { required },
+        hotelBookingNumber: { required },
       },
     },
   },

@@ -132,7 +132,7 @@
               >
                 <small
                   class="form-text text-danger"
-                  v-if="!$v.taskContext.travelPlanProcess.travelPlan.hotelBookingNumber.required"
+                    v-if="!$v.taskContext.travelPlanProcess.travelPlan.hotelBookingNumber.required"
                   v-text="$t('entity.validation.required')"
                 >
                   This field is required.
@@ -152,7 +152,7 @@
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
         </button>
-        <button type="submit" v-on:click.prevent="complete()" class="btn btn-success" data-cy="complete">
+        <button :disabled="$v.taskContext.$invalid" type="submit" v-on:click.prevent="complete()" class="btn btn-success" data-cy="complete">
           <font-awesome-icon icon="check-circle"></font-awesome-icon>&nbsp;Complete
         </button>
       </div>
