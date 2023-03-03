@@ -2,11 +2,11 @@
 
 An example on how to automate a simple process with a CALL Activity using the AgileKip Platform.
 
-In this example, a parallel activity is called to cancel the travel plan, for this it is necessary to complete the task of buying airline tickets and arrive at the task of booking a hotel. There is a two minute timer that the user must complete within the established time, otherwise the flow will go to a parallel activity with the name call cancel process.
+In this example, a call activity is called to cancel the travel plan, for this it is necessary to complete the task of buying airline tickets and arrive at the task of booking a hotel. There is a two minute timer that the user must complete within the established time, otherwise the flow will go to a call activity with the name call cancel process.
 
 ![Model](/MODELS/travel-CALL/travel_CALL.png)
 
-Within this subprocess it is possible to see a user task to cancel the confirmation, if it is completed, the running process is completed.
+Within this call activity it is possible to see a user task to cancel the confirmation, if it is completed, the running process is completed.
 
 ![InnerProcessModel](/MODELS/travel-CALL/InnerProcess.png)
 
