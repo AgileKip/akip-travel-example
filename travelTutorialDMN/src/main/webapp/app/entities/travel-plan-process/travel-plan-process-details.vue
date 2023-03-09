@@ -185,7 +185,7 @@
             </div>
             <div>
               <b-button v-b-toggle.sidebar-right>Visualizar Timeline</b-button>
-              <b-sidebar width="50%" id="sidebar-right" right shadow>
+              <b-sidebar width="30%" id="sidebar-right" right shadow class="justify-content-center">
                 <div class="px-3 py-2">
                   <simple-timeline-custom :items="items" dateFormat="DD/MM/YY HH:mm:ss"></simple-timeline-custom>
                 </div>
