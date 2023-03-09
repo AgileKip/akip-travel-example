@@ -186,7 +186,7 @@
             <div>
               <div class="row justify-content-center">
                 <div class="mt-3">
-                  <b-button v-b-toggle.sidebar-right>Visualizar Timeline</b-button>
+                  <b-button variant="primary" v-b-toggle.sidebar-right>Visualizar Timeline</b-button>
                 </div>
               </div>
               <b-sidebar width="30%" id="sidebar-right" right shadow class="justify-content-center">
