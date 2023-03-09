@@ -2,8 +2,18 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { ITravelPlanProcess } from '@/shared/model/travel-plan-process.model';
 import TravelPlanProcessService from './travel-plan-process.service';
+import { Timeline, TimelineItem, TimelineTitle } from 'vue-cute-timeline';
+import 'vue-cute-timeline/dist/index.css';
+import { Item } from '@/components/simple-timeline-item.model';
+import { Status } from '@/components/simple-timeline-status.model';
 
-@Component
+@Component({
+  components: {
+    Timeline,
+    TimelineItem,
+    TimelineTitle,
+  },
+})
 export default class TravelPlanProcessDetailsComponent extends Vue {
   @Inject('travelPlanProcessService') private travelPlanProcessService: () => TravelPlanProcessService;
   public travelPlanProcess: ITravelPlanProcess = {};
@@ -36,4 +46,10 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
   public previousState() {
     this.$router.go(-1);
   }
+
+  public items: Item[] = [
+    new Item(0, 'check', Status.SUCCESS, 'Alugar Hotel', new Date()),
+    new Item(1, 'check', Status.SUCCESS, 'Alugar Carro', new Date()),
+    new Item(2, 'hourglass', Status.INFO, 'Calculando o preço', new Date(2019, 11, 4, 11, 22, 32)),
+  ];
 }

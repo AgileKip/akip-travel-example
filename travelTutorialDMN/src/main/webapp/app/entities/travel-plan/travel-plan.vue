@@ -10,9 +10,9 @@
       </div>
     </h2>
     <br />
-    <div class="alert alert-warning" v-if="!isFetching && travelPlans && travelPlans.length === 0">
-      <span v-text="$t('travelPlanApp.travelPlan.home.notFound')">No travelPlans found</span>
-    </div>
+
+    <simple-timeline :items="items" dateFormat="DD/MM/YY HH:mm:ss"></simple-timeline>
+
     <div class="table-responsive" v-if="travelPlans && travelPlans.length > 0">
       <table class="table table-striped" aria-describedby="travelPlans">
         <thead>
@@ -35,7 +35,7 @@
         <tbody>
           <tr v-for="travelPlan in travelPlans" :key="travelPlan.id" data-cy="entityTable">
             <td>
-              <router-link :to="{ name: 'TravelPlanView', params: { travelPlanId: travelPlan.id } }">{{ travelPlan.id }}</router-link>
+              <router-link :to="{ name: 'TravelPlanView', params: { travelPlanId: travelPlan.id } }">{{ travelPlan.id }} </router-link>
             </td>
             <td>{{ travelPlan.travelName }}</td>
             <td>{{ travelPlan.userName }}</td>
@@ -47,21 +47,23 @@
             <td>{{ travelPlan.carBookingNumber }}</td>
             <td>
               <div v-if="travelPlan.airlineCompany">
-                <router-link :to="{ name: 'AirlineCompanyView', params: { airlineCompanyId: travelPlan.airlineCompany.id } }">{{
-                  travelPlan.airlineCompany.name
-                }}</router-link>
+                <router-link :to="{ name: 'AirlineCompanyView', params: { airlineCompanyId: travelPlan.airlineCompany.id } }"
+                  >{{ travelPlan.airlineCompany.name }}
+                </router-link>
               </div>
             </td>
             <td>
               <div v-if="travelPlan.hotel">
-                <router-link :to="{ name: 'HotelView', params: { hotelId: travelPlan.hotel.id } }">{{ travelPlan.hotel.name }}</router-link>
+                <router-link :to="{ name: 'HotelView', params: { hotelId: travelPlan.hotel.id } }">
+                  {{ travelPlan.hotel.name }}
+                </router-link>
               </div>
             </td>
             <td>
               <div v-if="travelPlan.rentalCarCompany">
-                <router-link :to="{ name: 'RentalCarCompanyView', params: { rentalCarCompanyId: travelPlan.rentalCarCompany.id } }">{{
-                  travelPlan.rentalCarCompany.name
-                }}</router-link>
+                <router-link :to="{ name: 'RentalCarCompanyView', params: { rentalCarCompanyId: travelPlan.rentalCarCompany.id } }">
+                  {{ travelPlan.rentalCarCompany.name }}
+                </router-link>
               </div>
             </td>
             <td class="text-right">

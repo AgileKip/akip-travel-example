@@ -3,11 +3,13 @@
     <div class="col-10">
       <div v-if="travelPlanProcess.processInstance">
         <h2 class="jh-entity-heading" data-cy="travelPlanProcessDetailsHeading">
-          <span v-text="$t('travelPlanApp.travelPlanProcess.detail.title')">TravelPlanProcess</span> {{ travelPlanProcess.id }}
+          <span v-text="$t('travelPlanApp.travelPlanProcess.detail.title')">TravelPlanProcess</span>
+          {{ travelPlanProcess.id }}
         </h2>
         <akip-show-process-instance :processInstance="travelPlanProcess.processInstance">
           <template v-slot:title>
-            <span v-text="$t('travelPlanApp.travelPlanProcess.detail.title')">TravelPlanProcess</span> #{{ travelPlanProcess.id }}
+            <span v-text="$t('travelPlanApp.travelPlanProcess.detail.title')">TravelPlanProcess</span>
+            #{{ travelPlanProcess.id }}
           </template>
           <template v-slot:details>
             <div class="card" v-if="travelPlanProcess.travelPlan">
@@ -180,6 +182,14 @@
                   />
                 </div>
               </div>
+            </div>
+            <div>
+              <b-button v-b-toggle.sidebar-right>Visualizar Timeline</b-button>
+              <b-sidebar width="50%" id="sidebar-right" right shadow>
+                <div class="px-3 py-2">
+                  <simple-timeline-custom :items="items" dateFormat="DD/MM/YY HH:mm:ss"></simple-timeline-custom>
+                </div>
+              </b-sidebar>
             </div>
           </template>
         </akip-show-process-instance>

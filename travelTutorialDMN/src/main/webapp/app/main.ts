@@ -50,8 +50,19 @@ Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
 Vue.component('infinite-loading', InfiniteLoading);
 
+import { SimpleTimelinePlugin } from 'simple-vue-timeline';
+Vue.use(SimpleTimelinePlugin);
+
 Vue.use(Akip);
 Vue.component('vue-markdown', VueMarkdown);
+
+import SimpleTimeline from '@/components/SimpleTimelineCustom.vue';
+Vue.component('simple-timeline-custom', SimpleTimeline);
+import SimpleTimelineControl from '@/components/SimpleTimelineControlCustom.vue';
+Vue.component('timeline-control-custom', SimpleTimelineControl);
+import SimpleTimelineItem from '@/components/SimpleTimelineItemCustom.vue';
+Vue.component('timeline-item-custom', SimpleTimelineItem);
+
 // jhipster-pais-needle-add-component-to-main - JHipster/Camunda will register components here
 
 const i18n = config.initI18N(Vue);
