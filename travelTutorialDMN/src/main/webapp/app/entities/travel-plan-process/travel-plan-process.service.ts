@@ -43,4 +43,17 @@ export default class TravelPlanProcessService {
         });
     });
   }
+
+  public retrieveTimelineInfos(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`api/timeline`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

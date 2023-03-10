@@ -191,7 +191,7 @@
               </div>
               <b-sidebar width="30%" id="sidebar-right" right shadow class="justify-content-center">
                 <div class="px-3 py-2">
-                  <simple-timeline-custom :items="items" dateFormat="DD/MM/YY HH:mm:ss"></simple-timeline-custom>
+                  <simple-timeline-custom :items="items" dateFormat="YY/MM/DD HH:mm:ss"></simple-timeline-custom>
                 </div>
               </b-sidebar>
             </div>

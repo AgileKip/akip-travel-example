@@ -1,4 +1,4 @@
-import { Component, Vue, Inject } from 'vue-property-decorator';
+import { Component, Inject, Vue } from 'vue-property-decorator';
 
 import { ITravelPlanProcess } from '@/shared/model/travel-plan-process.model';
 import TravelPlanProcessService from './travel-plan-process.service';
@@ -17,7 +17,7 @@ import { Status } from '@/components/simple-timeline-status.model';
 export default class TravelPlanProcessDetailsComponent extends Vue {
   @Inject('travelPlanProcessService') private travelPlanProcessService: () => TravelPlanProcessService;
   public travelPlanProcess: ITravelPlanProcess = {};
-
+  public timelineItems: Item[] = [];
   public isFetching: boolean = false;
 
   beforeRouteEnter(to, from, next) {
@@ -26,6 +26,10 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
         vm.retrieveTravelPlanProcess(to.params.processInstanceId);
       }
     });
+  }
+
+  public mounted(): void {
+    this.retrieveTimelineInfo();
   }
 
   public retrieveTravelPlanProcess(travelPlanProcessId) {
@@ -43,13 +47,31 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
       );
   }
 
+  public retrieveTimelineInfo() {
+    this.isFetching = true;
+    this.travelPlanProcessService()
+      .retrieveTimelineInfos()
+      .then(
+        res => {
+          this.timelineItems = res.data;
+          this.isFetching = false;
+        },
+        err => {
+          this.isFetching = false;
+        }
+      );
+  }
+
   public previousState() {
     this.$router.go(-1);
   }
 
-  public items: Item[] = [
-    new Item(0, 'check', Status.SUCCESS, 'Alugar Hotel', new Date()),
-    new Item(1, 'check', Status.SUCCESS, 'Alugar Carro', new Date()),
-    new Item(2, 'hourglass', Status.INFO, 'Calculando o preço', new Date(2019, 11, 4, 11, 22, 32)),
-  ];
+  get items(): Item[] {
+    console.log(this.timelineItems);
+    let itens: Item[] = [];
+    this.timelineItems.forEach(item => {
+      itens.push(new Item(item.id, item.icon, Status[item.status], item.title, new Date(item.createdDate)));
+    });
+    return itens;
+  }
 }

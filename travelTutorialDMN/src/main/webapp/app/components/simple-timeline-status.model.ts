@@ -1,7 +1,9 @@
-export const enum Status {
-  PRIMARY = 'primary',
-  SUCCESS = 'success',
+export enum Status {
+  RUNNING = 'primary',
+  COMPLETED = 'success',
+  TERMINATED = 'success',
   WARNING = 'warning',
-  DANGER = 'danger',
+  CANCELED = 'danger',
+  WAITING = 'secondary',
   INFO = 'info',
 }
