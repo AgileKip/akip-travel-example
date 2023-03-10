@@ -25,6 +25,7 @@ import {
   BInputGroup,
   BInputGroupPrepend,
   BCard,
+  BCardText,
   VBToggle,
   BSidebar,
   LayoutPlugin,
@@ -60,5 +61,6 @@ export function initBootstrapVue(vue) {
   vue.component('b-card', BCard);
   vue.component('b-sidebar', BSidebar);
   vue.directive('b-toggle', VBToggle);
+  vue.component('b-card-text', BCardText);
   vue.use(LayoutPlugin);
 }

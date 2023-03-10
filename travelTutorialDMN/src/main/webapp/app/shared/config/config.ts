@@ -49,6 +49,7 @@ import { faCompressAlt } from '@fortawesome/free-solid-svg-icons/faCompressAlt';
 import { faExpandAlt } from '@fortawesome/free-solid-svg-icons/faExpandAlt';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { faHourglass } from '@fortawesome/free-solid-svg-icons/faHourglass';
+import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons/faFlagCheckered';
 
 import VueCookie from 'vue-cookie';
 import Vuelidate from 'vuelidate';
@@ -141,7 +142,8 @@ export function initFortAwesome(vue) {
     faCompressAlt,
     faExpandAlt,
     faCheck,
-    faHourglass
+    faHourglass,
+    faFlagCheckered
   );
 }
 

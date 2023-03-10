@@ -2,6 +2,7 @@ package com.mycompany.myapp.service.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import org.akip.domain.enumeration.StatusProcessInstance;
 
 public class TimelineItemDTO implements Serializable {
 

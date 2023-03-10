@@ -28,10 +28,6 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
     });
   }
 
-  public mounted(): void {
-    this.retrieveTimelineInfo();
-  }
-
   public retrieveTravelPlanProcess(travelPlanProcessId) {
     this.isFetching = true;
     this.travelPlanProcessService()
@@ -67,8 +63,7 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
   }
 
   get items(): Item[] {
-    console.log(this.timelineItems);
-    let itens: Item[] = [];
+    const itens: Item[] = [];
     this.timelineItems.forEach(item => {
       itens.push(new Item(item.id, item.icon, Status[item.status], item.title, new Date(item.createdDate)));
     });
