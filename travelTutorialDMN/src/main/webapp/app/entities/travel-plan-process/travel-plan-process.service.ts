@@ -44,10 +44,10 @@ export default class TravelPlanProcessService {
     });
   }
 
-  public retrieveTimelineInfos(): Promise<any> {
+  public retrieveTimelineInfos(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(`api/timeline`)
+        .get(`api/timeline/${id}`)
         .then(res => {
           resolve(res);
         })

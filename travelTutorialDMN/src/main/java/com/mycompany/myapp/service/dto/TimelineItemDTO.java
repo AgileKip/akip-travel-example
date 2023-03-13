@@ -1,6 +1,7 @@
 package com.mycompany.myapp.service.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import org.akip.domain.enumeration.StatusProcessInstance;
 
@@ -16,9 +17,9 @@ public class TimelineItemDTO implements Serializable {
 
     private String title;
 
-    private LocalDateTime createdDate;
+    private Instant createdDate;
 
-    public TimelineItemDTO(Long id, String icon, String status, String title, LocalDateTime createdDate) {
+    public TimelineItemDTO(Long id, String icon, String status, String title, Instant createdDate) {
         this.id = id;
         this.icon = icon;
         this.status = status;
@@ -60,11 +61,11 @@ public class TimelineItemDTO implements Serializable {
         this.title = title;
     }
 
-    public LocalDateTime getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 }
