@@ -190,13 +190,24 @@
                     v-on:click="retrieveTimelineInfo(travelPlanProcess.processInstance.id)"
                     variant="primary"
                     v-b-toggle.sidebar-right
-                    >Visualizar Timeline</b-button
-                  >
+                    >Visualizar Timeline
+                  </b-button>
                 </div>
               </div>
-              <b-sidebar width="30%" id="sidebar-right" right shadow class="justify-content-center">
+              <!--              <b-sidebar width="30%" id="sidebar-right" right shadow class="justify-content-center">-->
+              <!--                <div class="px-3 py-2">-->
+              <!--                  <simple-timeline-custom :items="items" dateFormat="YY/MM/DD HH:mm:ss"></simple-timeline-custom>-->
+              <!--                </div>-->
+              <!--              </b-sidebar>-->
+              <b-sidebar id="sidebar-right" right shadow class="justify-content-center">
                 <div class="px-3 py-2">
-                  <simple-timeline-custom :items="items" dateFormat="YY/MM/DD HH:mm:ss"></simple-timeline-custom>
+                  <timeline>
+                    <timeline-title>Travel Plan Process Test</timeline-title>
+                    <timeline-item v-for="item in timelineItems" :bg-color="item.status">
+                      <font-awesome-icon :icon="item.icon" slot="others"></font-awesome-icon>
+                      {{ item.title }}
+                    </timeline-item>
+                  </timeline>
                 </div>
               </b-sidebar>
             </div>
