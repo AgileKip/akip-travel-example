@@ -37,7 +37,7 @@ public class ProcessInstanceTimelineController {
             TimelineItemDTO timelineItemDTO = new TimelineItemDTO();
             timelineItemDTO.setId(taskInstance.getId());
             timelineItemDTO.setTitle(taskInstance.getName());
-            timelineItemDTO.setStatus(chooseColor(String.valueOf(taskInstance.getStatus())));
+            timelineItemDTO.setStatus(String.valueOf(taskInstance.getStatus()));
             timelineItemDTO.setIcon(chooseIcon(String.valueOf(taskInstance.getStatus())));
             timelineItemDTO.setCreatedDate(taskInstance.getCreateDate());
             timelineItemDTOs.add(timelineItemDTO);
@@ -59,18 +59,5 @@ public class ProcessInstanceTimelineController {
             return "ban";
         }
         return "clock";
-    }
-
-    public String chooseColor(String timelineItemDTO) {
-        if (timelineItemDTO.equals("ASSIGNED")) {
-            return "#0384fc";
-        }
-        if (timelineItemDTO.equals("COMPLETED")) {
-            return "#03fc28";
-        }
-        if (timelineItemDTO.equals("TERMINATED")) {
-            return "#03fc28";
-        }
-        return "#817f85";
     }
 }

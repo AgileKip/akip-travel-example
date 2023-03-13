@@ -70,4 +70,17 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
     });
     return itens;
   }
+
+  public chooseColor(status: string) {
+    if (status == 'ASSIGNED') {
+      return '#0384fc';
+    }
+    if (status == 'COMPLETED') {
+      return '#03fc28';
+    }
+    if (status == 'TERMINATED') {
+      return '#03fc28';
+    }
+    return '#817f85';
+  }
 }
