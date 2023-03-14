@@ -1,16 +1,10 @@
 package com.mycompany.myapp.web.rest;
 
-import com.mycompany.myapp.repository.TimelineItemsRepository;
 import com.mycompany.myapp.service.TimelineItemsService;
 import com.mycompany.myapp.service.dto.TimelineItemDTO;
 import java.util.ArrayList;
 import java.util.List;
 import org.akip.domain.TaskInstance;
-import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.engine.TaskService;
-import org.camunda.bpm.engine.runtime.ProcessInstance;
-import org.camunda.bpm.engine.task.Task;
-import org.camunda.bpm.engine.task.TaskQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,16 +27,32 @@ public class ProcessInstanceTimelineController {
     public List<TimelineItemDTO> getBPMNInfo(@PathVariable Long processInstanceId) {
         List<TaskInstance> instances = timelineItemsService.findByProcessInstanceId(processInstanceId);
         List<TimelineItemDTO> timelineItemDTOs = new ArrayList<>();
-        for (TaskInstance taskInstance : instances) {
-            TimelineItemDTO timelineItemDTO = new TimelineItemDTO();
-            timelineItemDTO.setId(taskInstance.getId());
-            timelineItemDTO.setTitle(taskInstance.getName());
-            timelineItemDTO.setStatus(String.valueOf(taskInstance.getStatus()));
-            timelineItemDTO.setIcon(chooseIcon(String.valueOf(taskInstance.getStatus())));
-            timelineItemDTO.setCreatedDate(taskInstance.getCreateDate());
-            timelineItemDTOs.add(timelineItemDTO);
-        }
+
+        timelineItemDTOs.add(createUpdateTimeline(instances, "Choose flight"));
+        timelineItemDTOs.add(createUpdateTimeline(instances, "Book a hotel"));
+        timelineItemDTOs.add(createUpdateTimeline(instances, "Rent a car"));
+
         return timelineItemDTOs;
+    }
+
+    public TimelineItemDTO createUpdateTimeline(List<TaskInstance> instances, String taskName) {
+        TimelineItemDTO timelineItemDTO = new TimelineItemDTO();
+        for (TaskInstance taskInstance : instances) {
+            if (taskName.equals(taskInstance.getName())) {
+                timelineItemDTO.setTitle(taskName);
+                timelineItemDTO.setStatus(String.valueOf(taskInstance.getStatus()));
+                timelineItemDTO.setIcon(chooseIcon(String.valueOf(taskInstance.getStatus())));
+                timelineItemDTO.setCreatedDate(taskInstance.getCreateDate());
+                return timelineItemDTO;
+            }
+
+            timelineItemDTO.setTitle(taskName);
+            timelineItemDTO.setStatus("NEW");
+            timelineItemDTO.setIcon(chooseIcon(String.valueOf(timelineItemDTO.getStatus())));
+            timelineItemDTO.setCreatedDate(taskInstance.getCreateDate());
+        }
+
+        return timelineItemDTO;
     }
 
     public String chooseIcon(String timelineItemDTO) {
