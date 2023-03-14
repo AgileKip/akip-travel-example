@@ -3,6 +3,8 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.service.ProcessInstanceTimelineService;
 import com.mycompany.myapp.service.dto.ProcessInstanceTimelineItemDTO;
 import java.util.List;
+
+import com.mycompany.myapp.service.dto.TimelineItemDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,8 @@ public class ProcessInstanceTimelineController {
     @Autowired
     ProcessInstanceTimelineService processInstanceTimelineService;
 
-    @GetMapping("/timeline")
-    public List<ProcessInstanceTimelineItemDTO> getBPMNInfo() {
-        //TODO: passar o processInstanceId como parametro para esse controller...
-        return processInstanceTimelineService.getTimeline(1L).getItems();
+    @GetMapping("/timeline/{processInstanceId}")
+    public List<ProcessInstanceTimelineItemDTO> getBPMNInfo(@PathVariable Long processInstanceId) {
+        return processInstanceTimelineService.getTimeline(processInstanceId).getItems();
     }
 }

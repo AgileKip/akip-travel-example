@@ -39,7 +39,7 @@ public class ProcessInstanceTimelineDefinitionService {
         timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
                 .step(3)
                 .name("Book a hotel")
-                .checkStatusExpression("TaskFlight2 and TaskFlight2")
+                .checkStatusExpression("TaskFligh and TaskCar")
         );
 
         //task car
