@@ -1,9 +1,9 @@
 export enum Status {
-  RUNNING = 'primary',
+  ASSIGNED = 'primary',
   COMPLETED = 'success',
-  TERMINATED = 'success',
-  WARNING = 'warning',
+  UNASSIGNED = 'success',
+  DELEGATED = 'warning',
   CANCELED = 'danger',
-  WAITING = 'secondary',
+  NEW = 'secondary',
   INFO = 'info',
 }

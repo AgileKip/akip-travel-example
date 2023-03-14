@@ -43,10 +43,10 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
       );
   }
 
-  public retrieveTimelineInfo() {
+  public retrieveTimelineInfo(processInstanceId: number) {
     this.isFetching = true;
     this.travelPlanProcessService()
-      .retrieveTimelineInfos()
+      .retrieveTimelineInfos(processInstanceId)
       .then(
         res => {
           this.timelineItems = res.data;
@@ -64,9 +64,23 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
 
   get items(): Item[] {
     const itens: Item[] = [];
+    console.log(this.timelineItems);
     this.timelineItems.forEach(item => {
       itens.push(new Item(item.id, item.icon, Status[item.status], item.title, new Date(item.createdDate)));
     });
     return itens;
+  }
+
+  public chooseColor(status: string) {
+    if (status == 'ASSIGNED') {
+      return '#0384fc';
+    }
+    if (status == 'COMPLETED') {
+      return '#03fc28';
+    }
+    if (status == 'TERMINATED') {
+      return '#03fc28';
+    }
+    return '#817f85';
   }
 }
