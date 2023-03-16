@@ -3,8 +3,11 @@ package com.mycompany.myapp.service
 import org.akip.domain.ProcessInstance
 import org.akip.domain.TaskInstance
 import org.akip.domain.enumeration.StatusProcessInstance
+import org.akip.domain.enumeration.StatusTaskInstance
+import org.akip.repository.TaskInstanceRepository
 import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.history.HistoricTaskInstance
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 import java.util.stream.Collectors;
@@ -12,12 +15,8 @@ import java.util.stream.Collectors;
 @Service
 class ProcessInstanceTimelineExpressionService {
 
-
-    private HistoryService historyService;
-
-    ProcessInstanceTimelineExpressionService(HistoryService historyService) {
-        this.historyService = historyService
-    }
+    @Autowired
+    private TaskInstanceRepository taskInstanceRepository;
 
     boolean evaluateCompleteStatusExpression(ProcessInstance processInstance, String expression) {
         String groovyExpression = prepareCheckCompleteStatusExpression(expression);
@@ -96,9 +95,13 @@ class ProcessInstanceTimelineExpressionService {
     boolean checkTaskCompleted(ProcessInstance processInstance, String taskDefinintionBpmnId) {
         //TODO: Aqui voces terao que pegar a ultima tarefa com o identificador taskDefinintionBpmnId dessa processInstance
         // (pode haver mais de 1 tarefa com esse id) e verificar o status dela se o status dela é COMPLETED.
-        return historyService.createHistoricTaskInstanceQuery()
-            .processInstanceId(String.valueOf(processInstance.getCamundaProcessInstanceId())).taskDefinitionKeyIn(taskDefinintionBpmnId)
-            .singleResult().getEndTime() != null;
+
+        for (TaskInstance ti : taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).reverse()) {
+            if (ti.getTaskDefinitionKey() == taskDefinintionBpmnId && ti.getStatus() == StatusTaskInstance.COMPLETED) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

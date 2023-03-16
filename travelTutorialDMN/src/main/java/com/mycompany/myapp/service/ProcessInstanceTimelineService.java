@@ -26,7 +26,6 @@ public class ProcessInstanceTimelineService {
     //TODO: usar o processInstanceId passado como parametro para recuperar o processInstance
     public ProcessInstanceTimelineDTO getTimeline(Long processInstanceId) {
         ProcessInstance processInstance = processInstanceRepository.findById(processInstanceId).orElseThrow();
-        //        ProcessInstance processInstance = processInstanceRepository.findAll().get(0);
 
         ProcessInstanceTimelineGroupDefinitionDTO timelineGroupDefinition = processInstanceTimelineDefinitionService.getTimelineGroup(
             processInstance.getProcessDefinition().getId()
