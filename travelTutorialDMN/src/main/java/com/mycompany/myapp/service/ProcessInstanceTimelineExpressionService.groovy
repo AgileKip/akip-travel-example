@@ -1,6 +1,7 @@
 package com.mycompany.myapp.service
 
 import org.akip.domain.ProcessInstance
+import org.akip.domain.TaskInstance
 import org.akip.domain.enumeration.StatusProcessInstance
 import org.camunda.bpm.engine.HistoryService
 import org.camunda.bpm.engine.history.HistoricTaskInstance
@@ -95,15 +96,9 @@ class ProcessInstanceTimelineExpressionService {
     boolean checkTaskCompleted(ProcessInstance processInstance, String taskDefinintionBpmnId) {
         //TODO: Aqui voces terao que pegar a ultima tarefa com o identificador taskDefinintionBpmnId dessa processInstance
         // (pode haver mais de 1 tarefa com esse id) e verificar o status dela se o status dela é COMPLETED.
-        HistoricTaskInstance task = historyService.createHistoricTaskInstanceQuery()
+        return historyService.createHistoricTaskInstanceQuery()
             .processInstanceId(String.valueOf(processInstance.getCamundaProcessInstanceId())).taskDefinitionKeyIn(taskDefinintionBpmnId)
-            .singleResult();
-
-        if (task.getEndTime() != null) {
-            return true;
-        }
-
-        return false;
+            .singleResult().getEndTime() != null;
     }
 
 }
