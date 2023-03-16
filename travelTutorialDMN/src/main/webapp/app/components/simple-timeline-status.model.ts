@@ -5,5 +5,6 @@ export enum Status {
   DELEGATED = 'warning',
   CANCELED = 'danger',
   NEW = 'secondary',
+  WAITING = 'secondary',
   INFO = 'info',
 }

@@ -2,12 +2,21 @@ package com.mycompany.myapp.service
 
 import org.akip.domain.ProcessInstance
 import org.akip.domain.enumeration.StatusProcessInstance
+import org.camunda.bpm.engine.HistoryService
+import org.camunda.bpm.engine.history.HistoricTaskInstance
 import org.springframework.stereotype.Service
 
 import java.util.stream.Collectors;
 
 @Service
 class ProcessInstanceTimelineExpressionService {
+
+
+    private HistoryService historyService;
+
+    ProcessInstanceTimelineExpressionService(HistoryService historyService) {
+        this.historyService = historyService
+    }
 
     boolean evaluateCompleteStatusExpression(ProcessInstance processInstance, String expression) {
         String groovyExpression = prepareCheckCompleteStatusExpression(expression);
@@ -67,14 +76,12 @@ class ProcessInstanceTimelineExpressionService {
     }
 
 
-
     Binding buildBinding(ProcessInstance processInstance) {
         Binding binding = new Binding();
         binding.setVariable("api", this)
         binding.setVariable("processInstance", processInstance)
         return binding;
     }
-
 
 
     boolean checkProcessInstanceStarted(ProcessInstance processInstance) {
@@ -88,8 +95,15 @@ class ProcessInstanceTimelineExpressionService {
     boolean checkTaskCompleted(ProcessInstance processInstance, String taskDefinintionBpmnId) {
         //TODO: Aqui voces terao que pegar a ultima tarefa com o identificador taskDefinintionBpmnId dessa processInstance
         // (pode haver mais de 1 tarefa com esse id) e verificar o status dela se o status dela é COMPLETED.
-        return taskDefinintionBpmnId.contains("Fli");
-    }
+        HistoricTaskInstance task = historyService.createHistoricTaskInstanceQuery()
+            .processInstanceId(String.valueOf(processInstance.getCamundaProcessInstanceId())).taskDefinitionKeyIn(taskDefinintionBpmnId)
+            .singleResult();
 
+        if (task.getEndTime() != null) {
+            return true;
+        }
+
+        return false;
+    }
 
 }

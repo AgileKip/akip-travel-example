@@ -17,52 +17,53 @@ public class ProcessInstanceTimelineDefinitionService {
     }
 
     private ProcessInstanceTimelineDefinitionDTO createMainTimeLine() {
-
         ProcessInstanceTimelineDefinitionDTO timelineDefinition = new ProcessInstanceTimelineDefinitionDTO();
         timelineDefinition.setName("Generic Trip");
 
         //process started
-        timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
-                .step(1)
-                .name("Form submitted")
-                .checkStatusExpression("processInstanceStarted")
-        );
+        timelineDefinition
+            .getItems()
+            .add(
+                new ProcessInstanceTimelineItemDefinitionDTO()
+                    .step(1)
+                    .name("Form submitted")
+                    .checkStatusExpression("processInstanceStarted")
+            );
 
         //task flight
-        timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
-                .step(2)
-                .name("Buy flight tickets")
-                .checkStatusExpression("TaskFlight")
-        );
+        timelineDefinition
+            .getItems()
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(2).name("Buy flight tickets").checkStatusExpression("TaskFlight"));
 
         //task hotel
-        timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
-                .step(3)
-                .name("Book a hotel")
-                .checkStatusExpression("TaskFligh and TaskCar")
-        );
+        timelineDefinition
+            .getItems()
+            .add(
+                new ProcessInstanceTimelineItemDefinitionDTO()
+                    .step(3)
+                    .name("Book a hotel")
+                    .checkStatusExpression("TaskFlight and TaskHotel")
+            );
 
         //task car
-        timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
-                .step(4)
-                .name("Book a car")
-                .checkStatusExpression("TaskFlight3 or TaskCar")
-        );
-
+        timelineDefinition
+            .getItems()
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(4).name("Book a car").checkStatusExpression("TaskFlight or TaskCar"));
 
         //task car
-        timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
-                .step(4)
-                .name("Validate")
-                .checkStatusExpression("TaskFlight5 and TaskCar3")
-        );
+        timelineDefinition
+            .getItems()
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(4).name("Validate").checkStatusExpression("TaskFlight and TaskCar"));
 
         //process started
-        timelineDefinition.getItems().add(new ProcessInstanceTimelineItemDefinitionDTO()
-                .step(5)
-                .name("Travel plan finished")
-                .checkStatusExpression("processInstanceCompleted")
-        );
+        timelineDefinition
+            .getItems()
+            .add(
+                new ProcessInstanceTimelineItemDefinitionDTO()
+                    .step(5)
+                    .name("Travel plan finished")
+                    .checkStatusExpression("processInstanceCompleted")
+            );
 
         return timelineDefinition;
     }
