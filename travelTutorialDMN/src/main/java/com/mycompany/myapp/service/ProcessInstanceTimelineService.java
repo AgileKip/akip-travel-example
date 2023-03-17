@@ -81,7 +81,7 @@ public class ProcessInstanceTimelineService {
     private void calculateStatus(ProcessInstance processInstance, ProcessInstanceTimelineDTO timeline) {
         for (ProcessInstanceTimelineItemDTO timelineItem : timeline.getItems()) {
             calculateStatus(processInstance, timelineItem);
-            if (timelineItem.getStatus().equals("WAITING")) {
+            if (timelineItem.getStatus().equals("WAITING") || timelineItem.getStatus().equals("RUNNING")) {
                 return;
             }
         }

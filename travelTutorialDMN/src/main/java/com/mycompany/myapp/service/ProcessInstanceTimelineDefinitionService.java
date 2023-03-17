@@ -48,7 +48,7 @@ public class ProcessInstanceTimelineDefinitionService {
         //task car
         timelineDefinition
             .getItems()
-            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(4).name("Book a car").checkStatusExpression("TaskFlight or TaskCar"));
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(4).name("Book a car").checkStatusExpression("TaskFlight and TaskCar"));
 
         //task car
         timelineDefinition
