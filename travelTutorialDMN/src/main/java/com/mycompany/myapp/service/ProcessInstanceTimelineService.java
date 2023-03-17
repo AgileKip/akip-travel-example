@@ -92,6 +92,10 @@ public class ProcessInstanceTimelineService {
             expressionService.evaluateCompleteStatusExpression(processInstance, timelineItem.getItemDefinition().getCheckStatusExpression())
         ) {
             timelineItem.setStatus("COMPLETED");
+        } else if (
+            expressionService.evaluateRunningStatusExpression(processInstance, timelineItem.getItemDefinition().getCheckStatusExpression())
+        ) {
+            timelineItem.setStatus("RUNNING");
         }
     }
 

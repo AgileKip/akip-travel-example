@@ -72,7 +72,7 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
   }
 
   public chooseColor(status: string) {
-    if (status == 'ASSIGNED') {
+    if (status == 'RUNNING') {
       return '#0384fc';
     }
     if (status == 'COMPLETED') {
