@@ -1,0 +1,16 @@
+{
+  "fields": [],
+  "entityType": "user-task-form",
+  "processBpmnId": "GenericTimeline",
+  "processEntityName": "GenericTimeline",
+  "taskBpmnId": "TaskF",
+  "domainEntityName": "genericTask",
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "skipFakeData": true,
+  "name": "TaskF",
+  "changelogDate": "20210401000018"
+}

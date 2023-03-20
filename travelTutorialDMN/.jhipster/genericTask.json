@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "fieldName": "needTaskH",
+      "fieldType": "boolean"
+    },
+    {
+      "fieldName": "loopEnter",
+      "fieldType": "boolean"
+    }
+  ],
+  "relationships": [],
+  "entityType": "domain",
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "GenericTask",
+  "changelogDate": "20211109000002",
+  "skipFakeData": true
+}
+
