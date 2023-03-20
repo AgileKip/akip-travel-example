@@ -76,10 +76,10 @@ export default class TravelPlanProcessDetailsComponent extends Vue {
       return '#0384fc';
     }
     if (status == 'COMPLETED') {
-      return '#03fc28';
+      return '#28a745';
     }
     if (status == 'TERMINATED') {
-      return '#03fc28';
+      return '#28a745';
     }
     return '#817f85';
   }

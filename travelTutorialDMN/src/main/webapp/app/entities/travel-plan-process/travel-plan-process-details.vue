@@ -199,7 +199,7 @@
                   <timeline>
                     <timeline-title>Travel Plan Process Test</timeline-title>
                     <timeline-item v-for="item in timelineItems" :bg-color="chooseColor(item.status)">
-                      <font-awesome-icon :icon="item.icon" slot="others"></font-awesome-icon>
+                      <font-awesome-icon :icon="item.icon" class="icon" slot="others"></font-awesome-icon>
                       <p>
                         {{ item.title }}
                       </p>
@@ -236,7 +236,14 @@
 <script lang="ts" src="./travel-plan-process-details.component.ts"></script>
 
 <style>
+.timeline-circle {
+  width: 20px !important;
+  padding: 4px !important;
+  left: -43px !important;
+}
+
 .icon {
-  width: 20px;
+  color: white;
+  stroke: black;
 }
 </style>
