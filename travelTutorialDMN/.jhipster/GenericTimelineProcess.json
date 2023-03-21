@@ -1,0 +1,28 @@
+{
+  "fields": [
+    {
+      "fieldName": "needTaskH",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "loopEnter",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "chooseTask",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [],
+  "entityType": "process-binding",
+  "processBpmnId": "GenericTimelineProcess",
+  "domainEntityName": "GenericTimeline",
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "GenericTimelineProcess",
+  "skipFakeData": true,
+  "changelogDate": "20230321135556"
+}

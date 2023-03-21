@@ -2,11 +2,15 @@
   "fields": [
     {
       "fieldName": "needTaskH",
-      "fieldType": "boolean"
+      "fieldType": "Boolean"
     },
     {
       "fieldName": "loopEnter",
-      "fieldType": "boolean"
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "chooseTask",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [],
@@ -14,10 +18,9 @@
   "service": "serviceClass",
   "dto": "mapstruct",
   "jpaMetamodelFiltering": false,
-  "readOnly": false,
+  "readOnly": true,
   "pagination": "no",
-  "name": "GenericTask",
-  "changelogDate": "20211109000002",
-  "skipFakeData": true
+  "name": "GenericTimeline",
+  "skipFakeData": true,
+  "changelogDate": "20230321135557"
 }
-

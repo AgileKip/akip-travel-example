@@ -1,0 +1,16 @@
+{
+  "fields": [],
+  "relationships": [],
+  "entityType": "start-form",
+  "processBpmnId": "GenericTimelineProcess",
+  "processEntityName": "GenericTimelineProcess",
+  "domainEntityName": "GenericTimeline",
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": false,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "GenericTimelineStartForm",
+  "skipFakeData": true,
+  "changelogDate": "20230321135555"
+}

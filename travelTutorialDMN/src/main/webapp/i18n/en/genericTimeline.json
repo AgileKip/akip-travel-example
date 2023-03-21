@@ -1,0 +1,18 @@
+{
+  "travelPlanApp": {
+    "genericTimeline": {
+      "home": {
+        "title": "Generic Timelines",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Generic Timelines found"
+      },
+      "detail": {
+        "title": "Generic Timeline"
+      },
+      "id": "ID",
+      "needTaskH": "Need Task H",
+      "loopEnter": "Loop Enter",
+      "chooseTask": "Choose Task"
+    }
+  }
+}

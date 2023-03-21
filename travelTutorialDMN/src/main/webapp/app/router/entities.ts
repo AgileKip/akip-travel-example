@@ -43,6 +43,16 @@ const RentalCarCompany = () => import('@/entities/rental-car-company/rental-car-
 const RentalCarCompanyUpdate = () => import('@/entities/rental-car-company/rental-car-company-update.vue');
 // prettier-ignore
 const RentalCarCompanyDetails = () => import('@/entities/rental-car-company/rental-car-company-details.vue');
+// prettier-ignore
+const GenericTimelineStartFormInit = () => import('@/entities/generic-timeline-process/generic-timeline-start-form-init.vue');
+// prettier-ignore
+const GenericTimelineProcessDetails = () => import('@/entities/generic-timeline-process/generic-timeline-process-details.vue');
+// prettier-ignore
+const GenericTimelineProcessList = () => import('@/entities/generic-timeline-process/generic-timeline-process-list.vue');
+// prettier-ignore
+const GenericTimeline = () => import('@/entities/generic-timeline/generic-timeline.vue');
+// prettier-ignore
+const GenericTimelineDetails = () => import('@/entities/generic-timeline/generic-timeline-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -183,6 +193,36 @@ export default [
     path: '/rental-car-company/:rentalCarCompanyId/view',
     name: 'RentalCarCompanyView',
     component: RentalCarCompanyDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/init',
+    name: 'GenericTimelineStartFormInit',
+    component: GenericTimelineStartFormInit,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/instance/:processInstanceId/view',
+    name: 'GenericTimelineProcessView',
+    component: GenericTimelineProcessDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/instances',
+    name: 'GenericTimelineProcessList',
+    component: GenericTimelineProcessList,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/generic-timeline',
+    name: 'GenericTimeline',
+    component: GenericTimeline,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/generic-timeline/:genericTimelineId/view',
+    name: 'GenericTimelineView',
+    component: GenericTimelineDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

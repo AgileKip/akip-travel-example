@@ -36,6 +36,8 @@ import TravelPlanProcessService from '@/entities/travel-plan-process/travel-plan
 import AirlineCompanyService from '@/entities/airline-company/airline-company.service';
 import HotelService from '@/entities/hotel/hotel.service';
 import RentalCarCompanyService from '@/entities/rental-car-company/rental-car-company.service';
+import GenericTimelineProcessService from '@/entities/generic-timeline-process/generic-timeline-process.service';
+import GenericTimelineService from '@/entities/generic-timeline/generic-timeline.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -115,6 +117,8 @@ new Vue({
     airlineCompanyService: () => new AirlineCompanyService(),
     hotelService: () => new HotelService(),
     rentalCarCompanyService: () => new RentalCarCompanyService(),
+    genericTimelineProcessService: () => new GenericTimelineProcessService(),
+    genericTimelineService: () => new GenericTimelineService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

@@ -4,13 +4,13 @@
     "blueprints": [
       {
         "name": "generator-jhipster-agilekip",
-        "version": "0.0.11"
+        "version": "0.0.12"
       }
     ],
     "otherModules": [
       {
         "name": "generator-jhipster-agilekip",
-        "version": "0.0.11"
+        "version": "0.0.12"
       }
     ],
     "applicationType": "monolith",
@@ -53,6 +53,7 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["en"],
-    "entities": ["TravelPlan", "AirlineCompany", "Hotel", "RentalCarCompany"]
+    "entities": ["TravelPlan", "AirlineCompany", "Hotel", "RentalCarCompany", "GenericTimeline"],
+    "lastLiquibaseTimestamp": 1679406957000
   }
 }

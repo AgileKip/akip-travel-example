@@ -21,6 +21,9 @@
         "airlineCompany": "Airline Company",
         "hotel": "Hotel",
         "rentalCarCompany": "Rental Car Company",
+        "genericTimelineStartForm": "Generic Timeline Start Form",
+        "genericTimelineProcess": "Generic Timeline Process",
+        "genericTimeline": "Generic Timeline",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,26 @@
+{
+  "travelPlanApp": {
+    "genericTimelineProcess": {
+      "home": {
+        "title": "Generic Timeline Processes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Generic Timeline Process",
+        "createOrEditLabel": "Create or edit a Generic Timeline Process",
+        "notFound": "No Generic Timeline Processes found"
+      },
+      "created": "A new Generic Timeline Process is created with identifier {{ param }}",
+      "updated": "A Generic Timeline Process is updated with identifier {{ param }}",
+      "deleted": "A Generic Timeline Process is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Generic Timeline Process {{ id }}?"
+      },
+      "detail": {
+        "title": "Generic Timeline Process"
+      },
+      "id": "ID",
+      "needTaskH": "Need Task H",
+      "loopEnter": "Loop Enter",
+      "chooseTask": "Choose Task"
+    }
+  }
+}

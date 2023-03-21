@@ -1,0 +1,23 @@
+{
+  "travelPlanApp": {
+    "genericTimelineStartForm": {
+      "home": {
+        "title": "Generic Timeline Start Forms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Generic Timeline Start Form",
+        "createOrEditLabel": "Create or edit a Generic Timeline Start Form",
+        "notFound": "No Generic Timeline Start Forms found"
+      },
+      "created": "A new Generic Timeline Start Form is created with identifier {{ param }}",
+      "updated": "A Generic Timeline Start Form is updated with identifier {{ param }}",
+      "deleted": "A Generic Timeline Start Form is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Generic Timeline Start Form {{ id }}?"
+      },
+      "detail": {
+        "title": "Generic Timeline Start Form"
+      },
+      "id": "ID"
+    }
+  }
+}
