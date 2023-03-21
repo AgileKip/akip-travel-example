@@ -27,7 +27,7 @@ public class GenericTimeline implements Serializable {
     private Boolean loopEnter;
 
     @Column(name = "choose_task")
-    private Boolean chooseTask;
+    private String chooseTask;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -69,16 +69,16 @@ public class GenericTimeline implements Serializable {
         this.loopEnter = loopEnter;
     }
 
-    public Boolean getChooseTask() {
+    public String getChooseTask() {
         return this.chooseTask;
     }
 
-    public GenericTimeline chooseTask(Boolean chooseTask) {
+    public GenericTimeline chooseTask(String chooseTask) {
         this.chooseTask = chooseTask;
         return this;
     }
 
-    public void setChooseTask(Boolean chooseTask) {
+    public void setChooseTask(String chooseTask) {
         this.chooseTask = chooseTask;
     }
 

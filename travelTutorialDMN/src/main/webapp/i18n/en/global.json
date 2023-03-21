@@ -24,6 +24,9 @@
         "genericTimelineStartForm": "Generic Timeline Start Form",
         "genericTimelineProcess": "Generic Timeline Process",
         "genericTimeline": "Generic Timeline",
+        "taskD": "Task D",
+        "taskG": "Task G",
+        "taskI": "Task I",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

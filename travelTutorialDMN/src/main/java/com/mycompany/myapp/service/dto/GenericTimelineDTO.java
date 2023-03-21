@@ -14,7 +14,7 @@ public class GenericTimelineDTO implements Serializable {
 
     private Boolean loopEnter;
 
-    private Boolean chooseTask;
+    private String chooseTask;
 
     public Long getId() {
         return id;
@@ -40,11 +40,11 @@ public class GenericTimelineDTO implements Serializable {
         this.loopEnter = loopEnter;
     }
 
-    public Boolean getChooseTask() {
+    public String getChooseTask() {
         return chooseTask;
     }
 
-    public void setChooseTask(Boolean chooseTask) {
+    public void setChooseTask(String chooseTask) {
         this.chooseTask = chooseTask;
     }
 

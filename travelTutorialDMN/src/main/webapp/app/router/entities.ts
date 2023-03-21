@@ -53,6 +53,18 @@ const GenericTimelineProcessList = () => import('@/entities/generic-timeline-pro
 const GenericTimeline = () => import('@/entities/generic-timeline/generic-timeline.vue');
 // prettier-ignore
 const GenericTimelineDetails = () => import('@/entities/generic-timeline/generic-timeline-details.vue');
+// prettier-ignore
+const GenericTimelineProcess_TaskDDetails = () => import('@/entities/generic-timeline-process/task-d/task-d-details.vue');
+// prettier-ignore
+const GenericTimelineProcess_TaskDExecute = () => import('@/entities/generic-timeline-process/task-d/task-d-execute.vue');
+// prettier-ignore
+const GenericTimelineProcess_TaskGDetails = () => import('@/entities/generic-timeline-process/task-g/task-g-details.vue');
+// prettier-ignore
+const GenericTimelineProcess_TaskGExecute = () => import('@/entities/generic-timeline-process/task-g/task-g-execute.vue');
+// prettier-ignore
+const GenericTimelineProcess_TaskIDetails = () => import('@/entities/generic-timeline-process/task-i/task-i-details.vue');
+// prettier-ignore
+const GenericTimelineProcess_TaskIExecute = () => import('@/entities/generic-timeline-process/task-i/task-i-execute.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -223,6 +235,42 @@ export default [
     path: '/generic-timeline/:genericTimelineId/view',
     name: 'GenericTimelineView',
     component: GenericTimelineDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/task/TaskD/:taskInstanceId/view',
+    name: 'GenericTimelineProcess_TaskDDetails',
+    component: GenericTimelineProcess_TaskDDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/task/TaskD/:taskInstanceId/execute',
+    name: 'GenericTimelineProcess_TaskDExecute',
+    component: GenericTimelineProcess_TaskDExecute,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/task/TaskG/:taskInstanceId/view',
+    name: 'GenericTimelineProcess_TaskGDetails',
+    component: GenericTimelineProcess_TaskGDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/task/TaskG/:taskInstanceId/execute',
+    name: 'GenericTimelineProcess_TaskGExecute',
+    component: GenericTimelineProcess_TaskGExecute,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/task/TaskI/:taskInstanceId/view',
+    name: 'GenericTimelineProcess_TaskIDetails',
+    component: GenericTimelineProcess_TaskIDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/GenericTimelineProcess/task/TaskI/:taskInstanceId/execute',
+    name: 'GenericTimelineProcess_TaskIExecute',
+    component: GenericTimelineProcess_TaskIExecute,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

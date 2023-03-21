@@ -27,6 +27,9 @@
     <include file="config/liquibase/changelog/20230321135555_added_entity_GenericTimelineStartForm.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230321135556_added_entity_GenericTimelineProcess.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230321135557_added_entity_GenericTimeline.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20232103000005_added_entity_TaskD.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20232103000016_added_entity_TaskG.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20232103000017_added_entity_TaskI.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20210401000001_added_entity_constraints_TravelPlan.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210401000003_added_entity_constraints_TaskHotel.xml" relativeToChangelogFile="false"/>

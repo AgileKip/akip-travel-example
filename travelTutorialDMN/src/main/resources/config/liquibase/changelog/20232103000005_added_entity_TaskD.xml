@@ -7,18 +7,12 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity GenericTimeline.
+        Added the entity TaskD.
     -->
-    <changeSet id="20230321135557-1" author="jhipster">
-        <createTable tableName="generic_timeline">
+    <changeSet id="20232103000005-1" author="jhipster">
+        <createTable tableName="taskd">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="need_task_h" type="boolean">
-                <constraints nullable="true" />
-            </column>
-            <column name="loop_enter" type="boolean">
-                <constraints nullable="true" />
             </column>
             <column name="choose_task" type="varchar(255)">
                 <constraints nullable="true" />

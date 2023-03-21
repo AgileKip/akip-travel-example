@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new GenericTimelineService();
-      elemDefault = new GenericTimeline(0, false, false, false);
+      elemDefault = new GenericTimeline(0, false, false, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -57,7 +57,7 @@ describe('Service Tests', () => {
           {
             needTaskH: true,
             loopEnter: true,
-            chooseTask: true,
+            chooseTask: 'BBBBBB',
           },
           elemDefault
         );

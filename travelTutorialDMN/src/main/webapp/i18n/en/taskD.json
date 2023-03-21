@@ -1,0 +1,24 @@
+{
+  "travelPlanApp": {
+    "taskD": {
+      "home": {
+        "title": "Task DS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task D",
+        "createOrEditLabel": "Create or edit a Task D",
+        "notFound": "No Task DS found"
+      },
+      "created": "A new Task D is created with identifier {{ param }}",
+      "updated": "A Task D is updated with identifier {{ param }}",
+      "deleted": "A Task D is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task D {{ id }}?"
+      },
+      "detail": {
+        "title": "Task D"
+      },
+      "id": "ID",
+      "chooseTask": "Choose Task"
+    }
+  }
+}

@@ -37,8 +37,8 @@ class GenericTimelineResourceIT {
     private static final Boolean DEFAULT_LOOP_ENTER = false;
     private static final Boolean UPDATED_LOOP_ENTER = true;
 
-    private static final Boolean DEFAULT_CHOOSE_TASK = false;
-    private static final Boolean UPDATED_CHOOSE_TASK = true;
+    private static final String DEFAULT_CHOOSE_TASK = "AAAAAAAAAA";
+    private static final String UPDATED_CHOOSE_TASK = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/generic-timelines";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -107,7 +107,7 @@ class GenericTimelineResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(genericTimeline.getId().intValue())))
             .andExpect(jsonPath("$.[*].needTaskH").value(hasItem(DEFAULT_NEED_TASK_H.booleanValue())))
             .andExpect(jsonPath("$.[*].loopEnter").value(hasItem(DEFAULT_LOOP_ENTER.booleanValue())))
-            .andExpect(jsonPath("$.[*].chooseTask").value(hasItem(DEFAULT_CHOOSE_TASK.booleanValue())));
+            .andExpect(jsonPath("$.[*].chooseTask").value(hasItem(DEFAULT_CHOOSE_TASK)));
     }
 
     @Test
@@ -124,7 +124,7 @@ class GenericTimelineResourceIT {
             .andExpect(jsonPath("$.id").value(genericTimeline.getId().intValue()))
             .andExpect(jsonPath("$.needTaskH").value(DEFAULT_NEED_TASK_H.booleanValue()))
             .andExpect(jsonPath("$.loopEnter").value(DEFAULT_LOOP_ENTER.booleanValue()))
-            .andExpect(jsonPath("$.chooseTask").value(DEFAULT_CHOOSE_TASK.booleanValue()));
+            .andExpect(jsonPath("$.chooseTask").value(DEFAULT_CHOOSE_TASK));
     }
 
     @Test

@@ -1,0 +1,24 @@
+{
+  "travelPlanApp": {
+    "taskI": {
+      "home": {
+        "title": "Task IS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task I",
+        "createOrEditLabel": "Create or edit a Task I",
+        "notFound": "No Task IS found"
+      },
+      "created": "A new Task I is created with identifier {{ param }}",
+      "updated": "A Task I is updated with identifier {{ param }}",
+      "deleted": "A Task I is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task I {{ id }}?"
+      },
+      "detail": {
+        "title": "Task I"
+      },
+      "id": "ID",
+      "loopEnter": "Loop Enter"
+    }
+  }
+}

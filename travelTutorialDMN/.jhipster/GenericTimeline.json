@@ -10,7 +10,7 @@
     },
     {
       "fieldName": "chooseTask",
-      "fieldType": "Boolean"
+      "fieldType": "String"
     }
   ],
   "relationships": [],
