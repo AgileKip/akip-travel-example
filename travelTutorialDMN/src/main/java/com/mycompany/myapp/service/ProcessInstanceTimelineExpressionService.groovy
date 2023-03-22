@@ -1,15 +1,11 @@
 package com.mycompany.myapp.service
 
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineDefinitionDTO
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineItemDTO
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineItemDefinitionDTO
+import com.mycompany.myapp.service.dto.GenericTimelineProcessDTO
 import org.akip.domain.ProcessInstance
 import org.akip.domain.TaskInstance
 import org.akip.domain.enumeration.StatusProcessInstance
 import org.akip.domain.enumeration.StatusTaskInstance
 import org.akip.repository.TaskInstanceRepository
-import org.camunda.bpm.engine.HistoryService
-import org.camunda.bpm.engine.history.HistoricTaskInstance
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -111,6 +107,55 @@ class ProcessInstanceTimelineExpressionService {
         return binding;
     }
 
+
+    boolean evaluateTimeline(GenericTimelineProcessDTO processEntity, String expression) {
+        String groovyExpression = prepareCheckTimelineExpression(expression);
+        Binding binding = buildBindingProcessEntity(processEntity);
+        GroovyShell shell = new GroovyShell(binding);
+
+        return shell.evaluate(groovyExpression);
+    }
+
+    String prepareCheckTimelineExpression(String originalExpression) {
+        String tempExpression = originalExpression;
+        tempExpression = tempExpression.replace("(", " ( ");
+        tempExpression = tempExpression.replace(")", " ) ");
+        StringTokenizer stringTokenizer = new StringTokenizer(tempExpression, " ");
+        List<String> tokens = new ArrayList<>();
+        while (stringTokenizer.hasMoreTokens()) {
+            tokens.add(prepareToken(stringTokenizer.nextToken()));
+        }
+        return tokens.stream().collect(Collectors.joining());
+    }
+
+    Binding buildBindingProcessEntity(GenericTimelineProcessDTO processEntity) {
+        Binding binding = new Binding();
+        binding.setVariable("api", this)
+        binding.setVariable("processEntity", processEntity)
+        return binding;
+    }
+
+
+    private static String prepareTimeline(String originalToken) {
+        if ("(".equals(originalToken) || ")".equals(originalToken)) {
+            return originalToken;
+        }
+        String upperCaseToken = originalToken.toUpperCase();
+
+        if ("OR".equals(upperCaseToken)) {
+            return " || ";
+        }
+
+        if ("AND".equals(upperCaseToken)) {
+            return " || ";
+        }
+
+        return " api.checkCondition(processEntity, '" + originalToken + "') ";
+    }
+
+    boolean checkCondition(GenericTimelineProcessDTO processEntity) {
+            return processEntity.genericTimeline.needTaskH == true;
+    }
 
     boolean checkProcessInstanceStarted(ProcessInstance processInstance) {
         return true;

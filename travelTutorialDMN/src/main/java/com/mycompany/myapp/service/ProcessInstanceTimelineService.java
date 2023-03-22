@@ -1,9 +1,7 @@
 package com.mycompany.myapp.service;
 
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineDTO;
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineDefinitionDTO;
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineGroupDefinitionDTO;
-import com.mycompany.myapp.service.dto.ProcessInstanceTimelineItemDTO;
+import com.mycompany.myapp.domain.GenericTimelineProcess;
+import com.mycompany.myapp.service.dto.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.akip.domain.ProcessInstance;
@@ -35,6 +33,7 @@ public class ProcessInstanceTimelineService {
         return calculateTimeline(processInstance, timelineDefinition);
     }
 
+    //        GenericTimelineProcessDTO processEntity,
     private ProcessInstanceTimelineDefinitionDTO findTimelineDefinition(
         ProcessInstance processInstance,
         ProcessInstanceTimelineGroupDefinitionDTO timelineGroupDefinition
@@ -43,7 +42,7 @@ public class ProcessInstanceTimelineService {
             throw new RuntimeException("No timeline definition defined");
         }
 
-        if (timelineGroupDefinition.getTimelineDefinitions().size() == 1) {
+        if (timelineGroupDefinition.getTimelineDefinitions().size() > 1) {
             return timelineGroupDefinition.getTimelineDefinitions().get(0);
         }
 
@@ -76,6 +75,10 @@ public class ProcessInstanceTimelineService {
         calculateStatus(processInstance, timeline);
 
         return timeline;
+    }
+
+    private void calculateTimeline(GenericTimelineProcessDTO processEntity, ProcessInstanceTimelineItemDTO timelineItem) {
+        expressionService.evaluateTimeline(processEntity, timelineItem.getItemDefinition().getCheckStatusExpression());
     }
 
     private void calculateStatus(ProcessInstance processInstance, ProcessInstanceTimelineDTO timeline) {

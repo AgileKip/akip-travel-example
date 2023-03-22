@@ -59,6 +59,46 @@
                   />
                 </div>
               </div>
+              <div class="row justify-content-center">
+                <div class="mt-3">
+                  <b-button
+                    v-on:click="retrieveTimelineInfo(genericTimelineProcess.processInstance.id)"
+                    variant="primary"
+                    v-b-toggle.sidebar-right
+                    >Visualizar Timeline Direita
+                  </b-button>
+                </div>
+              </div>
+              <b-sidebar id="sidebar-right" right shadow class="justify-content-center">
+                <div class="px-3 py-2">
+                  <timeline>
+                    <timeline-title>Travel Plan Process Test</timeline-title>
+                    <timeline-item v-for="item in timelineItems" :bg-color="chooseColor(item.status)">
+                      <font-awesome-icon :icon="item.icon" class="icon" slot="others"></font-awesome-icon>
+                      <p>
+                        {{ item.title }}
+                      </p>
+                    </timeline-item>
+                  </timeline>
+                </div>
+              </b-sidebar>
+            </div>
+            <div>
+              <div class="row justify-content-center">
+                <div class="mt-3">
+                  <b-button
+                    v-on:click="retrieveTimelineInfo(genericTimelineProcess.processInstance.id)"
+                    variant="primary"
+                    v-b-toggle.sidebar-1
+                    >Visualizar Timeline Esquerda
+                  </b-button>
+                </div>
+              </div>
+              <b-sidebar width="30%" id="sidebar-1" shadow class="justify-content-center">
+                <div class="px-3 py-2">
+                  <simple-timeline-custom :items="items" dateFormat="YY/MM/DD HH:mm:ss"></simple-timeline-custom>
+                </div>
+              </b-sidebar>
             </div>
           </template>
         </akip-show-process-instance>
