@@ -28,7 +28,6 @@ public class ProcessInstanceTimelineService {
     @Autowired
     private ProcessInstanceTimelineExpressionService expressionService;
 
-    //TODO: usar o processInstanceId passado como parametro para recuperar o processInstance
     public ProcessInstanceTimelineDTO getTimeline(Long processInstanceId) {
         ProcessInstance processInstance = processInstanceRepository.findById(processInstanceId).orElseThrow();
         GenericTimelineProcessDTO genericTimelineProcessDTO = genericTimelineProcessRepository

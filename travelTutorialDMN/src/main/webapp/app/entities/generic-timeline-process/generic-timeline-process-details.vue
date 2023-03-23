@@ -111,4 +111,16 @@
   </div>
 </template>
 
+<style>
+.timeline-circle {
+  width: 20px !important;
+  padding: 4px !important;
+  left: -43px !important;
+}
+.icon {
+  color: white;
+  stroke: black;
+}
+</style>
+
 <script lang="ts" src="./generic-timeline-process-details.component.ts"></script>

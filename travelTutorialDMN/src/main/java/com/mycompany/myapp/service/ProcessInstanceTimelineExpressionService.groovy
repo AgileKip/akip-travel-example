@@ -130,14 +130,11 @@ class ProcessInstanceTimelineExpressionService {
     }
 
     boolean checkTaskCompleted(ProcessInstance processInstance, String taskDefinitionBpmnId) {
-        //TODO: Aqui voces terao que pegar a ultima tarefa com o identificador taskDefinintionBpmnId dessa processInstance
-        // (pode haver mais de 1 tarefa com esse id) e verificar o status dela se o status dela é COMPLETED.
-
         for (TaskInstance ti : taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted((o1, o2)-> o2.getId().compareTo(o1.getId())).collect(Collectors.toList())) {
-            if ((ti.getStatus() == StatusTaskInstance.COMPLETED) && (ti.getTaskDefinitionKey() == taskDefinitionBpmnId)) {
+            if (ti.getStatus() == StatusTaskInstance.COMPLETED && ti.getTaskDefinitionKey() == taskDefinitionBpmnId) {
                 return true;
             }
-            if(ti.getStatus() == StatusTaskInstance.ASSIGNED){
+            else if ((ti.getStatus() == StatusTaskInstance.ASSIGNED && ti.getTaskDefinitionKey() == taskDefinitionBpmnId) || (ti.getStatus() == StatusTaskInstance.NEW && ti.getTaskDefinitionKey() == taskDefinitionBpmnId)) {
                 return false;
             }
         }

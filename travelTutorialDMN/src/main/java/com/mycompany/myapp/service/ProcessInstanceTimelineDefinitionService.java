@@ -62,7 +62,7 @@ public class ProcessInstanceTimelineDefinitionService {
             .getItems()
             .add(
                 new ProcessInstanceTimelineItemDefinitionDTO()
-                    .step(5)
+                    .step(8)
                     .name("Generic Timeline finished")
                     .checkStatusExpression("processInstanceCompleted")
             );
@@ -103,29 +103,29 @@ public class ProcessInstanceTimelineDefinitionService {
         //task G
         timelineDefinition
             .getItems()
-            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(4).name("TaskG").checkStatusExpression("TaskG"));
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(5).name("TaskG").checkStatusExpression("TaskG"));
 
         //task H
         timelineDefinition
             .getItems()
-            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(5).name("TaskH").checkStatusExpression("TaskH"));
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(6).name("TaskH").checkStatusExpression("TaskH"));
 
         //task I
         timelineDefinition
             .getItems()
-            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(6).name("TaskI").checkStatusExpression("TaskI"));
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(7).name("TaskI").checkStatusExpression("TaskI"));
 
         //task J
         timelineDefinition
             .getItems()
-            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(7).name("TaskJ").checkStatusExpression("TaskJ"));
+            .add(new ProcessInstanceTimelineItemDefinitionDTO().step(8).name("TaskJ").checkStatusExpression("TaskJ"));
 
         //process started
         timelineDefinition
             .getItems()
             .add(
                 new ProcessInstanceTimelineItemDefinitionDTO()
-                    .step(8)
+                    .step(9)
                     .name("Generic process finished")
                     .checkStatusExpression("processInstanceCompleted")
             );
