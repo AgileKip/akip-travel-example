@@ -1,7 +1,8 @@
 package com.mycompany.myapp.service;
 
-import com.mycompany.myapp.domain.GenericTimelineProcess;
+import com.mycompany.myapp.repository.GenericTimelineProcessRepository;
 import com.mycompany.myapp.service.dto.*;
+import com.mycompany.myapp.service.mapper.GenericTimelineProcessMapper;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.akip.domain.ProcessInstance;
@@ -16,7 +17,13 @@ public class ProcessInstanceTimelineService {
     private ProcessInstanceRepository processInstanceRepository;
 
     @Autowired
+    private GenericTimelineProcessRepository genericTimelineProcessRepository;
+
+    @Autowired
     private ProcessInstanceTimelineDefinitionService processInstanceTimelineDefinitionService;
+
+    @Autowired
+    private GenericTimelineProcessMapper genericTimelineProcessMapper;
 
     @Autowired
     private ProcessInstanceTimelineExpressionService expressionService;
@@ -24,29 +31,36 @@ public class ProcessInstanceTimelineService {
     //TODO: usar o processInstanceId passado como parametro para recuperar o processInstance
     public ProcessInstanceTimelineDTO getTimeline(Long processInstanceId) {
         ProcessInstance processInstance = processInstanceRepository.findById(processInstanceId).orElseThrow();
+        GenericTimelineProcessDTO genericTimelineProcessDTO = genericTimelineProcessRepository
+            .findByProcessInstanceId(processInstanceId)
+            .map(genericTimelineProcessMapper::toDto)
+            .orElseThrow();
 
         ProcessInstanceTimelineGroupDefinitionDTO timelineGroupDefinition = processInstanceTimelineDefinitionService.getTimelineGroup(
             processInstance.getProcessDefinition().getId()
         );
-        ProcessInstanceTimelineDefinitionDTO timelineDefinition = findTimelineDefinition(processInstance, timelineGroupDefinition);
+        ProcessInstanceTimelineDefinitionDTO timelineDefinition = findTimelineDefinition(
+            genericTimelineProcessDTO,
+            timelineGroupDefinition
+        );
 
         return calculateTimeline(processInstance, timelineDefinition);
     }
 
     //        GenericTimelineProcessDTO processEntity,
     private ProcessInstanceTimelineDefinitionDTO findTimelineDefinition(
-        ProcessInstance processInstance,
+        GenericTimelineProcessDTO processEntity,
         ProcessInstanceTimelineGroupDefinitionDTO timelineGroupDefinition
     ) {
         if (timelineGroupDefinition.getTimelineDefinitions().isEmpty()) {
             throw new RuntimeException("No timeline definition defined");
         }
 
-        if (timelineGroupDefinition.getTimelineDefinitions().size() > 1) {
+        if (timelineGroupDefinition.getTimelineDefinitions().size() == 1) {
             return timelineGroupDefinition.getTimelineDefinitions().get(0);
         }
 
-        throw new RuntimeException("Not implemented yet");
+        return defineTimeline(processEntity, timelineGroupDefinition);
     }
 
     private ProcessInstanceTimelineDTO calculateTimeline(
@@ -77,8 +91,17 @@ public class ProcessInstanceTimelineService {
         return timeline;
     }
 
-    private void calculateTimeline(GenericTimelineProcessDTO processEntity, ProcessInstanceTimelineItemDTO timelineItem) {
-        expressionService.evaluateTimeline(processEntity, timelineItem.getItemDefinition().getCheckStatusExpression());
+    private ProcessInstanceTimelineDefinitionDTO defineTimeline(
+        GenericTimelineProcessDTO processEntity,
+        ProcessInstanceTimelineGroupDefinitionDTO timelineGroupDefinitionDTO
+    ) {
+        for (ProcessInstanceTimelineDefinitionDTO t : timelineGroupDefinitionDTO.getTimelineDefinitions()) {
+            if (t.getConditionExpression() != null && expressionService.evaluateTimeline(processEntity, t.getConditionExpression())) {
+                return t;
+            }
+        }
+
+        return timelineGroupDefinitionDTO.getTimelineDefinitions().get(0);
     }
 
     private void calculateStatus(ProcessInstance processInstance, ProcessInstanceTimelineDTO timeline) {

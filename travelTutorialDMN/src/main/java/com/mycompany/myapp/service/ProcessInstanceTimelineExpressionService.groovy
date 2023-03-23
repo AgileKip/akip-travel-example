@@ -109,52 +109,16 @@ class ProcessInstanceTimelineExpressionService {
 
 
     boolean evaluateTimeline(GenericTimelineProcessDTO processEntity, String expression) {
-        String groovyExpression = prepareCheckTimelineExpression(expression);
         Binding binding = buildBindingProcessEntity(processEntity);
         GroovyShell shell = new GroovyShell(binding);
 
-        return shell.evaluate(groovyExpression);
-    }
-
-    String prepareCheckTimelineExpression(String originalExpression) {
-        String tempExpression = originalExpression;
-        tempExpression = tempExpression.replace("(", " ( ");
-        tempExpression = tempExpression.replace(")", " ) ");
-        StringTokenizer stringTokenizer = new StringTokenizer(tempExpression, " ");
-        List<String> tokens = new ArrayList<>();
-        while (stringTokenizer.hasMoreTokens()) {
-            tokens.add(prepareToken(stringTokenizer.nextToken()));
-        }
-        return tokens.stream().collect(Collectors.joining());
+        return shell.evaluate(expression);
     }
 
     Binding buildBindingProcessEntity(GenericTimelineProcessDTO processEntity) {
         Binding binding = new Binding();
-        binding.setVariable("api", this)
         binding.setVariable("processEntity", processEntity)
         return binding;
-    }
-
-
-    private static String prepareTimeline(String originalToken) {
-        if ("(".equals(originalToken) || ")".equals(originalToken)) {
-            return originalToken;
-        }
-        String upperCaseToken = originalToken.toUpperCase();
-
-        if ("OR".equals(upperCaseToken)) {
-            return " || ";
-        }
-
-        if ("AND".equals(upperCaseToken)) {
-            return " || ";
-        }
-
-        return " api.checkCondition(processEntity, '" + originalToken + "') ";
-    }
-
-    boolean checkCondition(GenericTimelineProcessDTO processEntity) {
-            return processEntity.genericTimeline.needTaskH == true;
     }
 
     boolean checkProcessInstanceStarted(ProcessInstance processInstance) {
@@ -169,9 +133,12 @@ class ProcessInstanceTimelineExpressionService {
         //TODO: Aqui voces terao que pegar a ultima tarefa com o identificador taskDefinintionBpmnId dessa processInstance
         // (pode haver mais de 1 tarefa com esse id) e verificar o status dela se o status dela é COMPLETED.
 
-        for (TaskInstance ti : taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).reverse()) {
-            if (ti.getTaskDefinitionKey() == taskDefinitionBpmnId && ti.getStatus() == StatusTaskInstance.COMPLETED) {
+        for (TaskInstance ti : taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted((o1, o2)-> o2.getId().compareTo(o1.getId())).collect(Collectors.toList())) {
+            if ((ti.getStatus() == StatusTaskInstance.COMPLETED) && (ti.getTaskDefinitionKey() == taskDefinitionBpmnId)) {
                 return true;
+            }
+            if(ti.getStatus() == StatusTaskInstance.ASSIGNED){
+                return false;
             }
         }
         return false;
@@ -179,8 +146,8 @@ class ProcessInstanceTimelineExpressionService {
 
     boolean checkTaskRunning(ProcessInstance processInstance, String taskDefinitionBpmnId){
 
-        for (TaskInstance ti: taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).reverse()){
-            if(ti.getTaskDefinitionKey() == taskDefinitionBpmnId && ti.getStatus() == StatusTaskInstance.ASSIGNED){
+        for (TaskInstance ti: taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted((o1, o2)-> o2.getId().compareTo(o1.getId())).collect(Collectors.toList())) {
+            if (ti.getTaskDefinitionKey() == taskDefinitionBpmnId && ti.getStatus() == StatusTaskInstance.ASSIGNED) {
                 return true;
             }
         }
