@@ -11,7 +11,8 @@
         "taskName": "Task Name",
         "expression": "Expression Definition",
         "saveTask": "Add Task",
-        "removeTimeline": "Remove Timeline"
+        "removeTimeline": "Remove Timeline",
+        "timelineName": "Timeline Name"
       }
     }
   }

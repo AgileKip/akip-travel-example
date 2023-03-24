@@ -1,10 +1,21 @@
 import { Component, Vue } from 'vue-property-decorator';
+import { ITimelineDefinition, TimelineDefinition } from '@/shared/model/timeline-definition.model';
+import { required } from 'vuelidate/lib/validators';
 
 const validations: any = {
-  rentalCarCompany: {
-    name: {},
-    website: {},
-    email: {},
+  timelineDefinitions: {
+    $each: {
+      timelineTitle: {
+        required,
+      },
+      taskName: {
+        required,
+      },
+      expressionDefinition: {
+        required,
+      },
+      conditionalExpression: {},
+    },
   },
 };
 
@@ -15,15 +26,24 @@ export default class TimelineDefinitionComponent extends Vue {
   public isSaving = false;
   public currentLanguage = '';
   public collapseController: any = { showTimeline: true };
+  public timelineDefinitions: TimelineDefinition[] = [];
+
+  public timeline: TimelineDefinition = new TimelineDefinition();
 
   public collapse(collapseComponent: string): void {
     this.collapseController[collapseComponent] = !this.collapseController[collapseComponent];
   }
+
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.rentalCarCompanyId) {
       }
     });
+  }
+
+  public mounted() {
+    this.timelineDefinitions.push(new TimelineDefinition());
+    console.log(this.timelineDefinitions);
   }
 
   public save(): void {
@@ -65,4 +85,11 @@ export default class TimelineDefinitionComponent extends Vue {
   }
 
   public initRelationships(): void {}
+
+  public incluirTimeline(): void {
+    if (!this.timelineDefinitions) {
+      this.timelineDefinitions = [];
+    }
+    this.timelineDefinitions.push(new TimelineDefinition());
+  }
 }
