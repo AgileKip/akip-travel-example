@@ -66,6 +66,8 @@ const GenericTimelineProcess_TaskIDetails = () => import('@/entities/generic-tim
 // prettier-ignore
 const GenericTimelineProcess_TaskIExecute = () => import('@/entities/generic-timeline-process/task-i/task-i-execute.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
+const TimelineDefinition = () => import('@/entities/timeline-definition/timeline-definition.vue');
+// jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
   {
@@ -271,6 +273,12 @@ export default [
     path: '/process-definition/GenericTimelineProcess/task/TaskI/:taskInstanceId/execute',
     name: 'GenericTimelineProcess_TaskIExecute',
     component: GenericTimelineProcess_TaskIExecute,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/timelineDefinition',
+    name: 'TimelineDefinition',
+    component: TimelineDefinition,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

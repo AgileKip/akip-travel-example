@@ -108,6 +108,10 @@
             <font-awesome-icon icon="database" />
             <span v-text="$t('global.menu.admin.database')">Database</span>
           </b-dropdown-item>
+          <b-dropdown-item href="./timelineDefinition">
+            <font-awesome-icon icon="database" />
+            <span v-text="$t('travelPlanApp.timelineDefinition.home.title')">Timeline Definition</span>
+          </b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown id="languagesnavBarDropdown" right v-if="languages && Object.keys(languages).length > 1">
           <span slot="button-content">

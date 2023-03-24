@@ -1,0 +1,18 @@
+{
+  "travelPlanApp": {
+    "timelineDefinition": {
+      "home": {
+        "title": "Timeline Definition",
+        "create": "Create a new Timeline",
+        "save": "Save Timelines"
+      },
+      "definition": {
+        "conditionalExpression": "Conditional Expression",
+        "taskName": "Task Name",
+        "expression": "Expression Definition",
+        "saveTask": "Add Task",
+        "removeTimeline": "Remove Timeline"
+      }
+    }
+  }
+}
