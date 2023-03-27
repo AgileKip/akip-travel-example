@@ -13,10 +13,21 @@
     </div>
 
     <div class="card mt-2" v-for="(timelineDefinition, index) in $v.timelineDefinitions.$each.$iter" :key="index">
-      <h4 class="card-header collapse-link" v-on:click="collapse('showTimeline')">
-        <span class="title"> Timeline #{{ index }} </span>
-        <font-awesome-icon icon="compress-alt" v-if="collapseController.showTimeline"></font-awesome-icon>
-        <font-awesome-icon icon="expand-alt" v-else></font-awesome-icon>
+      <h4 class="card-header collapse-link">
+        <b-button
+          v-on:click="removeTimeline(timelineDefinitions, index)"
+          variant="danger"
+          class="btn btn-md float-right"
+          data-cy="entityAddButton"
+          v-if="index > 0"
+        >
+          <font-awesome-icon icon="trash"></font-awesome-icon>
+        </b-button>
+        <div v-on:click="collapse('showTimeline')">
+          <span class="title"> Timeline #{{ index }} </span>
+          <font-awesome-icon icon="compress-alt" v-if="collapseController.showTimeline"></font-awesome-icon>
+          <font-awesome-icon icon="expand-alt" v-else></font-awesome-icon>
+        </div>
       </h4>
       <b-collapse v-model="collapseController.showTimeline" id="collapse-timeline-process">
         <div class="card-body py-0">
@@ -58,16 +69,6 @@
                   v-model="timelineDefinition.timelineTitle.$model"
                 />
               </div>
-            </div>
-            <div class="col-sm-1 mt-2" v-if="index > 0">
-              <b-button
-                v-on:click="removeTimeline(timelineDefinitions, index)"
-                variant="danger"
-                class="btn btn-md float-right"
-                data-cy="entityAddButton"
-              >
-                <font-awesome-icon icon="trash"></font-awesome-icon>
-              </b-button>
             </div>
           </div>
           <div v-for="(taskDefinition, indexTask) in timelineDefinition.taskDefinition.$each.$iter" :key="indexTask">
