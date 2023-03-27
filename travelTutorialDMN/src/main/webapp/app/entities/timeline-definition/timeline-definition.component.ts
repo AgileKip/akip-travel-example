@@ -1,20 +1,25 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { ITimelineDefinition, TimelineDefinition } from '@/shared/model/timeline-definition.model';
 import { required } from 'vuelidate/lib/validators';
+import { TaskDefinition } from '@/shared/model/task-definition.model';
 
 const validations: any = {
   timelineDefinitions: {
     $each: {
+      conditionalExpression: {},
       timelineTitle: {
         required,
       },
-      taskName: {
-        required,
+      taskDefinition: {
+        $each: {
+          taskName: {
+            required,
+          },
+          expressionDefinition: {
+            required,
+          },
+        },
       },
-      expressionDefinition: {
-        required,
-      },
-      conditionalExpression: {},
     },
   },
 };
@@ -27,8 +32,8 @@ export default class TimelineDefinitionComponent extends Vue {
   public currentLanguage = '';
   public collapseController: any = { showTimeline: true };
   public timelineDefinitions: TimelineDefinition[] = [];
-
   public timeline: TimelineDefinition = new TimelineDefinition();
+  public timelineIndex: number = 0;
 
   public collapse(collapseComponent: string): void {
     this.collapseController[collapseComponent] = !this.collapseController[collapseComponent];
@@ -43,7 +48,7 @@ export default class TimelineDefinitionComponent extends Vue {
 
   public mounted() {
     this.timelineDefinitions.push(new TimelineDefinition());
-    console.log(this.timelineDefinitions);
+    this.verificarTaskDefinition(this.timelineDefinitions);
   }
 
   public save(): void {
@@ -87,9 +92,26 @@ export default class TimelineDefinitionComponent extends Vue {
   public initRelationships(): void {}
 
   public incluirTimeline(): void {
-    if (!this.timelineDefinitions) {
-      this.timelineDefinitions = [];
-    }
     this.timelineDefinitions.push(new TimelineDefinition());
+    this.verificarTaskDefinition(this.timelineDefinitions);
+    console.log(this.timelineDefinitions);
+  }
+
+  public verificarTaskDefinition(timelineDefinitions) {
+    timelineDefinitions.forEach(t => {
+      if (!t.taskDefinition) {
+        t.taskDefinition = [];
+        t.taskDefinition.push(new TaskDefinition());
+      }
+    });
+  }
+
+  public incluirTask(timelineDefinition) {
+    timelineDefinition.taskDefinition.push(new TaskDefinition());
+  }
+
+  public removeTimeline(instance: TimelineDefinition[], id): void {
+    this.timelineIndex = id;
+    instance.splice(this.timelineIndex, 1);
   }
 }

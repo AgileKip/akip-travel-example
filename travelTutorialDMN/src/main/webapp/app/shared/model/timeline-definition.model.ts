@@ -1,9 +1,10 @@
+import { ITaskDefinition } from '@/shared/model/task-definition.model';
+
 export interface ITimelineDefinition {
   id?: number;
   timelineTitle?: string | null;
   conditionalExpression?: string | null;
-  taskName?: string | null;
-  expressionDefinition?: string | null;
+  taskDefinition?: ITaskDefinition[];
 }
 
 export class TimelineDefinition implements ITimelineDefinition {
@@ -11,7 +12,6 @@ export class TimelineDefinition implements ITimelineDefinition {
     public id?: number,
     public timelineTitle?: string | null,
     public conditionalExpression?: string | null,
-    public taskName?: string | null,
-    public expressionDefinition?: string | null
+    public taskDefinition?: ITaskDefinition[] | null
   ) {}
 }

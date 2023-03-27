@@ -20,52 +20,57 @@
       </h4>
       <b-collapse v-model="collapseController.showTimeline" id="collapse-timeline-process">
         <div class="card-body py-0">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-6 mt-2">
-                <div class="form-group input-group-md">
-                  <label
-                    class="form-control-label"
-                    v-text="$t('travelPlanApp.timelineDefinition.definition.conditionalExpression')"
-                    for="conditional-expression"
-                    >Condition Expression</label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="conditionalExpression"
-                    id="conditional-expression"
-                    data-cy="conditionalExpression"
-                    v-model="timelineDefinition.conditionalExpression.$model"
-                    readonly
-                  />
-                </div>
-              </div>
-              <div class="col-sm-5 mt-2">
-                <div class="form-group input-group-md">
-                  <label
-                    class="form-control-label"
-                    v-text="$t('travelPlanApp.timelineDefinition.definition.timelineName')"
-                    for="timeline-title"
-                    >Timeline Name</label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="timeline-title"
-                    id="timeline-title"
-                    data-cy="timelineTitle"
-                    :class="{ valid: !timelineDefinition.timelineTitle.$invalid, invalid: timelineDefinition.timelineTitle.$invalid }"
-                    v-model="timelineDefinition.timelineTitle.$model"
-                  />
-                </div>
-              </div>
-              <div class="col-sm-1 mt-2">
-                <b-button v-on:click="" variant="danger" class="btn btn-md float-right" data-cy="entityAddButton">
-                  <font-awesome-icon icon="trash"></font-awesome-icon>
-                </b-button>
+          <div class="row">
+            <div class="col-sm-6 mt-2">
+              <div class="form-group input-group-md">
+                <label
+                  class="form-control-label"
+                  v-text="$t('travelPlanApp.timelineDefinition.definition.conditionalExpression')"
+                  for="conditional-expression"
+                  >Condition Expression</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="conditionalExpression"
+                  id="conditional-expression"
+                  data-cy="conditionalExpression"
+                  v-model="timelineDefinition.conditionalExpression.$model"
+                  :readonly="index < 1"
+                />
               </div>
             </div>
+            <div class="col-sm-5 mt-2">
+              <div class="form-group input-group-md">
+                <label
+                  class="form-control-label"
+                  v-text="$t('travelPlanApp.timelineDefinition.definition.timelineName')"
+                  for="timeline-title"
+                  >Timeline Name</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  name="timeline-title"
+                  id="timeline-title"
+                  data-cy="timelineTitle"
+                  :class="{ valid: !timelineDefinition.timelineTitle.$invalid, invalid: timelineDefinition.timelineTitle.$invalid }"
+                  v-model="timelineDefinition.timelineTitle.$model"
+                />
+              </div>
+            </div>
+            <div class="col-sm-1 mt-2" v-if="index > 0">
+              <b-button
+                v-on:click="removeTimeline(timelineDefinitions, index)"
+                variant="danger"
+                class="btn btn-md float-right"
+                data-cy="entityAddButton"
+              >
+                <font-awesome-icon icon="trash"></font-awesome-icon>
+              </b-button>
+            </div>
+          </div>
+          <div v-for="(taskDefinition, indexTask) in timelineDefinition.taskDefinition.$each.$iter" :key="indexTask">
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group input-group-md">
@@ -78,8 +83,8 @@
                     name="task-name"
                     id="task-name"
                     data-cy="taskName"
-                    :class="{ valid: !timelineDefinition.taskName.$invalid, invalid: timelineDefinition.taskName.$invalid }"
-                    v-model="timelineDefinition.taskName.$model"
+                    :class="{ valid: !taskDefinition.taskName.$invalid, invalid: taskDefinition.taskName.$invalid }"
+                    v-model="taskDefinition.taskName.$model"
                   />
                 </div>
               </div>
@@ -98,20 +103,26 @@
                     id="expression-definition"
                     data-cy="expressionDefinition"
                     :class="{
-                      valid: !timelineDefinition.expressionDefinition.$invalid,
-                      invalid: timelineDefinition.expressionDefinition.$invalid,
+                      valid: !taskDefinition.expressionDefinition.$invalid,
+                      invalid: taskDefinition.expressionDefinition.$invalid,
                     }"
-                    v-model="timelineDefinition.expressionDefinition.$model"
+                    v-model="taskDefinition.expressionDefinition.$model"
                   />
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <b-button v-on:click="" variant="success" class="btn btn-md ml-2 mb-2" data-cy="entityAddButton">
-            <span v-text="$t('travelPlanApp.timelineDefinition.definition.saveTask')" id="timeline-definition-save"> Save</span>
-          </b-button>
+          <div>
+            <b-button
+              v-on:click="incluirTask(timelineDefinition.$model)"
+              variant="success"
+              class="btn btn-md ml-2 mb-2"
+              data-cy="entityAddButton"
+            >
+              <span v-text="$t('travelPlanApp.timelineDefinition.definition.saveTask')" id="timeline-definition-save"> Save</span>
+            </b-button>
+          </div>
+          <show-tasks-definition :tasks="timelineDefinition.taskDefinition.$model" />
         </div>
       </b-collapse>
     </div>
