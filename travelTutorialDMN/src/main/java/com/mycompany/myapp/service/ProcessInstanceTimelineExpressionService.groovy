@@ -130,7 +130,7 @@ class ProcessInstanceTimelineExpressionService {
     }
 
     boolean checkTaskCompleted(ProcessInstance processInstance, String taskDefinitionBpmnId) {
-        for (TaskInstance ti : taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted((o1, o2)-> o2.getId().compareTo(o1.getId())).collect(Collectors.toList())) {
+        for (TaskInstance ti : taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted({ o1, o2 -> o2.getId().compareTo(o1.getId()) }).collect(Collectors.toList())) {
             if (ti.getStatus() == StatusTaskInstance.COMPLETED && ti.getTaskDefinitionKey() == taskDefinitionBpmnId) {
                 return true;
             }
@@ -143,7 +143,7 @@ class ProcessInstanceTimelineExpressionService {
 
     boolean checkTaskRunning(ProcessInstance processInstance, String taskDefinitionBpmnId){
 
-        for (TaskInstance ti: taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted((o1, o2)-> o2.getId().compareTo(o1.getId())).collect(Collectors.toList())) {
+        for (TaskInstance ti: taskInstanceRepository.findByProcessInstanceId(processInstance.getId()).stream().sorted({ o1, o2 -> o2.getId().compareTo(o1.getId()) }).collect(Collectors.toList())) {
             if (ti.getTaskDefinitionKey() == taskDefinitionBpmnId && ti.getStatus() == StatusTaskInstance.ASSIGNED) {
                 return true;
             }
